@@ -10,6 +10,7 @@ import { EditComponent } from './edit/edit.component';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './common/header.component';
 import { FooterComponent } from './common/footer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './common/footer.component';
     EditComponent,
     SearchComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
