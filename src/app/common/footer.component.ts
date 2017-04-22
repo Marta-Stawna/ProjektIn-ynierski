@@ -3,11 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-    <p>
-      footer Works!
-    </p>
+    <div class="footer">
+    </div>
   `,
-  styles: []
+  styles: [`.footer{background-color:black;height:50px}`]
 })
 export class FooterComponent implements OnInit {
 
