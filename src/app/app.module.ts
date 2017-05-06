@@ -13,6 +13,7 @@ import { HeaderComponent } from './common/header.component';
 import { FooterComponent } from './common/footer.component';
 import { LoginComponent } from './login/login.component';
 import {appRoutes} from './app-routing.module';
+import {LoginService} from './common/login.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {appRoutes} from './app-routing.module';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
