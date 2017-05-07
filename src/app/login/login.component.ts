@@ -9,18 +9,12 @@ import { LoginService } from "app/common/login.service";
 })
 export class LoginComponent implements OnInit {
 
-  public user;
-  private subscribtion:Subscription;
 
-  constructor(private userService:LoginService) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.subscribtion=this.userService.getUserData().subscribe(data=>{console.log(data);this.user=data});
-    console.log(this.user)
-  }
 
-   ngOnDestroy(){
-      this.subscribtion.unsubscribe();
-   }
+  }
 
 }
