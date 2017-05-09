@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  title = 'Wyszukiwanie sali';
+
+  class = {
+    name: 'A2',
+    seats: '1-14',
+    type: 'dowolny',
+    location: 'dowolne',
+    projector: false,
+  }
+
+  save(event){
+    console.log('Zapisano', event)
+  }
   constructor() { }
 
   ngOnInit() {
   }
 
 }
+
+
