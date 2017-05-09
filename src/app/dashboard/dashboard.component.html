@@ -1,3 +1,50 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+   <div class="row mt-1">
+      <h2>Plan sal</h2>   
+  </div> 
+  <div class="row mt-1">
+    <div class="form-group">
+              <label for="name">Wybierz salę i sprawdź jej dostępność na planie:</label>
+              <select class="form-control" >
+                <option>A2-22</option>
+                <option>A2-23</option>
+                <option>A2-24</option>
+                <option>A2-25</option>
+                <option>A2-26</option>
+                <option>A1-1</option>
+                <option>A1-2</option>
+                <option>A1-3</option>
+              </select>
+    </div>  
+  </div>   
+  <!-- data i kalendarz do wyboru https://www.npmjs.com/package/angular2-datepicker-->
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let hours of classes; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <td >{{hours.hours}}</td>
+              <td>{{hours.availableMon}}</td>
+              <td>{{hours.availableTue}}</td>
+              <td>{{hours.availableWed}}</td>
+              <td>{{hours.availableThu}}</td>
+              <td>{{hours.availableFri}}</td>
+              <td>{{hours.availableSat}}</td>
+              <td>{{hours.availableSun}}</td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="well well-lg">
+      Selected Row : <strong>{{selectedRow}}</strong>
+  </div>
+</div>  
