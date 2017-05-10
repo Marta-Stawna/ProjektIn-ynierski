@@ -1,4 +1,8 @@
-.table tr.active td {
+.table td.active  {
   background-color: #993366;
+  color: white;
+}
+.table tr.active2  {
+  background-color: #103360;
   color: white;
 }

@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
    headMessage : string;
     selectedRow : Number;
+    selectedCol : Number;
     setClickedRow : Function;
+    setClickedCol : Function;
     classes : [{
         hours: string,
         availableMon : boolean,
@@ -85,8 +87,12 @@ export class DashboardComponent implements OnInit {
             availableSun : false
         }];
         this.setClickedRow = function(index){
-            this.selectedRow = index;
+            this.selectedRow = index ;
         }
+        this.setClickedCol = function(index2){
+            this.selectedCol = index2;
+        }
+
     };
 
   ngOnInit() {
