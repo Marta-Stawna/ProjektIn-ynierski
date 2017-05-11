@@ -5,21 +5,20 @@ import { Subscription } from "rxjs/Subscription";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
 
   public user;
   private subscribtion:Subscription;
-  
-  constructor(private userService:LoginService) {
-
+    constructor(private userService:LoginService) {
+     
    }
 
   ngOnInit() {
-    let search=location.search;
-     this.subscribtion=this.userService.getUserData(search).subscribe(data=>{console.log(data);this.user=data});
-      console.log(this.user)
+    let search:String=location.search;
+    this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
+       console.log(this.user)
   }
      ngOnDestroy(){
       this.subscribtion.unsubscribe();

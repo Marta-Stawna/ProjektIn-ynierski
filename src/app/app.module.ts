@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import {MdSidenavModule} from '@angular/material';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -24,13 +26,14 @@ import {LoginService} from './common/login.service';
     SearchComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MdSidenavModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
