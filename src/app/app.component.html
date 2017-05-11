@@ -1,7 +1,21 @@
-<div class="main-container">
-<app-header></app-header>
-<div class="main-content">
-   <router-outlet></router-outlet>
-</div>
-<app-footer></app-footer>
-</div>
+ <md-sidenav-container>
+    <md-sidenav #sidenav class="sidenav">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="/dashboard">Strona Główna</a></li>
+			<li routerLinkActive="active"><a routerLink="/reservation">Rezerwacja</a></li>
+			<li routerLinkActive="active"><a routerLink="/edit">Edycja</a></li>
+      <li routerLinkActive="active"><a routerLink="/search">Wyszukaj</a></li>
+		</ul>
+  </md-sidenav>
+  <div class="main-container">
+    <app-header>
+       <button  md-button class="btn btn-link button" (click)="sidenav.open()">
+         <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+      </app-header>
+      <div class="main-content">
+        <router-outlet></router-outlet> 
+      </div>
+    <app-footer></app-footer>
+  </div>
+</md-sidenav-container>
