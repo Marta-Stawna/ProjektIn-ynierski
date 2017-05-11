@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from "app/common/login.service";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
    headMessage : string;
@@ -22,8 +24,10 @@ export class DashboardComponent implements OnInit {
         availableSun : boolean
     }];
 
-
-   constructor(){
+  public user;
+  private subscribtion:Subscription;
+  
+    constructor(private userService:LoginService) {
         this.headMessage = "Wybierz dzień tygodnia i datę";
        
         this.classes = [{
@@ -94,8 +98,16 @@ export class DashboardComponent implements OnInit {
         }
 
     };
+     
+   }
 
   ngOnInit() {
+    let search:String=location.search;
+    this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
+       console.log(this.user)
   }
+     ngOnDestroy(){
+      this.subscribtion.unsubscribe();
+   }
 
 }

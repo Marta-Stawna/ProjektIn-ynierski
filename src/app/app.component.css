@@ -8,3 +8,41 @@
 .main-content{
     flex:1;
 }
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+  background-color: white;
+}
+.sidenav ul{
+ padding:0;
+}
+
+md-sidenav li a{
+  text-decoration-line: none;
+  font-size: 16px;
+  color:black;
+}
+md-sidenav li a:hover{
+  color:purple;
+}
+md-sidenav li {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding:10px;
+  font-size: 16px;
+  color:black;
+}
+
+.button{
+    color:white;
+    font-size: 20px;
+    margin:8px;
+}
