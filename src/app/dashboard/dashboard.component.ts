@@ -97,10 +97,8 @@ export class DashboardComponent implements OnInit {
             this.selectedCol = index2;
         }
 
-    };
+    }
      
-   }
-
   ngOnInit() {
     let search:String=location.search;
     this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
