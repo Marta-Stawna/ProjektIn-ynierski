@@ -5,7 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
-export class ReservationComponent implements OnInit {
+export class ReservationComponent implements OnInit { 
+ saved : Number;
+
+  save(event){
+    console.log('Zapisano', event)
+    this.saved = 1
+  } 
 
   constructor() { }
 

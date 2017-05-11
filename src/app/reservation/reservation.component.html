@@ -1,3 +1,43 @@
-<p>
-  reservation works!
-</p>
+<div class="container2" >
+   <div class="row mt-1">
+      <h2>Rezerwacja sali</h2>   
+  </div> 
+  <div class="row mt-1">
+    <div class="form-group">
+              <label for="name">Wybierz salę </label>
+              <select class="form-control" >
+                <option>A2-22</option>
+                <option>A2-23</option>
+                <option>A2-24</option>
+                <option>A2-25</option>
+                <option>A2-26</option>
+                <option>A1-1</option>
+                <option>A1-2</option>
+                <option>A1-3</option>
+              </select>
+    </div>  
+    <div class="form-group">
+              <label for="name">Wybierz godzinę</label>
+              <select class="form-control" >
+                <option>8:15-9:45</option>
+                <option>10:00-11:30</option>
+                <option>11:45-13:15</option>
+                <option>13:45-15:15</option>
+                <option>15:30-17:00</option>
+                <option>17:15-18:45</option>
+              </select>
+    </div> 
+    <div class="form-group">
+            <button class="btn float-xs-right " (click)="save($event)">Zatwierdź</button>
+    </div>
+    {{event}}
+    <div *ngIf="saved == 1 " class="card-block">
+      <!-- <div class="form-group">
+        <p class="card-text">Zatwierdzono rezerwację</p>
+      </div>  -->
+      <div class="alert alert-success">
+        <strong>Success!</strong> Zatwierdzono rezerwację.
+      </div>
+    </div>
+  </div>  
+</div>

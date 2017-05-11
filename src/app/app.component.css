@@ -46,3 +46,14 @@ md-sidenav li {
     font-size: 20px;
     margin:8px;
 }
+
+.rounded-circle {
+  border-radius: 50%; }
+
+  .float-right {
+  float: right !important; }
+
+.img-fluid {
+  max-width: 100%;
+  height: auto; }
+
