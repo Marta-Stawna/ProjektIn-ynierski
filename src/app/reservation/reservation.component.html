@@ -5,6 +5,7 @@
   <div class="row mt-1">
     <div class="form-group">
               <label for="name">Wybierz salę </label>
+              <span class="asteriskField">*</span>
               <select class="form-control" >
                 <option>A2-22</option>
                 <option>A2-23</option>
@@ -19,7 +20,7 @@
     </div>
     <div class="row mt-1">
       <!--data-->
-      <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+      <!-- <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />-->
       <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
       <div class="bootstrap-iso">
       <div class="container-fluid">
@@ -27,18 +28,14 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="form-group ">
             <label class=" requiredField" for="date">
-            Data
-            <span class="asteriskField">
-              *
-            </span>
+            Wybierz Datę
+            <span class="asteriskField">*</span>
             </label>
             <div class="col-sm-10">
             <div class="input-group">
-              <div class="input-group-addon">
-              <i class="fa fa-calendar">
-              </i>
+              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')" type="date"/>
+               <div class="input-group-addon" >
               </div>
-              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
             </div>
             </div>
           </div>
@@ -50,6 +47,7 @@
 <div class="row mt-1">
     <div class="form-group">
               <label for="name">Wybierz godzinę</label>
+              <span class="asteriskField">*</span>
               <select class="form-control" >
                 <option>8:15-9:45</option>
                 <option>10:00-11:30</option>
