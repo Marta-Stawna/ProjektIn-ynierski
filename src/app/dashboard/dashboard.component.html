@@ -1,59 +1,91 @@
 <div class="container2" >
-   <div class="row mt-1">
-      <h2>Plan sal</h2>   
-  </div> 
-  <div class="row mt-1">
-    <div class="form-group" >
-              <label for="name">Wybierz salę i sprawdź jej dostępność na planie:</label>
-              <select class="form-control" >
-                <option>A2-22</option>
-                <option>A2-23</option>
-                <option>A2-24</option>
-                <option>A2-25</option>
-                <option>A2-26</option>
-                <option>A1-1</option>
-                <option>A1-2</option>
-                <option>A1-3</option>
-              </select>
-    </div>  
-  </div>   
-  <div *ngIf="selectedRow == null " class="card-block">
-    <div class="form-group">
-      <p class="card-text">Wybierz odpowiedni dzień tygodnia i godzinę na planie</p>
-    </div>  
-  </div>
-  <!-- data i kalendarz do wyboru https://www.npmjs.com/package/angular2-datepicker-->
-  <table class="table table-bordered">
-      <thead>
-          <tr>
-            <th></th>
-            <th id = "1">Monday</th>
-            <th id = "2">Tuesday</th>
-            <th id = "3">Wednesday</th>
-            <th id = "4"> Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let hours of classes; let i = index" (click)="setClickedRow(i)" [class.active2]="i == selectedRow">
-              <td >{{hours.hours}}</td>
-              <td (click)="setClickedCol(1)" [class.active]="1 == selectedCol">{{hours.availableMon}}</td>
-              <td (click)="setClickedCol(2)" [class.active]="2 == selectedCol">{{hours.availableTue}}</td>
-              <td (click)="setClickedCol(3)" [class.active]="3 == selectedCol">{{hours.availableWed}}</td>
-              <td (click)="setClickedCol(4)" [class.active]="4 == selectedCol">{{hours.availableThu}}</td>
-              <td (click)="setClickedCol(5)" [class.active]="5 == selectedCol">{{hours.availableFri}}</td>
-              <td (click)="setClickedCol(6)" [class.active]="6 == selectedCol">{{hours.availableSat}}</td>
-              <td (click)="setClickedCol(7)" [class.active]="7 == selectedCol">{{hours.availableSun}}</td>
-          </tr>
-      </tbody>
-  </table>
-  <div class="well well-lg">
-      Selected Row : <strong>{{selectedRow + 1}}</strong>
-  </div>
-  <div class="well well-lg">
-      Selected Col : <strong>{{selectedCol}}</strong>
-  </div>
+    <div class="row mt-1">
+        <h2>Plan sal</h2>   
+    </div> 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row mt-1">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group" >
+                        <label for="name">Wybierz salę:</label>
+                        <select class="form-control" >
+                            <option>A2-22</option>
+                            <option>A2-23</option>
+                            <option>A2-24</option>
+                            <option>A2-25</option>
+                            <option>A2-26</option>
+                            <option>A1-1</option>
+                            <option>A1-2</option>
+                            <option>A1-3</option>
+                        </select>
+                    </div> 
+                </div>
+            </div> 
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group ">
+                        <label class=" requiredField" for="date">
+                            Wybierz Datę:
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')" type="date"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                </div> 
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li><a href="http://localhost:4200/dashboard">Poprzedni tydzień</a></li>
+                <li class="active">Aktualny tydzień</li>
+                <li><a href="http://localhost:4200/dashboard">Następny tydzień</a></li>
+            </ol>	
+        </div>
+    </div>
+  
+    <div *ngIf="selectedRow == null " class="card-block">
+        <div class="form-group">
+        <p class="card-text">Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
+        </div>  
+    </div>
+    <!-- data i kalendarz do wyboru https://www.npmjs.com/package/angular2-datepicker-->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th id = "1">Monday</th>
+                <th id = "2">Tuesday</th>
+                <th id = "3">Wednesday</th>
+                <th id = "4"> Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hours of classes; let i = index" (click)="setClickedRow(i)" [class.active2]="i == selectedRow">
+                <td ><b>{{hours.hours}}</b></td>
+                <td (click)="setClickedCol(1)" [class.active]="1 == selectedCol">{{hours.availableMon}}</td>
+                <td (click)="setClickedCol(2)" [class.active]="2 == selectedCol">{{hours.availableTue}}</td>
+                <td (click)="setClickedCol(3)" [class.active]="3 == selectedCol">{{hours.availableWed}}</td>
+                <td (click)="setClickedCol(4)" [class.active]="4 == selectedCol">{{hours.availableThu}}</td>
+                <td (click)="setClickedCol(5)" [class.active]="5 == selectedCol">{{hours.availableFri}}</td>
+                <td (click)="setClickedCol(6)" [class.active]="6 == selectedCol">{{hours.availableSat}}</td>
+                <td (click)="setClickedCol(7)" [class.active]="7 == selectedCol">{{hours.availableSun}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="well well-lg">
+        Selected Row : <strong>{{selectedRow + 1}}</strong>
+    </div>
+    <div class="well well-lg">
+        Selected Col : <strong>{{selectedCol}}</strong>
+    </div>
 </div>
 

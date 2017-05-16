@@ -8,7 +8,8 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-   headMessage : string;
+
+    headMessage : string;
     selectedRow : Number;
     selectedCol : Number;
     setClickedRow : Function;
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit {
         this.headMessage = "Wybierz dzień tygodnia i datę";
        
         this.classes = [{
-            hours : "8:15-9:45",
+            hours : "8:15 - 9:45",
             availableMon : true,
             availableTue : false,
             availableWed : false,
@@ -41,7 +42,7 @@ export class DashboardComponent implements OnInit {
             availableSun : false
         },
         {
-            hours : "10:00-11:30",
+            hours : "10:00 - 11:30",
             availableMon : true,
             availableTue : false,
             availableWed : false,
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
             availableSun : false
         },
         {
-            hours : "11:45-13:15",
+            hours : "11:45 - 13:15",
             availableMon : true,
             availableTue : false,
             availableWed : true,
@@ -61,7 +62,7 @@ export class DashboardComponent implements OnInit {
             availableSun : false
         },
         {
-            hours : "13:45-15:15",
+            hours : "13:45 - 15:15",
             availableMon : true,
             availableTue : false,
             availableWed : false,
@@ -71,7 +72,7 @@ export class DashboardComponent implements OnInit {
             availableSun : false
         },
         {
-            hours : "15:30-17:00",
+            hours : "15:30 - 17:00",
             availableMon : true,
             availableTue : false,
             availableWed : true,
@@ -81,7 +82,7 @@ export class DashboardComponent implements OnInit {
             availableSun : false
         },
          {
-            hours : "17:15-18:45",
+            hours : "17:15 - 18:45",
             availableMon : false,
             availableTue : false,
             availableWed : false,
