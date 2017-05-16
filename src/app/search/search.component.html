@@ -1,106 +1,94 @@
 ﻿<div class="container2">
-  <div class="row mt-1">
-    <div class="col-xs">
-      <h1>
-        {{ title }}
-      </h1>
-    </div>
-  </div>
-
-  <div class="row mt-1">
-    <div class="col-xs">
-      <div class="card">
-        <div class="card-block">
+  <h1>
+       {{ title }}
+  </h1>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-block">
           <h4 class="card-title">Znajdź salę</h4>
           <p class="card-text">Opis</p>
-        </div>
-        <div class="card-block">
+      </div>
+      <div class="card-block">
         <div class="form-group">
              <label>
              <input type="checkbox" [checked]="class.projector" (change)="class.projector = $event.target.checked"> Projektor </label>
         </div>
-         <!-- <div class="form-group">
-            <label>Nazwa:</label>
-            <input type="text" [value]="class.name" (keyup)="class.name = $event.target.value" class="form-control">
-          </div>-->
-          <div class="form-group">
-            <label for="seats">Ilość osób:</label>
-            <select class="form-control" id="seats" (change)="class.seats = $event.target.value">
-              <option>1-14</option>
-              <option>1-25</option>
-              <option>1-50</option>
-              <option>1-100</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="type">Typ sali:</label>
-            <select class="form-control" id="type" (change)="class.type = $event.target.value">
-              <option>dowolna</option>
-              <option>komputerowa</option>
-              <option>aula</option>
-              <option>zwykła</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="type">Położenie:</label>
-            <select class="form-control" id="location" (change)="class.location = $event.target.value">
-              <option>dowolne</option>
-              <option>poziom -1</option>
-              <option>parter</option>
-              <option>pierwsze piętro</option>
-            </select>
-          </div>                
-          <div class="form-group">
-            <button class="btn float-xs-right" (click)="save($event)">Zapisz</button>
-          </div>
+        <div class="form-group">
+          <label for="seats">Ilość osób:</label>
+          <select class="form-control" id="seats" (change)="class.seats = $event.target.value">
+            <option>1-14</option>
+            <option>1-25</option>
+            <option>1-50</option>
+            <option>1-100</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="type">Typ sali:</label>
+          <select class="form-control" id="type" (change)="class.type = $event.target.value">
+            <option>dowolna</option>
+            <option>komputerowa</option>
+            <option>aula</option>
+            <option>zwykła</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="type">Położenie:</label>
+          <select class="form-control" id="location" (change)="class.location = $event.target.value">
+            <option>dowolne</option>
+            <option>poziom -1</option>
+            <option>parter</option>
+            <option>pierwsze piętro</option>
+          </select>
+        </div>                
+        <div class="form-group">
+          <button class="btn float-xs-right" (click)="save($event)">Zapisz</button>
         </div>
       </div>
     </div>
-
-    <div class="col-xs">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th> # </th>
-                       <!-- <th> Nazwa sali</th>-->
-                        <th> Ilość osób </th>
-                        <th> Typ sali </th>
-                        <th> Położenie </th>
-                        <th> Projektor </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <!--<td> {{ class.name }} </td>-->
-                        <td> {{ class.seats }} </td>
-                        <td> {{ class.type }} </td>
-                        <td> {{ class.location }} </td>
-                        <td> 
-                          <label>
-                          <input type="checkbox" disabled [checked]="class.projector" (change)="class.projector = $event.target.checked"> 
-                          </label>
-                      </td>
-                    </tr>
-                    <tr>
-                        <td> 2 </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
-                        <td>  </td>
-                    </tr>
-                    <tr>
-                       <td> 3 </td>
-                       <td>  </td>
-                       <td>  </td>
-                       <td>  </td>
-                       <td>  </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
   </div>
+  <div class="col-xs">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th> # </th>
+                  <!-- <th> Nazwa sali</th>-->
+                  <th> Ilość osób </th>
+                  <th> Typ sali </th>
+                  <th> Położenie </th>
+                  <th> Projektor </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td> 1 </td>
+                  <!--<td> {{ class.name }} </td>-->
+                  <td> {{ class.seats }} </td>
+                  <td> {{ class.type }} </td>
+                  <td> {{ class.location }} </td>
+                  <td> 
+                    <label>
+                    <input type="checkbox" disabled [checked]="class.projector" (change)="class.projector = $event.target.checked"> 
+                    </label>
+                </td>
+              </tr>
+              <tr>
+                  <td> 2 </td>
+                  <td>  </td>
+                  <td>  </td>
+                  <td>  </td>
+                  <td>  </td>
+              </tr>
+              <tr>
+                  <td> 3 </td>
+                  <td>  </td>
+                  <td>  </td>
+                  <td>  </td>
+                  <td>  </td>
+              </tr>
+              
+          </tbody>
+      </table>
+    </div>
 </div>
+
 
