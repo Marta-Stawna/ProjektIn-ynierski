@@ -15,6 +15,7 @@ import { FooterComponent } from './common/footer.component';
 import { LoginComponent } from './login/login.component';
 import {appRoutes} from './app-routing.module';
 import {LoginService} from './common/login.service';
+import {MdSidenavModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {LoginService} from './common/login.service';
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MdSidenavModule
   ],
 
   providers: [LoginService],
