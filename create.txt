@@ -1,0 +1,10 @@
+use rswmi
+db.createUser({
+user: "kate",
+pwd: "1234",
+roles: [ "readWrite", "dbAdmin" ],
+});
+
+db.createCollection('sale');
+db.createCollection('rezerwacje');
+db.createCollection('uzytkownicy');
