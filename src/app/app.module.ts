@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import {appRoutes} from './app-routing.module';
 import {LoginService} from './common/login.service';
 import {MdSidenavModule} from '@angular/material';
+import {CommunicationService} from './common/communication.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {MdSidenavModule} from '@angular/material';
     MdSidenavModule
   ],
 
-  providers: [LoginService],
+  providers: [LoginService, CommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

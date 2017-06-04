@@ -7,8 +7,6 @@
 })
 export class SearchComponent implements OnInit {
 
-  title = 'Wyszukiwanie sali';
-
   class = {
     name: 'A2',
     seats: '1-14',

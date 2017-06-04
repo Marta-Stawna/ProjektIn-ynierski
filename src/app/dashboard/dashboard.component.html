@@ -49,7 +49,7 @@
         </div>
     </div>
   
-    <div *ngIf="selectedRow == null " class="card-block">
+    <div class="card-block">
         <div class="form-group">
         <p class="card-text">Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
         </div>  
@@ -63,29 +63,23 @@
                 <th id = "2">Tuesday</th>
                 <th id = "3">Wednesday</th>
                 <th id = "4"> Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-                <th>Sunday</th>
+                <th id = "5">Friday</th>
+                <th id = "6">Saturday</th>
+                <th id = "7">Sunday</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let hours of classes; let i = index" (click)="setClickedRow(i)" [class.active2]="i == selectedRow">
+            <tr *ngFor="let hours of classes; let i = index">
                 <td ><b>{{hours.hours}}</b></td>
-                <td (click)="setClickedCol(1)" [class.active]="1 == selectedCol">{{hours.availableMon}}</td>
-                <td (click)="setClickedCol(2)" [class.active]="2 == selectedCol">{{hours.availableTue}}</td>
-                <td (click)="setClickedCol(3)" [class.active]="3 == selectedCol">{{hours.availableWed}}</td>
-                <td (click)="setClickedCol(4)" [class.active]="4 == selectedCol">{{hours.availableThu}}</td>
-                <td (click)="setClickedCol(5)" [class.active]="5 == selectedCol">{{hours.availableFri}}</td>
-                <td (click)="setClickedCol(6)" [class.active]="6 == selectedCol">{{hours.availableSat}}</td>
-                <td (click)="setClickedCol(7)" [class.active]="7 == selectedCol">{{hours.availableSun}}</td>
+                <td [style.background-color]="setColor(hours.availableMon)" ></td>
+                <td [style.background-color]="setColor(hours.availableTue)" ></td>
+                <td [style.background-color]="setColor(hours.availableWed)" ></td>
+                <td [style.background-color]="setColor(hours.availableThu)" ></td>
+                <td [style.background-color]="setColor(hours.availableFri)" ></td>
+                <td [style.background-color]="setColor(hours.availableSat)" ></td>
+                <td [style.background-color]="setColor(hours.availableSun)" ></td>
             </tr>
         </tbody>
     </table>
-    <div class="well well-lg">
-        Selected Row : <strong>{{selectedRow + 1}}</strong>
-    </div>
-    <div class="well well-lg">
-        Selected Col : <strong>{{selectedCol}}</strong>
-    </div>
 </div>
 

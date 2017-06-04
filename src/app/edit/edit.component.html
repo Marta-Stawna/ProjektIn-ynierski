@@ -5,7 +5,7 @@
           <table class="table">
               <thead>
                   <tr>
-                      <th> </th>
+                      <th>Id</th>
                       <th>Dzień</th>
                       <th>Godzina</th>
                       <th>Sala</th>
@@ -13,49 +13,13 @@
                   </tr>
               </thead>
               <tbody>
-                <tr class="active">
-                      <td>1</td>
-                      <td>31/05/2017</td>
-                      <td>11.45 - 13.15</td>
-                      <td>A2-22</td>
+                <tr *ngFor="let res of myReservations; let i=index">
+                      <td>{{i+1}}</td>
+                      <td>{{res.date}}</td>
+                      <td>{{res.hours}}</td>
+                      <td>{{res.room}}</td>
                       <td>
-                        <button type="button" class="btn btn-danger btn-xs" >Usuń</button>
-                      </td>
-                  </tr>
-                  <tr class="success">
-                      <td>2</td>
-                      <td>06/06/2017</td>
-                      <td>10.00 - 11.30</td>
-                      <td>A1-0</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-xs">Usuń</button>
-                      </td>
-                  </tr>
-                  <tr class="info">
-                      <td>3</td>
-                      <td>21/06/2017</td>
-                      <td>10.00 - 11.30</td>
-                      <td>A2-11</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-xs">Usuń</button>
-                      </td>
-                  </tr>
-                  <tr class="warning">
-                      <td>4</td>
-                      <td>15/07/2017</td>
-                      <td>17.15 - 18.45</td>
-                      <td>Aula C</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-xs">Usuń</button>
-                      </td>
-                  </tr>
-                  <tr class="danger">
-                      <td>5</td>
-                      <td>16/07/2017</td>
-                      <td>10.00 - 11.30</td>
-                      <td>Aula A</td>
-                      <td>
-                        <button type="button" class="btn btn-danger btn-xs">Usuń</button>
+                        <button type="button" (click)="removeReservation(i)" class="btn btn-danger btn-xs" >Usuń</button>
                       </td>
                   </tr>
               </tbody>

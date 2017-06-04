@@ -9,27 +9,10 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class DashboardComponent implements OnInit {
 
-    headMessage : string;
-    selectedRow : Number;
-    selectedCol : Number;
-    setClickedRow : Function;
-    setClickedCol : Function;
-    classes : [{
-        hours: string,
-        availableMon : boolean,
-        availableTue : boolean,
-        availableWed : boolean,
-        availableThu : boolean,
-        availableFri : boolean,
-        availableSat : boolean,
-        availableSun : boolean
-    }];
-
-  public user;
-  private subscribtion:Subscription;
+ private classes : any;
+ private color : string = "";
   
     constructor(private userService:LoginService) {
-        this.headMessage = "Wybierz dzień tygodnia i datę";
        
         this.classes = [{
             hours : "8:15 - 9:45",
@@ -99,14 +82,12 @@ export class DashboardComponent implements OnInit {
         }
 
     }
+
+    setColor(data){
+        if(data) return this.color="#800000";
+    }
      
-  ngOnInit() {
-    let search:String=location.search;
-    this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
-       console.log(this.user)
+    ngOnInit() {
   }
-     ngOnDestroy(){
-      this.subscribtion.unsubscribe();
-   }
 
 }

@@ -2,11 +2,12 @@
    <div class="row mt-1">
       <h2>Rezerwacja sali</h2>   
   </div> 
+  <form #reservationForm="ngForm" (ngSubmit)="save(reservationForm.value)">
   <div class="row mt-1">
     <div class="form-group">
               <label for="name">Wybierz salę </label>
               <span class="asteriskField">*</span>
-              <select class="form-control" >
+              <select class="form-control" ngModel name="room" >
                 <option>A2-22</option>
                 <option>A2-23</option>
                 <option>A2-24</option>
@@ -33,7 +34,7 @@
             </label>
             <div class="col-sm-10">
             <div class="input-group">
-              <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')" type="date"/>
+              <input class="form-control" id="date"  ngModel name="date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')" type="date"/>
                <div class="input-group-addon" >
               </div>
             </div>
@@ -48,7 +49,7 @@
     <div class="form-group">
               <label for="name">Wybierz godzinę</label>
               <span class="asteriskField">*</span>
-              <select class="form-control" >
+              <select class="form-control" ngModel name="hours">
                 <option>8:15 - 9:45</option>
                 <option>10:00 - 11:30</option>
                 <option>11:45 - 13:15</option>
@@ -58,7 +59,7 @@
               </select>
     </div> 
     <div class="form-group">
-            <button class="btn float-xs-right " (click)="save($event)">Zatwierdź</button>
+            <button class="btn float-xs-right " type="submit">Zatwierdź</button>
     </div>
     {{event}}
     <div *ngIf="saved == 1 " class="card-block">
@@ -69,5 +70,6 @@
         <strong>Success!</strong> Zatwierdzono rezerwację.
       </div>
     </div>
-  </div>  
+  </div> 
+</form> 
 </div>
