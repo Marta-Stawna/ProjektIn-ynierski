@@ -74,12 +74,6 @@ export class DashboardComponent implements OnInit {
             availableSat : true,
             availableSun : false
         }];
-        this.setClickedRow = function(index){
-            this.selectedRow = index ;
-        }
-        this.setClickedCol = function(index2){
-            this.selectedCol = index2;
-        }
 
     }
 
