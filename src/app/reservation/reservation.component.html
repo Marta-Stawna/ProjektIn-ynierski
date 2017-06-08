@@ -5,13 +5,25 @@
   <form #reservationForm="ngForm" (ngSubmit)="save(reservationForm.value)">
   <div class="row mt-1">
     <div class="form-group">
+              <label for="name">Wybierz Rodzaj</label>
+              <span class="asteriskField">*</span>
+              <select class="form-control" id="type" (change)="class.type = $event.target.value">
+                <option>Aula</option>
+                <option>A0</option>
+                <option>A1</option>
+                <option>A2</option>
+              </select>
+    </div>  
+<!-- tutaj robimy ifa jeśli 
+      {{ class.type }}  jest taki sam jak np A0 to wyborze sali są same A0coś tam itp-->
+    
+    <div class="form-group">
               <label for="name">Wybierz salę </label>
               <span class="asteriskField">*</span>
               <select class="form-control" ngModel name="room" >
                 <option>A1-1</option>
-               
-
               </select>
+
     </div>  
     </div>
 
@@ -68,11 +80,16 @@
     </div>
   </div> 
 </form> 
-<!-- WYPISYWANIE SAL Z JSON-->
+
+
+<!-- WYPISYWANIE SAL Z JSON - nie umiem wrzucić tego do formularza
+<option>{{classes[9].number}}</option> tak nie działa
+-->
     <div class="Classes">
             <ng-content></ng-content>
             <div *ngIf="classes" class="classes">
               <div *ngFor="let nr of numbers;">{{classes[nr].number}}</div>
             </div>
     </div>
+    
 </div>

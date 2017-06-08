@@ -17,6 +17,7 @@ import {appRoutes} from './app-routing.module';
 import {LoginService} from './common/login.service';
 import {MdSidenavModule} from '@angular/material';
 import {CommunicationService} from './common/communication.service';
+import {  DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import {CommunicationService} from './common/communication.service';
     MdSidenavModule
   ],
 
-  providers: [LoginService, CommunicationService],
+  providers: [LoginService, CommunicationService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

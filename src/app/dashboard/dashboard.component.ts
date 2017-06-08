@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from "app/common/login.service";
 import { Subscription } from "rxjs/Subscription";
-
+import {  DatePipe } from '@angular/common';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,10 +9,15 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class DashboardComponent implements OnInit {
 
- private classes : any;
+ private classes: any;
+ private classesSchedule;
  private color : string = "";
+ public current_date = new Date();
+ objDate = Date.now();
+ d = new Date();
+nrDayWeek = this.d.getDay();
   
-    constructor(private userService:LoginService) {
+    constructor(private userService:LoginService,private datePipe: DatePipe) {
        
         this.classes = [{
             hours : "8:15 - 9:45",
@@ -81,7 +86,16 @@ export class DashboardComponent implements OnInit {
         if(data) return this.color="#800000";
     }
      
-    ngOnInit() {
+  private subscribtion:Subscription;
+ 
+
+  ngOnInit() {
+     let search:String=location.search;
+    this.subscribtion=this.userService.getScheduleData(search).subscribe(data=>{this.classesSchedule=data;console.log(data)});
+       console.log(this.classesSchedule)
   }
 
+   ngOnDestroy(){
+      this.subscribtion.unsubscribe();
+   }
 }

@@ -23,6 +23,7 @@
             <option>1-100</option>
           </select>
         </div>
+        {{class.seats}}
         <div class="form-group">
           <label for="type">Typ sali:</label>
           <select class="form-control" id="type" (change)="class.type = $event.target.value">
@@ -75,6 +76,8 @@
           </tbody>
       </table>
     </div>    
+
+
 </div>
 
 
