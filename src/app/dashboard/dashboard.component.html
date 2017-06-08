@@ -1,3 +1,4 @@
+
 <div class="container2" >
     <div class="row mt-1">
         <h2>Plan sal</h2>   
@@ -53,6 +54,7 @@
                 <th id = "7">Sunday</th>
             </tr>
         </thead>
+        
         <tbody>
             <tr *ngFor="let hours of classes; let i = index">
                 <td ><b>{{hours.hours}}</b></td>
@@ -67,7 +69,28 @@
         </tbody>
     </table>
 
+
+
+
+
  <!-- 
+
+     <div *ngFor="let h of hour">
+    if ({{h}} == ) {
+        greeting = "Good day";
+    } 
+        
+</div>  
+
+     if ({{h}} == {{schedule.end_time | slice:11:16}}){
+                jdkjdl
+            }
+
+
+      <div *ngFor="let hours of hours">
+        {{hours}}
+    </div>  
+
 <div>
 {{current_date | date: 'yyyy-MM-dd'}}
 </div>
@@ -81,9 +104,21 @@
 {{objDate | date :'short'}} 
 </div>-->
 {{nrDayWeek}}
+{{current_date | date: 'yyyy-MM-dd'}}
 
-{{classesSchedule}}
- <!--{{marketModel | classesSchedule}}-->
+
+ <!--https://stackoverflow.com/questions/43078674/angular-2-service-returns-object-object
+     {{marketModel | classesSchedule}}-->
+
+      <div *ngFor="let schedule of classesSchedule">
+        <!--<p> {{schedule.end_time}}</p>-->
+          {{schedule.end_time | slice:11:16}}
+         <div *ngFor="let h of hour">
+            <!--i tu chcę porównanie 
+               if ({{h}} == {{schedule.end_time | slice:11:16}}){
+                 to wtedy zakoloruj pole
+            }-->
+    </div>
 
 
 </div>

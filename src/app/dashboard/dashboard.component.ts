@@ -16,12 +16,13 @@ export class DashboardComponent implements OnInit {
  objDate = Date.now();
  d = new Date();
 nrDayWeek = this.d.getDay();
-  
-    constructor(private userService:LoginService,private datePipe: DatePipe) {
+hour = ['09:45','11:30','13.15','15:15','17:00','18:45'];
+
+constructor(private userService:LoginService,private datePipe: DatePipe) {
        
         this.classes = [{
             hours : "8:15 - 9:45",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : false,
             availableThu : false,
@@ -31,7 +32,7 @@ nrDayWeek = this.d.getDay();
         },
         {
             hours : "10:00 - 11:30",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : false,
             availableThu : false,
@@ -41,7 +42,7 @@ nrDayWeek = this.d.getDay();
         },
         {
             hours : "11:45 - 13:15",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : true,
             availableThu : false,
@@ -51,7 +52,7 @@ nrDayWeek = this.d.getDay();
         },
         {
             hours : "13:45 - 15:15",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : false,
             availableThu : true,
@@ -61,7 +62,7 @@ nrDayWeek = this.d.getDay();
         },
         {
             hours : "15:30 - 17:00",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : true,
             availableThu : false,
