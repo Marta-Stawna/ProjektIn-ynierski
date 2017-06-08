@@ -11,7 +11,7 @@ export class LoginService {
    }
 
   getUserData(sessionid){
-    return this.http.get('https://dev.alcon.eu.org/ugather/'+sessionid)
+    return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid)
     .map((res:Response)=> {
      let data=res.json().data;
       console.log(res.json().data)
@@ -19,5 +19,16 @@ export class LoginService {
     }
       );
   }
+
+   getClassesData(sessionid){
+    return this.http.get('https://dev.alcon.eu.org/ugather/?sessionid=6j19a957h5c15gfjtodlr6drb0&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan' )
+    .map((res:Response)=> {
+     let data=res.json().data;
+      console.log(res.json().data)
+     return data;
+    }
+      );
+  }
+
 
 }

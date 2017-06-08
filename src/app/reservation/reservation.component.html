@@ -8,17 +8,13 @@
               <label for="name">Wybierz salę </label>
               <span class="asteriskField">*</span>
               <select class="form-control" ngModel name="room" >
-                <option>A2-22</option>
-                <option>A2-23</option>
-                <option>A2-24</option>
-                <option>A2-25</option>
-                <option>A2-26</option>
                 <option>A1-1</option>
-                <option>A1-2</option>
-                <option>A1-3</option>
+               
+
               </select>
     </div>  
     </div>
+
     <div class="row mt-1">
       <!--data-->
       <!-- <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />-->
@@ -72,4 +68,11 @@
     </div>
   </div> 
 </form> 
+<!-- WYPISYWANIE SAL Z JSON-->
+    <div class="Classes">
+            <ng-content></ng-content>
+            <div *ngIf="classes" class="classes">
+              <div *ngFor="let nr of numbers;">{{classes[nr].number}}</div>
+            </div>
+    </div>
 </div>
