@@ -19,7 +19,7 @@ nrDayWeek = this.d.getDay();
 hour = ['09:45','11:30','13.15','15:15','17:00','18:45'];
 
 constructor(private userService:LoginService,private datePipe: DatePipe) {
-       
+
         this.classes = [{
             hours : "8:15 - 9:45",
             availableMon : false,
@@ -86,14 +86,13 @@ constructor(private userService:LoginService,private datePipe: DatePipe) {
     setColor(data){
         if(data) return this.color="#800000";
     }
-     
+
   private subscribtion:Subscription;
- 
+
 
   ngOnInit() {
-     let search:String=location.search;
-    this.subscribtion=this.userService.getScheduleData(search).subscribe(data=>{this.classesSchedule=data;console.log(data)});
-       console.log(this.classesSchedule)
+     let sessionId= this.userService.getSessionId();
+    this.subscribtion=this.userService.getScheduleData(sessionId).subscribe(data=>{this.classesSchedule=data;console.log("ola",data)});
   }
 
    ngOnDestroy(){
