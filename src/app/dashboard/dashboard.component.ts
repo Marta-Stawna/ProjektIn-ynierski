@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from "app/common/login.service";
 import { Subscription } from "rxjs/Subscription";
-
+import {  DatePipe } from '@angular/common';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,14 +9,20 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class DashboardComponent implements OnInit {
 
- private classes : any;
+ private classes: any;
+ private classesSchedule;
  private color : string = "";
-  
-    constructor(private userService:LoginService) {
+ public current_date = new Date();
+ objDate = Date.now();
+ d = new Date();
+nrDayWeek = this.d.getDay();
+hour = ['09:45','11:30','13.15','15:15','17:00','18:45'];
+
+constructor(private userService:LoginService,private datePipe: DatePipe) {
        
         this.classes = [{
             hours : "8:15 - 9:45",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : false,
             availableThu : false,
@@ -26,7 +32,7 @@ export class DashboardComponent implements OnInit {
         },
         {
             hours : "10:00 - 11:30",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : false,
             availableThu : false,
@@ -36,7 +42,7 @@ export class DashboardComponent implements OnInit {
         },
         {
             hours : "11:45 - 13:15",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : true,
             availableThu : false,
@@ -46,7 +52,7 @@ export class DashboardComponent implements OnInit {
         },
         {
             hours : "13:45 - 15:15",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : false,
             availableThu : true,
@@ -56,7 +62,7 @@ export class DashboardComponent implements OnInit {
         },
         {
             hours : "15:30 - 17:00",
-            availableMon : true,
+            availableMon : false,
             availableTue : false,
             availableWed : true,
             availableThu : false,
@@ -81,7 +87,16 @@ export class DashboardComponent implements OnInit {
         if(data) return this.color="#800000";
     }
      
-    ngOnInit() {
+  private subscribtion:Subscription;
+ 
+
+  ngOnInit() {
+     let search:String=location.search;
+    this.subscribtion=this.userService.getScheduleData(search).subscribe(data=>{this.classesSchedule=data;console.log(data)});
+       console.log(this.classesSchedule)
   }
 
+   ngOnDestroy(){
+      this.subscribtion.unsubscribe();
+   }
 }

@@ -10,6 +10,7 @@ import { Subscription } from "rxjs/Subscription";
             <ng-content></ng-content>
             <div *ngIf="user" class="user">
               Jesteś zalogowany jako: {{user.first_name }} {{user.last_name}}
+              {{user.user_id}}
             </div>
           </div>
   `,
