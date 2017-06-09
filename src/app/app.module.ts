@@ -17,6 +17,7 @@ import {appRoutes} from './app-routing.module';
 import {LoginService} from './common/login.service';
 import {MdSidenavModule} from '@angular/material';
 import {CommunicationService} from './common/communication.service';
+import {TableRowComponent} from './dashboard/table/tableRow/table-row/table-row.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {CommunicationService} from './common/communication.service';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
+    TableRowComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -7,17 +7,26 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LoginService {
 
-  constructor(private http: Http) { 
+  sessionId;
+  constructor(private http: Http) {
+   }
+
+   getSessionId(){
+     console.log(this.sessionId)
+     return this.sessionId;
+   }
+
+   setSessionId(sessionId){
+     this.sessionId = sessionId;
    }
 
   getUserData(sessionid){
     return this.http.get('https://dev.alcon.eu.org/ugather/'+sessionid)
     .map((res:Response)=> {
      let data=res.json().data;
-      console.log(res.json().data)
+      console.log(res.json())
      return data;
-    }
-      );
+    });
   }
 
 }

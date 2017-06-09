@@ -38,8 +38,10 @@ export class CommunicationService {
       room:'A1-24',
     }];
 
+
+
   public reservation;
-  constructor(private http: Http) { 
+  constructor(private http: Http) {
    }
 
 getReservations(){
@@ -54,8 +56,24 @@ getReservations(){
   }
 
   removeReservation(reservation){
-    let index=parseInt(reservation);  
+    let index=parseInt(reservation);
     this.myReservations.splice(index,1);
   }
+
+  getRooms(sessionid){
+    return this.http.get('https://dev.alcon.eu.org/ugather/'+sessionid+'&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan' )
+    .map((res:Response)=> {let rooms =res.json().data;
+      console.log(res.json());
+      return rooms;
+     });}
+
+  getPlan(sessionid){
+  return this.http.get('https://dev.alcon.eu.org/ugather/'+sessionid+'&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D9%26' )
+  .map((res:Response)=> {let plan =res.json().data;
+    console.log(res.json().data);
+    return plan;
+   })
+
+}
 
 }
