@@ -16,22 +16,18 @@ public reservation;
 public rooms;
  saved : Number;
 
- constructor(private service:CommunicationService,private  userService : LoginService) { }
-
-
-
+ constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
 
 save(data){
     this.reservation=data;
-    this.service.setReservation(data);
+    this.communicationService.setReservation(data);
     this.saved = 1
   }
 
 
-
   ngOnInit() {
     let sessionid =this.userService.getSessionId();
-    this.service.getRooms(sessionid).subscribe(data => console.log(data))
+    this.communicationService.getRooms(sessionid).subscribe(data => {console.log("rooms",data);return this.rooms = data})
   }
 
 }
