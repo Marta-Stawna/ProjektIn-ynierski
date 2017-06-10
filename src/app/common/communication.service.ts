@@ -68,7 +68,9 @@ getReservations(){
      });}
 
   getPlan(sessionid){
-  return this.http.get('https://dev.alcon.eu.org/ugather/'+sessionid+'&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D9%26' )
+    let url = 'https://dev.alcon.eu.org/ugather/'+sessionid+'&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D9%26';
+    console.log(url)
+  return this.http.get( url)
   .map((res:Response)=> {let plan =res.json().data;
     console.log(res.json().data);
     return plan;
