@@ -1,13 +1,15 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Http, Response} from "@angular/http";
+import { Subscription } from "rxjs/Subscription";
+import { LoginService } from "app/common/login.service";
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-
-  title = 'Wyszukiwanie sali';
 
   class = {
     name: 'A2',
@@ -16,15 +18,13 @@ export class SearchComponent implements OnInit {
     location: 'dowolne',
     projector: false,
   }
-
+  
   save(event){
     console.log('Zapisano', event)
   }
-  constructor() { }
 
-  ngOnInit() {
-  }
-
+ngOnInit() {
+}
 }
 
 

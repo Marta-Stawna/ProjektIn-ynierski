@@ -1,7 +1,8 @@
 ﻿<div class="container2">
   <h1>
-       {{ title }}
+       Wyszukiwanie sali
   </h1>
+
   <div class="col-md-4">
     <div class="card">
       <div class="card-block">
@@ -22,6 +23,7 @@
             <option>1-100</option>
           </select>
         </div>
+        {{class.seats}}
         <div class="form-group">
           <label for="type">Typ sali:</label>
           <select class="form-control" id="type" (change)="class.type = $event.target.value">
@@ -71,24 +73,11 @@
                     </label>
                 </td>
               </tr>
-              <tr>
-                  <td> 2 </td>
-                  <td>  </td>
-                  <td>  </td>
-                  <td>  </td>
-                  <td>  </td>
-              </tr>
-              <tr>
-                  <td> 3 </td>
-                  <td>  </td>
-                  <td>  </td>
-                  <td>  </td>
-                  <td>  </td>
-              </tr>
-              
           </tbody>
       </table>
-    </div>
+    </div>    
+
+
 </div>
 
 

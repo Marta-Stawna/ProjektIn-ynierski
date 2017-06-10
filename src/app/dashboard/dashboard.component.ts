@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from "app/common/login.service";
 import { Subscription } from "rxjs/Subscription";
-
+import {  DatePipe } from '@angular/common';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,104 +9,51 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class DashboardComponent implements OnInit {
 
-    headMessage : string;
-    selectedRow : Number;
-    selectedCol : Number;
-    setClickedRow : Function;
-    setClickedCol : Function;
-    classes : [{
-        hours: string,
-        availableMon : boolean,
-        availableTue : boolean,
-        availableWed : boolean,
-        availableThu : boolean,
-        availableFri : boolean,
-        availableSat : boolean,
-        availableSun : boolean
-    }];
+ private labels = [];
+ private schedule;
+ private plan;
+ private color : string = "";
+ hours = ['8:15 - 9:45','10:00 - 11:30','11:45 - 13.15','13:45 - 15:15','15:30 - 17:00','17:15 - 18:45'];
 
-  public user;
-  private subscribtion:Subscription;
-  
-    constructor(private userService:LoginService) {
-        this.headMessage = "Wybierz dzień tygodnia i datę";
-       
-        this.classes = [{
-            hours : "8:15 - 9:45",
-            availableMon : true,
-            availableTue : false,
-            availableWed : false,
-            availableThu : false,
-            availableFri : false,
-            availableSat : true,
-            availableSun : false
-        },
-        {
-            hours : "10:00 - 11:30",
-            availableMon : true,
-            availableTue : false,
-            availableWed : false,
-            availableThu : false,
-            availableFri : false,
-            availableSat : true,
-            availableSun : false
-        },
-        {
-            hours : "11:45 - 13:15",
-            availableMon : true,
-            availableTue : false,
-            availableWed : true,
-            availableThu : false,
-            availableFri : false,
-            availableSat : true,
-            availableSun : false
-        },
-        {
-            hours : "13:45 - 15:15",
-            availableMon : true,
-            availableTue : false,
-            availableWed : false,
-            availableThu : true,
-            availableFri : false,
-            availableSat : false,
-            availableSun : false
-        },
-        {
-            hours : "15:30 - 17:00",
-            availableMon : true,
-            availableTue : false,
-            availableWed : true,
-            availableThu : false,
-            availableFri : false,
-            availableSat : true,
-            availableSun : false
-        },
-         {
-            hours : "17:15 - 18:45",
-            availableMon : false,
-            availableTue : false,
-            availableWed : false,
-            availableThu : true,
-            availableFri : false,
-            availableSat : true,
-            availableSun : false
-        }];
-        this.setClickedRow = function(index){
-            this.selectedRow = index ;
-        }
-        this.setClickedCol = function(index2){
-            this.selectedCol = index2;
-        }
+ constructor(private userService:LoginService) {
+        this.schedule = [
+         ['wolny','wolny','wolny','wolny','wolny'],
+         ['wolny','wolny','wolny','wolny','wolny'],
+         ['wolny','wolny','wolny','wolny','wolny'],
+         ['wolny','wolny','wolny','wolny','wolny'],
+         ['wolny','wolny','wolny','wolny','wolny'],
+         ['wolny','wolny','wolny','wolny','wolny']];
+}
 
-    }
-     
-  ngOnInit() {
-    let search:String=location.search;
-    this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
-       console.log(this.user)
+ setColor(data){
+        if(data=='wolny') return this.color="green";
+      }
+
+ getLabels(data){
+   return this.labels = data
+ }
+
+ getPlan(data){
+  let plan = Object.keys(data).map(function (key) { return data[key]; });
+  plan.map((item,index)=>{
+      for(let i = 0 ; i < item.length; i++){
+        if(item[i].start_time.substring(11,16)=='08:15')
+          this.schedule[0][index] = item[i].name.pl;
+        if(item[i].start_time.substring(11,16)=='10:00')
+            this.schedule[1][index] = item[i].name.pl;
+        if(item[i].start_time.substring(11,16)=='11:45')
+                this.schedule[2][index] = item[i].name.pl;
+        if(item[i].start_time.substring(11,16)=='13:45')
+                this.schedule[3][index] = item[i].name.pl;
+        if(item[i].start_time.substring(11,16)=='15:30')
+                this.schedule[4][index] = item[i].name.pl;
+        if(item[i].start_time.substring(11,16)=='17:15')
+                this.schedule[5][index] = item[i].name.pl;
+      }
+  })
+  return this.plan = this.schedule;
   }
-     ngOnDestroy(){
-      this.subscribtion.unsubscribe();
-   }
 
+  ngOnInit() {
+  }
 }

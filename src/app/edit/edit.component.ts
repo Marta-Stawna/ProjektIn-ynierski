@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CommunicationService } from "app/common/communication.service";
 
 @Component({
   selector: 'app-edit',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() { }
-
+  private myReservations;
+  reservation;
+  constructor(private service:CommunicationService) { 
+    this.myReservations= this.service.getReservations()
+    console.log(this.myReservations);
+  }
+  removeReservation(reservation){
+    this.service.removeReservation(reservation);
+  }
   ngOnInit() {
+    this.reservation= this.service.getReservtion();
+    if(this.reservation) this.myReservations.push(this.reservation);
+
   }
 
 }

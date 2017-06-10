@@ -2,9 +2,9 @@
     <md-sidenav #sidenav class="sidenav">
     <ul>
       <li routerLinkActive="active"><a routerLink="/dashboard">Strona Główna</a></li>
-			<li routerLinkActive="active"><a routerLink="/reservation">Rezerwacja</a></li>
-			<li routerLinkActive="active"><a routerLink="/edit">Edycja</a></li>
-      <li routerLinkActive="active"><a routerLink="/search">Wyszukaj</a></li>
+			<li routerLinkActive="active"><a routerLink="/reservation">Nowa Rezerwacja</a></li>
+			<li routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
+      <li routerLinkActive="active"><a routerLink="/search">Wyszukaj sali</a></li>
 		</ul>
   </md-sidenav>
   <div class="main-container">
@@ -14,7 +14,7 @@
         </button>
       </app-header>
       <div class="main-content">
-        <router-outlet></router-outlet> 
+        <router-outlet></router-outlet>
       </div>
     <app-footer></app-footer>
   </div>

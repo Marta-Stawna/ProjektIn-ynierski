@@ -16,6 +16,9 @@ import { LoginComponent } from './login/login.component';
 import {appRoutes} from './app-routing.module';
 import {LoginService} from './common/login.service';
 import {MdSidenavModule} from '@angular/material';
+import {CommunicationService} from './common/communication.service';
+import {TableRowComponent} from './dashboard/table/tableRow/table-row/table-row.component';
+import {  DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import {MdSidenavModule} from '@angular/material';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
+    TableRowComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -36,7 +40,7 @@ import {MdSidenavModule} from '@angular/material';
     MdSidenavModule
   ],
 
-  providers: [LoginService],
+  providers: [LoginService, CommunicationService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
