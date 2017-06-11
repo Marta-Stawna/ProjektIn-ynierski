@@ -46,7 +46,8 @@ reservationData = [ ]
     this.headers = [
     {name:'Cache-Controlr', value:'no-cache, no-store, must-revalidate'},
     {name:'Pragma', value:'no-cache'},
-    {name:'Expires', value:'0'}];
+    {name:'Expires', value:'0'},
+    {name:'Access-Control-Allow-Origin', value:'*'}];
    }
 
   getReservations(){
@@ -70,9 +71,10 @@ headers: {
     name: string;
     value: string;
 }[]
+private sendReservation;
 
   getRooms(sessionid){
-    return this.http.get('https://dev.alcon.eu.org/ugather/?sessionid=bepjb0j4hidr5bbtg6mra3f5k5&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan', this.headers )
+    return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid +'&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan', this.headers )
     .map((res:Response)=> {let rooms =res.json().data;
       return rooms;
      });}
@@ -93,7 +95,27 @@ headers: {
     });
   }
 
-/** POST RESERVATION opcja 1 https://auth0.com/blog/angular-2-series-part-3-using-http/*/
+   getReservationData(sessionid){
+    return this.http.get('http://213.184.22.45/querydb.php?id_u=461837', this.headers)
+    .map((res:Response)=> {
+     let data=res.json().data;
+     return data;
+    });
+  }
+
+  sendReservationData(sessionid){
+     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"461837","id_r":1,"sala":"A2-21","data":"21-06-2017","godzina":"11:45"}}';
+    return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
+    .map((res:Response)=> {
+     let data=res.json().data;
+     return data;
+    });
+  }
+}
+
+
+
+/** POST RESERVATION opcja 1 https://auth0.com/blog/angular-2-series-part-3-using-http/
 saveReservation(data) {
   if(data) {
     localStorage.setItem('id_token', data)
@@ -105,13 +127,13 @@ saveReservation(data) {
   return this.http.post('http://dev.alcon.edu.org/found/'+ sessionid, this.creds)
   .map(res => res.json())
     .subscribe(
-      data => this.saveReservation(data.id_token)/**,
-      () => console.log('Authentication Complete')*/
+      data => this.saveReservation(data.id_token),
+      () => console.log('Authentication Complete')
     );
-  }
+  }*/
 
 
-  /** POST RESERVATION opcja 2 http://www.syntaxsuccess.com/viewarticle/angular-2.0-and-http    */
+  /** POST RESERVATION opcja 2 
 postReservation2(sessionid){
 var headers = new Headers();
 headers.append('Content-Type', 'application/json');

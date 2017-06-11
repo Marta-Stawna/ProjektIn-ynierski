@@ -24,12 +24,16 @@ export class EditComponent implements OnInit {
     this.service.removeReservation(reservation);
   }
 
-
+private reservationData;
+public sendRecervationData;
 
   ngOnInit() {
      let sessionId = this.userService.getSessionId();
      this.service.getUserId(sessionId).subscribe(userId =>this.userId = userId);
     /** this.userService.getUserData(sessionId).subscribe(data =>this.data = data);*/
+
+    this.service.getReservationData(sessionId).subscribe(reservationData =>{this.reservationData = reservationData;console.log(reservationData)});
+    this.service.sendReservationData(sessionId).subscribe(sendRecervationData =>{this.sendRecervationData = sendRecervationData;console.log(sendRecervationData)});
 
     this.reservation= this.service.getReservtion();
     if(this.reservation) this.myReservations.push(this.reservation);
