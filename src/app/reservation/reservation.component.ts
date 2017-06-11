@@ -11,7 +11,7 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-
+private data;
 public reservation;
 public rooms;
  saved : Number;
@@ -24,10 +24,10 @@ save(data){
     this.saved = 1
   }
 
-
   ngOnInit() {
-    let sessionid =this.userService.getSessionId();
-    this.communicationService.getRooms(sessionid).subscribe(data => {console.log("rooms",data);return this.rooms = data})
-  }
+    let sessionId = this.userService.getSessionId();
+   /** this.communicationService.getRooms(sessionId).subscribe(data =>this.data = data);
+    var myjson = JSON.parse(this.data);*/
+}
 
 }

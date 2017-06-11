@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
  private labels = [];
  private schedule;
  private plan;
+ private id;
  private color : string = "";
  hours = ['8:15 - 9:45','10:00 - 11:30','11:45 - 13.15','13:45 - 15:15','15:30 - 17:00','17:15 - 18:45'];
 
@@ -32,6 +33,11 @@ export class DashboardComponent implements OnInit {
  getLabels(data){
    return this.labels = data
  }
+
+/**getUserId(data){
+  let plan = Object.keys(data).map(function (key) { return data[key]; });
+  return this.plan = this.id;
+}*/
 
  getPlan(data){
   let plan = Object.keys(data).map(function (key) { return data[key]; });
