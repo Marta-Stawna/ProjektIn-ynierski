@@ -20,14 +20,17 @@ public rooms;
 
 save(data){
     this.reservation=data;
-    this.communicationService.setReservation(data);
+    //this.communicationService.setReservation(data);
+    this.communicationService.addReservationData(this.userService.getSessionId, this.reservation).subscribe(reservation =>{this.data = reservation;console.log(data)});
     this.saved = 1
   }
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
-   /** this.communicationService.getRooms(sessionId).subscribe(data =>this.data = data);
-    var myjson = JSON.parse(this.data);*/
+   this.communicationService.getRooms(sessionId).subscribe(rooms =>{this.rooms = rooms; console.log(rooms)});
+   //this.communicationService.addReservationData(sessionId).subscribe(data =>{this.data = data;console.log(data)});
+
+    /**var myjson = JSON.parse(this.data);*/
 }
 
 }

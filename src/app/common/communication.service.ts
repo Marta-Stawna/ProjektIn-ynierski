@@ -71,7 +71,7 @@ headers: {
     name: string;
     value: string;
 }[]
-private sendReservation;
+
 
   getRooms(sessionid){
     return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid +'&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan', this.headers )
@@ -96,23 +96,45 @@ private sendReservation;
   }
 
    getReservationData(sessionid){
-    return this.http.get('http://213.184.22.45/querydb.php?id_u=461837', this.headers)
+    return this.http.get('http://213.184.22.45/querydb.php?id_u='+ this.getUserId(sessionid), this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
      return data;
     });
   }
 
-  sendReservationData(sessionid){
-     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"461837","id_r":1,"sala":"A2-21","data":"21-06-2017","godzina":"11:45"}}';
+/*dane={%22collection%22:%22rezerwacje%22,%20%22mode%22:%22find%22,%20%22dane%22:{%20%22id_u%22:%22433663%22}}
+'dane={"collection":"rezerwacje", "mode":"find", "dane":{ "id_u":"433663"}}'
+dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"461837","id_r":1,"sala":"A1-14","data":"01-05-2017","godzina":"11:45"}}
+dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"461837","id_r":1,"sala":"A1-14","data":"01-05-2017","godzina":"11:45"}}
+var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"461837","id_r":1,"sala":"'+ reservation.sala +'","data":"01-05-2017","godzina":"'+reservation.godzina.substring(0,5)+'"}}';*/
+  addReservationData(sessionid, reservation){
+     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + this.getUserId(sessionid) + '","id_r":1,"sala":"'+ reservation.sala +'","data":"'+ reservation.date + '","godzina":"'+reservation.godzina.substring(0,5)+'"}}';
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
      return data;
     });
   }
-}
 
+findReservationData(sessionid){
+     var findReservation = 'dane={"collection":"rezerwacje", "mode":"find", "dane":{ "id_u":"'+this.getUserId(sessionid)+'"}}';
+    return this.http.get('http://213.184.22.45/querydb.php?'+ findReservation, this.headers)
+    .map((res:Response)=> {
+     let data=res.json().data;
+     return data;
+    });
+  }
+
+  removeReservationData(sessionid, reservation){
+     var removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+this.getUserId(sessionid)+'","id_r":'+ reservation.id_r +',"sala":"'+ reservation.sala +'","data":"'+ reservation.data + '","godzina":"'+ reservation.godzina +'"}}';
+    return this.http.get('http://213.184.22.45/querydb.php?'+ removeReservation, this.headers)
+    .map((res:Response)=> {
+     let data=res.json().data;
+     return data;
+    });
+  }
+}
 
 
 /** POST RESERVATION opcja 1 https://auth0.com/blog/angular-2-series-part-3-using-http/
