@@ -24,9 +24,8 @@ export class SearchComponent implements OnInit {
     console.log('Zapisano', event)
     this.saved = 1;
   }
-
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 }
 
 

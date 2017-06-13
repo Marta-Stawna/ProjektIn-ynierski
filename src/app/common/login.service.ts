@@ -19,15 +19,6 @@ export class LoginService {
      this.sessionId = sessionId;
    }
 
-   /*setUserData(){
-     this.data = data; 
-   }
-
-   getUserData(){
-     data = getUserData(sessionid);  
-     return this.data;
-   }*/
-
   getUserData(sessionid){
     return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid)
     .map((res:Response)=> {
@@ -35,6 +26,4 @@ export class LoginService {
      return data;
     });
   }
-  
-
 }
