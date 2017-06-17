@@ -76,8 +76,8 @@ headers: {
       return rooms;
      });}
 
-  getPlan(sessionid){
-    let url = 'https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D9%26';
+  getPlan(sessionid, idRoom){
+    let url = 'https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D'+idRoom+'%26';
     return this.http.get( url)
     .map((res:Response)=> {let plan =res.json().data;
     return plan;
@@ -127,4 +127,3 @@ findReservationData(sessionid){
     });
   }
 }
- 
