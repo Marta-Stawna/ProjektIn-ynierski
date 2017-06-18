@@ -88,20 +88,32 @@ headers: {
     return this.http.get('https://dev.alcon.eu.org/ugather/' + sessionid, this.headers)
     .map((res:Response)=> {
      let data=res.json().data.id;
+     console.log(typeof data)
      return data;
     });
   }
 
-   getReservationData(sessionid){
-    return this.http.get('http://213.184.22.45/querydb.php?id_u=' + this.getUserId(sessionid), this.headers)
+  getUserData(sessionid){
+    return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
      return data;
     });
   }
 
- addReservationData(sessionid, reservation){
-     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + this.getUserId(sessionid) + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+   getReservationData(sessionid, userId){
+    let data;
+    this.getUserId(sessionid).subscribe(data => data = data) ;
+       console.log(data)
+    return this.http.get('http://213.184.22.45/querydb.php?id_u=' + data,  this.headers)
+    .map((res:Response)=> {
+     let data=res.json().data;
+     return data;
+    });
+  }
+
+ addReservationData(sessionid, reservation, userId){
+     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + this.getUserId(sessionid)+ '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;

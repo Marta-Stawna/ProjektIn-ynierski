@@ -54,11 +54,68 @@
               <button class="btn float-xs-right " type="submit">Zatwierdź</button>
       </div>
       {{event}}
+      <div *ngFor="let res of reservationData; let i=index">
+                       {{i+1}}
+                        {{res.data}}
+                        {{res.godzina}}
+                        {{res.sala}}
+                        
+      </div>
       <div *ngIf="saved == 1 " class="card-block">
         <div class="alert alert-success">
           <strong>Success!</strong> Zatwierdzono rezerwację.
         </div>
       </div>
+
+      <div *ngIf="saved == 0 " class="card-block">
+        <div class="alert alert-warning">
+          <strong>Sala w tym terminie jest zarezerwowana.</strong> Niezatwierdzono rezerwacji. Proszę wybrać inny termin lub inną salę.
+        </div>
+      </div>
+
     </div>
   </form>
+
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+</div>
+
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Yay</strong> Your email has been added!
+</div>
+
+<div class="alert alert-warning fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning!</strong> There was a problem with your <a href="#" class="alert-link">network connection</a>.
+    </div>
+
+
+<div class="alert alert-info alert-dismissible" data-bind="visible:showAlert">
+   <button type="button" class="close" data-bind="click:function(){showAlert(false);}">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+   </button>
+   Warning! Better check yourself, you're not looking too good.
+</div>
+
+<div class="alert alert-success">
+      <button href="#" type="button" class="close"><i class="glyphicon glyphicon-remove-circle text-success"></i></button>
+      <h4>Success Alert</h4>
+      <p>Action was performed successfully. Additional information <a class="alert-link" href="">Click Here</a> to read</p>
+    </div>
+
 </div>
