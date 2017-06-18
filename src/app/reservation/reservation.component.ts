@@ -4,7 +4,6 @@ import { LoginService } from "app/common/login.service";
 import { Injectable } from '@angular/core';
 import { Http, Response} from "@angular/http";
 import { Subscription } from "rxjs/Subscription";
-//import {Alert} from '@angular/bootstrap';
 
 @Component({
   selector: 'app-reservation',
@@ -16,39 +15,38 @@ export class ReservationComponent implements OnInit {
   public reservation;
   public rooms;
   private userId;
+  private sessionId;
   saved : Number;
   private reservationData;
   constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
 
- //check(data){
- //     this.checked = 0
- //     this.reservation=data;
-  //    if (this.reservation.data != this.reservationData.data){//) && (this.reservation.godzina != this.reservationData.godzina) && (this.reservation.sala != this.reservationData.sala)){
-  //            this.checked = 1
- //     }
- //   }
-
   save(data){
-    this.saved = 0
-    this.reservation=data;
-    // this.check(this.reservation)
-    //  if (this.checked == 1){
-    setTimeout(()=>
-    this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId).subscribe(reservation =>{this.data = reservation;console.log(data)}), 500);
-    this.saved = 1
-    for (let res of this.reservationData) {
-      if ((this.reservation.data != this.reservationData.data) && (this.reservation.godzina != this.reservationData.godzina) && (this.reservation.sala != this.reservationData.sala)){  
-        this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId).subscribe(reservation =>{this.data = reservation;console.log(data)});
-        this.saved = 1
-      } else
+  this.saved = 1
+  this.reservation=data;
+  //console.log(this.reservation.date)
+  //console.log(this.reservation.godzina.substring(0,5))
+  //console.log(this.reservation.sala)
+  for (let res of this.reservationData) {
+       console.log( res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5))
+       setTimeout(()=>
+        this.communicationService.getReservationData(this.sessionId, this.userId)
+      .subscribe(reservationData =>this.reservationData = reservationData),500);
+      if (res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5)) {  
         this.saved = 0
       }
   }
+  if (this.saved == 1){
+            setTimeout(()=> this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId)
+          .subscribe(reservation =>{this.data = reservation, console.log(data)}), 500);
+    }
+  } 
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
-    this.communicationService.getRooms(sessionId).subscribe(rooms =>{this.rooms = rooms; console.log(rooms)});
+    this.communicationService.getRooms(sessionId).subscribe(rooms =>this.rooms = rooms);
     this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
-    this.communicationService.getReservationData(sessionId, this.userId).subscribe(reservationData =>{this.reservationData = reservationData;console.log(reservationData)});
+    setTimeout(()=>
+      this.communicationService.getReservationData(sessionId, this.userId)
+      .subscribe(reservationData =>this.reservationData = reservationData),500);
   }
 }

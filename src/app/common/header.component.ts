@@ -29,8 +29,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     let search:String=location.search;
     this.userService.setSessionId(search);
-    this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
-       console.log(this.user)
+    this.subscribtion=this.userService.getUserData(search).subscribe(data=>this.user=data);
   }
    ngOnDestroy(){
       this.subscribtion.unsubscribe();

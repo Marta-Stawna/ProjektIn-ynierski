@@ -25,8 +25,8 @@ export class EditComponent implements OnInit {
 
   removeReservation(reservation){
     this.service.removeReservationData(this.userService.getSessionId, reservation, this.userId)
-      .subscribe(removeRecervationData =>{this.removeRecervationData = 
-      removeRecervationData;console.log(removeRecervationData)});
+      .subscribe(removeRecervationData =>this.removeRecervationData = 
+      removeRecervationData);
     this.deleted = 1
     this.processWithinAngularZone();
     setTimeout(()=>
@@ -37,7 +37,7 @@ export class EditComponent implements OnInit {
 
   _increaseProgress(doneCallback: () => void) {
     this.progress += 1;
-    console.log(`Current progress: ${this.progress}%`);
+    //console.log(`Current progress: ${this.progress}%`);
     if (this.progress < 100) {
       window.setTimeout(() => {
         this._increaseProgress(doneCallback);
@@ -55,9 +55,9 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
-    this.service.getUserId(sessionId).subscribe(userId =>{this.userId = userId;console.log(userId)});
+    this.service.getUserId(sessionId).subscribe(userId =>this.userId = userId);
     setTimeout(()=>
       this.service.getReservationData(sessionId, this.userId)
-        .subscribe(reservationData =>{this.reservationData = reservationData;console.log(reservationData)}),500);
+        .subscribe(reservationData =>this.reservationData = reservationData),500);
   }
 }

@@ -40,7 +40,6 @@ export class CommunicationService {
     return this.http.get('https://dev.alcon.eu.org/ugather/' + sessionid, this.headers)
     .map((res:Response)=> {
      let data=res.json().data.id;
-     console.log(typeof data)
      return data;
     });
   }

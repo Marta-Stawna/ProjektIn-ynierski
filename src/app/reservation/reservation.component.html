@@ -53,23 +53,17 @@
       <div class="form-group">
               <button class="btn float-xs-right " type="submit">Zatwierdź</button>
       </div>
-      {{event}}
-      <div *ngFor="let res of reservationData; let i=index">
-                       {{i+1}}
-                        {{res.data}}
-                        {{res.godzina}}
-                        {{res.sala}}
-                        
-      </div>
+
+      
       <div *ngIf="saved == 1 " class="card-block">
         <div class="alert alert-success">
-          <strong>Success!</strong> Zatwierdzono rezerwację.
+          <strong>Potwierdzenie:</strong> Zatwierdzono rezerwację.
         </div>
       </div>
 
       <div *ngIf="saved == 0 " class="card-block">
         <div class="alert alert-warning">
-          <strong>Sala w tym terminie jest zarezerwowana.</strong> Niezatwierdzono rezerwacji. Proszę wybrać inny termin lub inną salę.
+          <strong>Sala w powyższym terminie została już wcześniej zarezerwowana.</strong> Proszę wybrać inną salę lub wolny termin.
         </div>
       </div>
 
