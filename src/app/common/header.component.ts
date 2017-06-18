@@ -9,7 +9,7 @@ import { Subscription } from "rxjs/Subscription";
           <div class="header">
             <ng-content></ng-content>
             <div *ngIf="user" class="user">
-              Jesteś zalogowany jako: {{user.id}} {{user.first_name }} {{user.last_name}}
+              Jesteś zalogowany jako: {{user.first_name }} {{user.last_name}}
               
             </div>
           </div>
@@ -35,6 +35,4 @@ export class HeaderComponent implements OnInit {
    ngOnDestroy(){
       this.subscribtion.unsubscribe();
    }
-
-
 }

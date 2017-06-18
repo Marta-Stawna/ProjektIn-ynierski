@@ -10,23 +10,13 @@ export class LoginService {
   sessionId;
   constructor(private http: Http) {
    }
-  userId;
 
    getSessionId(){
      return this.sessionId;
    }
 
-   getUserId(){
-     return this.userId;
-   }
-
-
    setSessionId(sessionId){
      this.sessionId = sessionId;
-   }
-
-   setUserId(userId){
-     this.userId = userId;
    }
 
   getUserData(sessionid){
