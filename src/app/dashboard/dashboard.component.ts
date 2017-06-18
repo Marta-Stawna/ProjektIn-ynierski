@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from "app/common/login.service";
 import {CommunicationService } from 'app/common/communication.service';
 import { Subscription } from "rxjs/Subscription";
-import {  DatePipe } from '@angular/common';
+import {OrderByPipe} from '../common/sort.pipe';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

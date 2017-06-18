@@ -9,8 +9,8 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group" >
                         <label for="name">Wybierz salę:</label>
-                        <select class="form-control"  (change)="displayPlan($event.target.value)" value="Aula A">
-                            <option *ngFor="let room of rooms ;let index=i" [value]="room.id" selected>{{room.number}}</option>
+                        <select class="form-control"  (change)="displayPlan($event.target.value)" *ngIf="rooms">
+                            <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.id" [selected]="room.id==9">{{room.number}}</option>
                         </select>
                     </div>
                 </div>

@@ -18,7 +18,8 @@ import {LoginService} from './common/login.service';
 import {MdSidenavModule} from '@angular/material';
 import {CommunicationService} from './common/communication.service';
 import {TableRowComponent} from './dashboard/table/tableRow/table-row/table-row.component';
-import {  DatePipe } from '@angular/common';
+import {  OrderByPipe } from './common/sort.pipe';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 @NgModule({
   declarations: [
@@ -30,17 +31,19 @@ import {  DatePipe } from '@angular/common';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    TableRowComponent
+    TableRowComponent,
+    OrderByPipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
     HttpModule,
-    MdSidenavModule
+    MdSidenavModule,
+    Ng2OrderModule
   ],
 
-  providers: [LoginService, CommunicationService,DatePipe],
+  providers: [LoginService, CommunicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
