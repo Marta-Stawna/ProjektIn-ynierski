@@ -53,12 +53,29 @@
       <div class="form-group">
               <button class="btn float-xs-right " type="submit">Zatwierdź</button>
       </div>
-      {{event}}
+
+      
       <div *ngIf="saved == 1 " class="card-block">
         <div class="alert alert-success">
-          <strong>Success!</strong> Zatwierdzono rezerwację.
+          <strong>Potwierdzenie:</strong> Zatwierdzono rezerwację.
         </div>
       </div>
+
+      <div *ngIf="saved == 0 " class="card-block">
+        <div class="alert alert-warning">
+          <strong>Sala w powyższym terminie została już wcześniej zarezerwowana.</strong> Proszę wybrać inną salę lub wolny termin.
+        </div>
+      </div>
+
     </div>
   </form>
+
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+</div>
+
 </div>

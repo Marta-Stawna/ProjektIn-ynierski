@@ -10,7 +10,7 @@ import { Subscription } from "rxjs/Subscription";
             <ng-content></ng-content>
             <div *ngIf="user" class="user">
               Jesteś zalogowany jako: {{user.first_name }} {{user.last_name}}
-              {{user.user_id}}
+              
             </div>
           </div>
   `,
@@ -29,12 +29,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     let search:String=location.search;
     this.userService.setSessionId(search);
-    this.subscribtion=this.userService.getUserData(search).subscribe(data=>{this.user=data;console.log(data)});
-       console.log(this.user)
+    this.subscribtion=this.userService.getUserData(search).subscribe(data=>this.user=data);
   }
    ngOnDestroy(){
       this.subscribtion.unsubscribe();
    }
-
-
 }
