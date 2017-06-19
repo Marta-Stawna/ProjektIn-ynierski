@@ -61,8 +61,8 @@ export class CommunicationService {
     });
   }
 
-findReservationData(sessionid, userId){
-     var findReservation = 'dane={"collection":"rezerwacje", "mode":"find", "dane":{ "id_u":"' + userId +'"}}';
+findReservationData( reservation, userId){
+     var findReservation = 'dane={"collection":"rezerwacje", "mode":"find", "dane":{ "sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
     return this.http.get('http://213.184.22.45/querydb.php?' + findReservation, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;

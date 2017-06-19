@@ -12,13 +12,17 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class ReservationComponent implements OnInit {
   private data;
+  private dataFind;
   public reservation;
   public rooms;
   private userId;
   private sessionId;
   saved : Number;
+  found : Number;
   private reservationData;
   constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
+
+
 
   save(data){
   this.saved = 1
@@ -27,7 +31,10 @@ export class ReservationComponent implements OnInit {
   //console.log(this.reservation.godzina.substring(0,5))
   //console.log(this.reservation.sala)
   for (let res of this.reservationData) {
-       console.log( res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5))
+     //  console.log( res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5))
+      
+       let sessionId = this.userService.getSessionId();
+    this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
        setTimeout(()=>
         this.communicationService.getReservationData(this.sessionId, this.userId)
       .subscribe(reservationData =>this.reservationData = reservationData),500);
@@ -35,7 +42,16 @@ export class ReservationComponent implements OnInit {
         this.saved = 0
       }
   }
-  if (this.saved == 1){
+
+  setTimeout(()=> this.communicationService.findReservationData( this.reservation, this.userId)
+        .subscribe(reservation =>{this.dataFind = reservation, console.log(this.dataFind)}), 500);
+ // console.log(this.dataFind[0].sala)
+ // for (let res of this.dataFind) {
+  //  console.log(res)
+//}
+//this.found == 1; 
+
+  if (this.saved == 1 ){
             setTimeout(()=> this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId)
           .subscribe(reservation =>{this.data = reservation, console.log(data)}), 500);
     }
