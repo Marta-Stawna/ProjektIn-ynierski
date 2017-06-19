@@ -53,7 +53,7 @@ export class CommunicationService {
   }
 
  addReservationData(sessionid, reservation, userId){
-     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + userId + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + userId + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '","purpose":"0"}}';
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
@@ -71,31 +71,19 @@ findReservationData( reservation, userId){
   }
 
   checkRoomData(data){
-    //{"pojemnosc" : "48", "usos_id" : "42", "sala" : "A2-21", "projektor": "1", "poziom" : "2", "komputery" : "0"},
-    // var checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "sala":"' + data.sala + '","data":"' + data.date + '","godzina":"' + data.godzina.substring(0,5) + '"}}';
-   console.log(data.seats)
-   console.log(data.labs)
-   console.log(data.projector)
    var projector;
    var labs;
    var checkRoomData;
-    if (data.projector == true){
-      projector = 1
-    }else{
-      projector = 0
-    }
-    if (data.labs == true){
-      labs = 1
-    }else{
-      labs = 0
-    }
-    if (data.location == ""){
-      console.log("Brak inf o miejscach")
+   var location;
+    if (data.projector == true){projector = 1}else{projector = 0}
+    if (data.labs == true){labs = 1} else {labs = 0}
+    if (data.location == "" || data.location == "dowolne"){
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';
+      location = 0;
     } else{
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "poziom" : "'+ data.location +'" , "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';
+      location = 1;
     }
-    // "pojemnosc" : "48" ,
     return this.http.get('http://213.184.22.45/querydb.php?' + checkRoomData, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
@@ -105,7 +93,7 @@ findReservationData( reservation, userId){
   }
 
   removeReservationData(sessionid, reservation, userId){
-     var removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+ userId + '","sala":"'+ reservation.sala + '","data":"'+ reservation.data + '","godzina":"' + reservation.godzina +'"}}';
+     var removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+ userId + '","sala":"'+ reservation.sala + '","data":"'+ reservation.data + '","godzina":"' + reservation.godzina +'", "purpose":"0"}}';
     return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
