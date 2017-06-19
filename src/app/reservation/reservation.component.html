@@ -8,9 +8,7 @@
                 <label for="name">Wybierz salę </label>
                 <span class="asteriskField">*</span>
                 <select multiple class="form-control" id="sala" ngModel name="sala" required>
-                  <option *ngFor="let r of rooms; let i=index">
-                      {{r.number}}
-                  </option>
+                    <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.number" [selected]="room.number==9">{{room.number}}</option>
                 </select>
               </div>
       </div>
