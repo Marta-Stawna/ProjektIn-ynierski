@@ -66,7 +66,7 @@ findReservationData( reservation, userId){
     return this.http.get('http://213.184.22.45/querydb.php?' + findReservation, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
-     return data;
+     return Object.keys(data).length;
     });
   }
 

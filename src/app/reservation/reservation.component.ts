@@ -18,21 +18,14 @@ export class ReservationComponent implements OnInit {
   private userId;
   private sessionId;
   saved : Number;
-  found : Number;
   private reservationData;
   constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
-
-
 
   save(data){
   this.saved = 1
   this.reservation=data;
-  //console.log(this.reservation.date)
-  //console.log(this.reservation.godzina.substring(0,5))
-  //console.log(this.reservation.sala)
+
   for (let res of this.reservationData) {
-     //  console.log( res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5))
-      
        let sessionId = this.userService.getSessionId();
     this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
        setTimeout(()=>
@@ -42,16 +35,9 @@ export class ReservationComponent implements OnInit {
         this.saved = 0
       }
   }
-
-  setTimeout(()=> this.communicationService.findReservationData( this.reservation, this.userId)
-        .subscribe(reservation =>{this.dataFind = reservation, console.log(this.dataFind)}), 500);
- // console.log(this.dataFind[0].sala)
- // for (let res of this.dataFind) {
-  //  console.log(res)
-//}
-//this.found == 1; 
-
-  if (this.saved == 1 ){
+  this.communicationService.findReservationData( this.reservation, this.userId)
+        .subscribe(reservation =>{this.dataFind = reservation,console.log(this.dataFind)})
+  if (this.saved == 1 && setTimeout(()=>this.dataFind == 0,200)){
             setTimeout(()=> this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId)
           .subscribe(reservation =>{this.data = reservation, console.log(data)}), 500);
     }
