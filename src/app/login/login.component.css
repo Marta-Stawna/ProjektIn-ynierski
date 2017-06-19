@@ -1,4 +1,3 @@
-.login{background-color:grey;position:relative;}
-.sign-in-button { padding:15px 50px; background-color:#d34836;color:white; border-radius:3px; color:#ffffff; font-family: Roboto, sans-serif; font-size:16px; text-decoration: none;position:absolute;top:200px; left:calc(50% - 100px);}
+.login{background-color:	#F0F0F0;height: calc(100vh - 100px); position: relative;}
+.sign-in-button { padding:15px 100px; background-color:#d34836; border-radius:3px; color:#ffffff; font-family: Roboto, sans-serif; font-size:20px; text-decoration: none; position:absolute; left : calc(50% - 200px);top: calc(50% - 100px)}
 .sign-in-button:hover { background-color:#bc3315; }
-
