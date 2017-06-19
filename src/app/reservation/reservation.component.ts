@@ -36,7 +36,7 @@ export class ReservationComponent implements OnInit {
       }
   }
   this.communicationService.findReservationData( this.reservation, this.userId)
-        .subscribe(reservation =>this.dataFind = reservation)
+        .subscribe(reservation =>{this.dataFind = reservation,console.log(this.dataFind)})
   if (this.saved == 1 && setTimeout(()=>this.dataFind == 0,200)){
             setTimeout(()=> this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId)
           .subscribe(reservation =>{this.data = reservation, console.log(data)}), 500);

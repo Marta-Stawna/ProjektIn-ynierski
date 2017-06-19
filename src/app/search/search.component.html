@@ -17,7 +17,6 @@
         <div class="form-group">
           <label for="seats">Ilość osób:</label>
           <select class="form-control" id="seats" ngModel name="seats" (change)="class.seats = $event.target.value">
-            <option>dowolna</option>
             <option>4-20</option>
             <option>20-50</option>
             <option>>50</option>
@@ -30,9 +29,8 @@
              </label>
         </div>
         <div class="form-group">
-          <label for="location" required >Położenie sali - piętro:</label>
-          <select class="form-control" id="location" required ngModel name="location" (change)="class.location = $event.target.value">
-            <option>dowolne</option>
+          <label for="type">Położenie sali - piętro:</label>
+          <select class="form-control" id="location" ngModel name="location" (change)="class.location = $event.target.value">
             <option>0</option>
             <option>1</option>
             <option>2</option>
