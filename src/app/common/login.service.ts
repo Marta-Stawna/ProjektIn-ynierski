@@ -26,5 +26,4 @@ export class LoginService {
      return data;
     });
   }
-
 }

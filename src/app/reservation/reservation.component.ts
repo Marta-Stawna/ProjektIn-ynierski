@@ -11,23 +11,20 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
+  private data;
+  public reservation;
+  public rooms;
+  saved : Number;
+  constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
 
-public reservation;
-public rooms;
- saved : Number;
-
- constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
-
-save(data){
-    this.reservation=data;
-    this.communicationService.setReservation(data);
-    this.saved = 1
-  }
-
+  save(data){
+      this.reservation=data;
+      this.communicationService.addReservationData(this.userService.getSessionId, this.reservation).subscribe(reservation =>{this.data = reservation;console.log(data)});
+      this.saved = 1
+    }
 
   ngOnInit() {
-    let sessionid =this.userService.getSessionId();
-    this.communicationService.getRooms(sessionid).subscribe(data => {console.log("rooms",data);return this.rooms = data})
+    let sessionId = this.userService.getSessionId();
+   this.communicationService.getRooms(sessionId).subscribe(rooms =>{this.rooms = rooms; console.log(rooms)});
   }
-
 }

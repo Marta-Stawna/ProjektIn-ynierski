@@ -1,4 +1,4 @@
-import { Component, OnInit,Output , EventEmitter} from '@angular/core';
+import { Component, OnInit,Output , EventEmitter, Input} from '@angular/core';
 import { CommunicationService } from "app/common/communication.service";
 import { LoginService } from "app/common/login.service";
 
@@ -11,17 +11,22 @@ export class TableRowComponent implements OnInit {
 
   @Output() labelEmitter = new EventEmitter();
   @Output() planEmitter = new EventEmitter();
+  @Input() public roomId;
   private data;
   private changedData;
   private labels;
   constructor(private communicationService: CommunicationService, private userService:LoginService) {
-    setTimeout(()=>this.mapData(),1000);
+
+  }
+  ngOnInit(){
+
   }
 
-
-   ngOnInit() {
+   ngOnChanges() {
+     this.data = [];
      let sessionId = this.userService.getSessionId();
-     this.communicationService.getPlan(sessionId).subscribe(data =>this.data = data);
+     this.communicationService.getPlan(sessionId, this.roomId).subscribe(data =>this.data = data);
+     setTimeout(()=>this.mapData(),1000);
 }
 
   mapData(){
@@ -33,7 +38,9 @@ export class TableRowComponent implements OnInit {
                       result[item.start_time.substring(0,10)] = [item];}
                     return result;
                   }, {});
+
       this.labels = Object.keys(this.changedData);
+      if(this.labels.length == 5)
       this.labelEmitter.emit(this.labels);
       this.planEmitter.emit(this.changedData)
     }

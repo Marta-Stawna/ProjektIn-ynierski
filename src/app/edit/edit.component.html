@@ -13,17 +13,22 @@
                   </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let res of myReservations; let i=index">
-                      <td>{{i+1}}</td>
-                      <td>{{res.date}}</td>
-                      <td>{{res.hours}}</td>
-                      <td>{{res.room}}</td>
-                      <td>
-                        <button type="button" (click)="removeReservation(i)" class="btn btn-danger btn-xs" >Usuń</button>
+                      <tr *ngFor="let res of reservationData; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{res.data}}</td>
+                        <td>{{res.godzina}}</td>
+                        <td>{{res.sala}}</td>
+                        <td>
+                        <button type="button" (click)="removeReservation(res)" class="btn btn-danger btn-xs" >Usuń</button>                    
                       </td>
                   </tr>
               </tbody>
           </table>
+          <div *ngIf="deleted == 1 " class="card-block">                     
+             <div  class="alert alert-success"> <span class="glyphicon glyphicon-hourglass" aria-hidden="true"><strong>{{progress}}%</strong></span>
+             <strong *ngIf="progress >= 100" > Sukces! Usunięto rezerwację.</strong>
+           </div>
+          </div>
     </div> 
   </div>
 </div>  
