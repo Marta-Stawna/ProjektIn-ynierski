@@ -24,20 +24,21 @@ export class ReservationComponent implements OnInit {
   save(data){
   this.saved = 1
   this.reservation=data;
-
+  
+  let sessionId = this.userService.getSessionId();
+   this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
   for (let res of this.reservationData) {
-       let sessionId = this.userService.getSessionId();
-    this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
-       setTimeout(()=>
-        this.communicationService.getReservationData(this.sessionId, this.userId)
-      .subscribe(reservationData =>this.reservationData = reservationData),500);
+       // this.communicationService.getReservationData(this.sessionId, this.userId)
+      //.subscribe(reservationData =>this.reservationData = reservationData);
       if (res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5)) {  
         this.saved = 0
+        console.log("istnieje w bazie rezerwacja (0 - nie doda, 1-doda):", this.saved)
       }
   }
   this.communicationService.findReservationData( this.reservation, this.userId)
-        .subscribe(reservation =>{this.dataFind = reservation,console.log(this.dataFind)})
-  if (this.saved == 1 && setTimeout(()=>this.dataFind == 0,200)){
+        .subscribe(reservation =>{this.dataFind = reservation,console.log("ilosc takich rezerwacji w bazie (gdy 0 to dodaje rezerwacje):",this.dataFind)})
+
+  if (this.saved == 1 && setTimeout(()=>this.dataFind == 0,500)){
             setTimeout(()=> this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId)
           .subscribe(reservation =>{this.data = reservation, console.log(data)}), 500);
            setTimeout(()=>

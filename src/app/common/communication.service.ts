@@ -71,31 +71,16 @@ findReservationData( reservation, userId){
   }
 
   checkRoomData(data){
-    //{"pojemnosc" : "48", "usos_id" : "42", "sala" : "A2-21", "projektor": "1", "poziom" : "2", "komputery" : "0"},
-    // var checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "sala":"' + data.sala + '","data":"' + data.date + '","godzina":"' + data.godzina.substring(0,5) + '"}}';
-   console.log(data.seats)
-   console.log(data.labs)
-   console.log(data.projector)
    var projector;
    var labs;
    var checkRoomData;
-    if (data.projector == true){
-      projector = 1
-    }else{
-      projector = 0
-    }
-    if (data.labs == true){
-      labs = 1
-    }else{
-      labs = 0
-    }
-    if (data.location == ""){
-      console.log("Brak inf o miejscach")
+    if (data.projector == true){projector = 1}else{projector = 0}
+    if (data.labs == true){labs = 1}else{labs = 0}
+    if (data.location == "" || data.location == "dowolna"){
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';
     } else{
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "poziom" : "'+ data.location +'" , "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';
     }
-    // "pojemnosc" : "48" ,
     return this.http.get('http://213.184.22.45/querydb.php?' + checkRoomData, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
