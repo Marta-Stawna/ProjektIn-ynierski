@@ -40,6 +40,10 @@ export class ReservationComponent implements OnInit {
   if (this.saved == 1 && setTimeout(()=>this.dataFind == 0,200)){
             setTimeout(()=> this.communicationService.addReservationData(this.userService.getSessionId, this.reservation, this.userId)
           .subscribe(reservation =>{this.data = reservation, console.log(data)}), 500);
+           setTimeout(()=>
+        this.communicationService.getReservationData(this.sessionId, this.userId)
+      .subscribe(reservationData =>this.reservationData = reservationData),500);
+
     }
   } 
 
