@@ -6,13 +6,11 @@ import { Component, OnInit } from '@angular/core';
     <div class="footer">
     </div>
   `,
-  styles: [`.footer{background-color:black;height:50px}`]
+  styles: [`
+    .footer {
+      height:50px;
+      background-color:black;
+    }
+  `]
 })
-export class FooterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class FooterComponent {}

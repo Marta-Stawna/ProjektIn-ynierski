@@ -9,27 +9,29 @@ import 'rxjs/add/operator/map';
 export class CommunicationService {
 
   public reservation;
-  constructor(private http: Http) {
-    this.headers = [
-    {name:'Cache-Controlr', value:'no-cache, no-store, must-revalidate'},
-    {name:'Pragma', value:'no-cache'},
-    {name:'Expires', value:'0'},
-    {name:'Access-Control-Allow-Origin', value:'*'}];
-   }
-
   headers: {
     name: string;
     value: string;
   }[]
 
+  constructor(private http: Http) {
+    this.headers = [
+    { name: 'Cache-Controlr', value: 'no-cache, no-store, must-revalidate'},
+    { name: 'Pragma', value: 'no-cache'},
+    { name: 'Expires', value: '0'},
+    { name: 'Access-Control-Allow-Origin', value: '*'}];
+  }
+
   getRooms(sessionid){
-    return this.http.get('https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan', this.headers )
-    .map((res:Response)=> {let rooms =res.json().data;
+    return this.http.get('https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan',
+    this.headers )
+    .map((res:Response)=> {
+      let rooms =res.json().data;
       return rooms;
      });}
 
   getPlan(sessionid, idRoom){
-    let url = 'https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D'+idRoom+'%26';
+    let url = 'https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D' + idRoom +'%26';
     return this.http.get( url)
     .map((res:Response)=> {let plan =res.json().data;
     return plan;
@@ -71,11 +73,9 @@ findReservationData( reservation, userId){
   }
 
   checkRoomData(data){
+
     //{"pojemnosc" : "48", "usos_id" : "42", "sala" : "A2-21", "projektor": "1", "poziom" : "2", "komputery" : "0"},
     // var checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "sala":"' + data.sala + '","data":"' + data.date + '","godzina":"' + data.godzina.substring(0,5) + '"}}';
-   console.log(data.seats)
-   console.log(data.labs)
-   console.log(data.projector)
    var projector;
    var labs;
    var checkRoomData;
@@ -99,7 +99,6 @@ findReservationData( reservation, userId){
     return this.http.get('http://213.184.22.45/querydb.php?' + checkRoomData, this.headers)
     .map((res:Response)=> {
      let data=res.json().data;
-    console.log(data)
      return data;
     });
   }

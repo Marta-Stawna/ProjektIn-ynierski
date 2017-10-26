@@ -1,43 +1,28 @@
+<div class="dashboard-container" >
+  <h2>Plan sal</h2>
 
-<div class="container2" >
-    <div class="row mt-1">
-        <h2>Plan sal</h2>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row mt-1">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="form-group" >
-                        <label for="name">Wybierz salę:</label>
-                        <select class="form-control"  (change)="displayPlan($event.target.value)" *ngIf="rooms">
-                            <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.id" [selected]="room.id==9">{{room.number}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
+  <label for="name">Wybierz salę:</label>
+  <select class="form-control"  (change)="displayPlan($event.target.value)" *ngIf="rooms">
+    <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.id" [selected]="room.id==9">{{room.number}}</option>
+  </select>
 
-    <div class="card-block">
-        <div class="form-group">
-        <p class="card-text">Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
-        </div>
-    </div>
-    <table class="table table-bordered">
-        <thead>
-            <tr >
-                <th></th>
-                <th *ngFor="let label of labels; let i = index">{{label}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let day of plan; let i = index">
-                <td>{{hours[i]}}</td>
-                <td *ngFor="let hour of day; let j=index;" [style.background-color]="setColor(hour)"><div>{{hour}}</div></td>
-            </tr>
-        </tbody>
-    </table>
-    <app-table-row (labelEmitter)="getLabels($event)" (planEmitter)="getPlan($event)" [roomId]="idRoom"></app-table-row>
-
+  <p>Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let label of labels; let i = index">{{label}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let day of plan; let i = index">
+        <td>{{ hours[i] }}</td>
+          <td *ngFor="let hour of day; let j=index;" [style.background-color]="setColor(hour)">
+            <div>{{ hour }}</div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+<app-table-row (labelEmitter)="getLabels($event)" (planEmitter)="getPlan($event)" [roomId]="idRoom"></app-table-row>
 {{data}}
 </div>
