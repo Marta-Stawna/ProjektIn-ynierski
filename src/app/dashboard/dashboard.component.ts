@@ -3,6 +3,7 @@ import { LoginService } from 'app/common/login.service';
 import {CommunicationService } from 'app/common/communication.service';
 import { Subscription } from 'rxjs/Subscription';
 import {OrderByPipe} from '../common/sort.pipe';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,14 +12,7 @@ import {OrderByPipe} from '../common/sort.pipe';
 export class DashboardComponent implements OnInit {
 
   private labels = [];
-  private schedule = [
-      ['wolny','wolny','wolny','wolny','wolny'],
-      ['wolny','wolny','wolny','wolny','wolny'],
-      ['wolny','wolny','wolny','wolny','wolny'],
-      ['wolny','wolny','wolny','wolny','wolny'],
-      ['wolny','wolny','wolny','wolny','wolny'],
-      ['wolny','wolny','wolny','wolny','wolny']
-  ];
+  private schedule = [];
   private plan;
   private id;
   private rooms;
@@ -26,7 +20,8 @@ export class DashboardComponent implements OnInit {
   private color  = 'green';
   public hours = ['8:15 - 9:45 ','10:00 - 11:30','11:45 - 13.15','13:45 - 15:15','15:30 - 17:00','17:15 - 18:45'];
 
-  constructor(private userService: LoginService, private communicationService: CommunicationService ) {
+  constructor(private userService: LoginService,
+    private communicationService: CommunicationService ) {
     this.getRooms();
   }
 
@@ -43,17 +38,14 @@ export class DashboardComponent implements OnInit {
    return this.labels = data;
   }
 
-  getUserId(data){
-    let plan = Object.keys(data).map(function (key) { return data[key]; });
-    return this.plan = this.id;
-  }
-
   getRooms() {
     let sessionId = this.userService.getSessionId();
+
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
   }
 
   getPlan(data){
+    let plan = Object.keys(data).map((key) => data[key]);
     this.schedule = [
         ['wolny','wolny','wolny','wolny','wolny'],
         ['wolny','wolny','wolny','wolny','wolny'],
@@ -62,7 +54,7 @@ export class DashboardComponent implements OnInit {
         ['wolny','wolny','wolny','wolny','wolny'],
         ['wolny','wolny','wolny','wolny','wolny']
     ];
-    let plan = Object.keys(data).map((key) => data[key]);
+
     plan.map((item, index) => {
       for(let i = 0 ; i < item.length; i++){
         if(item[i].start_time.substring(11,16)=='08:15')
@@ -81,6 +73,7 @@ export class DashboardComponent implements OnInit {
     })
     return this.plan = this.schedule;
   }
+
   ngOnInit() {}
 
 }

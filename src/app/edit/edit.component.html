@@ -1,36 +1,31 @@
-<div class="container2" >
-  <h2>Moje rezerwacje</h2> 
-   <div class="row">
-     <div class="col-md-6">
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th>Id</th>
-                      <th>Dzień</th>
-                      <th>Godzina</th>
-                      <th>Sala</th>
-                      <th>Usuń</th>
-                  </tr>
-              </thead>
-              <tbody>
-                      <tr *ngFor="let res of reservationData; let i=index">
-                        <td>{{i+1}}</td>
-                        <td>{{res.data}}</td>
-                        <td>{{res.godzina}}</td>
-                        <td>{{res.sala}}</td>
-                        <td>
-                        <button type="button" (click)="removeReservation(res)" class="btn btn-danger btn-xs" >Usuń</button>                    
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-          <div *ngIf="deleted == 1 " class="card-block">                     
-             <div  class="alert alert-success"> <span class="glyphicon glyphicon-hourglass" aria-hidden="true"><strong>{{progress}}%</strong></span>
-             <strong *ngIf="progress >= 100" > Sukces! Usunięto rezerwację.</strong>
-           </div>
-          </div>
-    </div> 
+<div class="container" >
+  <h2>Moje rezerwacje</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Dzień</th>
+        <th>Godzina</th>
+        <th>Sala</th>
+        <th>Usuń</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let res of reservationData; let i=index">
+        <td>{{ i+1 }}</td>
+        <td>{{ res.data }}</td>
+        <td>{{ res.godzina }}</td>
+        <td>{{ res.sala }}</td>
+        <td>
+          <button type="button" (click)="removeReservation(res)" class="btn btn-danger btn-xs" >Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="deleted == 1 " class="card-block">
+    <div  class="alert alert-success">
+      <span class="glyphicon glyphicon-hourglass" aria-hidden="true"><strong>{{ progress }}%</strong></span>
+      <strong *ngIf="progress >= 100" > Sukces! Usunięto rezerwację.</strong>
+    </div>
   </div>
-</div>  
-
-
+</div>

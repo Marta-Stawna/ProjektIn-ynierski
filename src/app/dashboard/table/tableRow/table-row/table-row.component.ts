@@ -15,12 +15,14 @@ export class TableRowComponent implements OnInit {
   private data = [];
   private changedData;
   private labels;
-  constructor(private communicationService: CommunicationService, private userService:LoginService) {}
+  constructor(private communicationService: CommunicationService,
+    private userService:LoginService) {}
 
   ngOnInit() {}
 
   ngOnChanges() {
     let sessionId = this.userService.getSessionId();
+
     this.communicationService.getPlan(sessionId, this.roomId)
     .subscribe(data => {
       this.data = data;

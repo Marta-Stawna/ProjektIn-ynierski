@@ -1,85 +1,77 @@
-﻿<div class="container2">
-  <h1>
-       Wyszukiwanie sali
-  </h1>
+﻿<div class="container">
+  <h1>Wyszukiwanie sali</h1>
 
   <div class="col-md-4">
     <div class="card">
-      <div class="card-block">
+    <form #checkForm="ngForm" (ngSubmit)="save(checkForm.value)">
+    <div class="card-block">
+      <div class="form-group">
+        <label>
+          <input type="checkbox" ngModel name="projector" [checked]="class.projector" (change)="class.projector = $event.target.checked"> Projektor
+        </label>
       </div>
-      <form #checkForm="ngForm" (ngSubmit)="save(checkForm.value)">
-      <div class="card-block">
-        <div class="form-group">
-             <label>
-             <input type="checkbox" ngModel name="projector"  [checked]="class.projector" (change)="class.projector = $event.target.checked"> Projektor
-              </label>
-        </div>
-        <div class="form-group">
-          <label for="seats">Ilość osób:</label>
-          <select class="form-control" id="seats" ngModel name="seats" (change)="class.seats = $event.target.value">
-            <option>4-20</option>
-            <option>20-50</option>
-            <option>>50</option>
-          </select>
-        </div>
-        <div class="form-group">
+      <div class="form-group">
+      <label for="seats">Ilość osób:</label>
+        <select class="form-control" id="seats" ngModel name="seats" (change)="class.seats = $event.target.value">
+          <option>4-20</option>
+          <option>20-50</option>
+          <option>50</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" ngModel name="labs"  [checked]="class.labs" (change)="class.labs = $event.target.checked"> Typ sali: komputerowa
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="type">Położenie sali - piętro:</label>
+        <select class="form-control" id="location" ngModel name="location" (change)="class.location = $event.target.value">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn float-xs-right" >Zapisz</button>
+      </div>
+    </div>
+    </form>
+    </div>
 
-             <label>
-               <input type="checkbox" ngModel name="labs"  [checked]="class.labs" (change)="class.labs = $event.target.checked"> Typ sali: komputerowa
-             </label>
-        </div>
-        <div class="form-group">
-          <label for="type">Położenie sali - piętro:</label>
-          <select class="form-control" id="location" ngModel name="location" (change)="class.location = $event.target.value">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
-        </div>                
-        <div class="form-group">
-          <button class="btn float-xs-right" >Zapisz</button>
-        </div>
-      </div>
-      </form>
+    <div *ngIf="saved == 1 " class="col-xs">
+      <div class="col-xs">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> # </th>
+            <th> Sala </th>
+            <th> Projektor </th>
+            <th> Ilość osób </th>
+            <th> Sala komputerowa </th>
+            <th> Położenie </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of roomData; let i=index">
+            <td>  {{i+1}} </td>
+            <td>  {{r.sala}} </td>
+            <td>
+              <span *ngIf="r.projektor == '1'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+              <span *ngIf="r.projektor != '1'" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </td>
+            <td> {{r.pojemnosc}} </td>
+            <td>
+              <label>
+                <span *ngIf="r.komputery == '1'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <span *ngIf="r.komputery != '1'" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </label>
+            </td>
+            <td> {{r.poziom}} </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
- 
-<div *ngIf="saved == 1 " class="col-xs">
-  <div class="col-xs">
-      <table class="table table-striped">
-          <thead>
-              <tr>
-                  <th> # </th>
-                  <th> Sala </th>
-                  <th> Projektor </th>
-                  <th> Ilość osób </th>
-                  <th> Sala komputerowa </th>
-                  <th> Położenie </th>
-              </tr>
-          </thead>
-          <tbody>
-             <tr *ngFor="let r of roomData; let i=index">
-                  <td>  {{i+1}} </td>
-                  <td>  {{r.sala}} </td>
-                  <td> 
-                    <span *ngIf="r.projektor == '1'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    <span *ngIf="r.projektor != '1'" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                  </td> 
-                  <td> {{r.pojemnosc}} </td>
-                  <td> 
-                    <label>
-                     <span *ngIf="r.komputery == '1'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    <span *ngIf="r.komputery != '1'" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </label>
-                </td>
-                  <td> {{r.poziom}} </td>
-              </tr>
-          </tbody>
-      </table>
-    </div>   
-  </div> 
 </div>
-
-
