@@ -8,22 +8,21 @@ import 'rxjs/add/operator/map';
 export class LoginService {
 
   sessionId;
-  constructor(private http: Http) {
-   }
+  constructor(private http: Http) {}
 
-   getSessionId(){
+   getSessionId() {
      return this.sessionId;
    }
 
-   setSessionId(sessionId){
+   setSessionId(sessionId) {
      this.sessionId = sessionId;
    }
 
   getUserData(sessionid){
     return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid)
-    .map((res:Response)=> {
-     let data=res.json().data;
-     return data;
+    .map((res: Response)=> {
+       let data = res.json().data;
+       return data;
     });
   }
 }

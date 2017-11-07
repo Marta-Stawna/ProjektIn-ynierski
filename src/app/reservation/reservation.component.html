@@ -1,26 +1,23 @@
-<div class="container2" >
-    <div class="row mt-1">
-        <h2>Rezerwacja sali</h2>
-    </div>
-    <form #reservationForm="ngForm" (ngSubmit)="save(reservationForm.value)">
+<div class="container" >
+  <h2>Rezerwacja sali</h2>
+  <form #reservationForm="ngForm" (ngSubmit)="save(reservationForm.value)">
     <div class="row mt-1">
       <div class="form-group">
-                <label for="name">Wybierz salę </label>
-                <span class="asteriskField">*</span>
-                <select multiple class="form-control" id="sala" ngModel name="sala" required>
-                    <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.number" [selected]="room.number==9">{{room.number}}</option>
-                </select>
-              </div>
+      <label for="name">Wybierz salę </label>
+        <span class="asteriskField">*</span>
+        <select multiple class="form-control" id="sala" ngModel name="sala" required>
+          <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.number" [selected]="room.number==9">{{room.number}}</option>
+        </select>
       </div>
-      <div class="row mt-1">
-        <div class="bootstrap-iso">
+    </div>
+    <div class="row mt-1">
+      <div class="bootstrap-iso">
         <div class="container-fluid">
           <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="form-group ">
-              <label class=" requiredField" for="date">
-              Wybierz Datę
-              <span class="asteriskField">*</span>
+              <label class="requiredField" for="date">
+                <span>Wybierz Datę</span>
+                <span class="asteriskField">*</span>
               </label>
               <div class="col-sm-10">
               <div class="input-group">
@@ -32,7 +29,6 @@
             </div>
           </div>
           </div>
-        </div>
         </div>
     </div>
   <div class="row mt-1">
@@ -52,7 +48,7 @@
               <button class="btn float-xs-right " type="submit">Zatwierdź</button>
       </div>
 
-      
+
       <div *ngIf="saved == 1 " class="card-block">
         <div class="alert alert-success">
           <strong>Potwierdzenie:</strong> Zatwierdzono rezerwację.

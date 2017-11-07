@@ -19,19 +19,19 @@ export class ReservationComponent implements OnInit {
   private sessionId;
   saved : Number;
   private reservationData;
-  constructor(private communicationService:CommunicationService,private  userService : LoginService) { }
+  constructor(private communicationService: CommunicationService,private  userService: LoginService) { }
 
   save(data){
   this.saved = 1
-  this.reservation=data;
+  this.reservation = data;
 
-  for (let res of this.reservationData) {
-       let sessionId = this.userService.getSessionId();
+  for(let res of this.reservationData) {
+    let sessionId = this.userService.getSessionId();
     this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
        setTimeout(()=>
         this.communicationService.getReservationData(this.sessionId, this.userId)
-      .subscribe(reservationData =>this.reservationData = reservationData),500);
-      if (res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5)) {  
+        .subscribe(reservationData =>this.reservationData = reservationData),500);
+        if (res.data == this.reservation.date && res.sala == this.reservation.sala &&  res.godzina == this.reservation.godzina.substring(0,5)) {
         this.saved = 0
       }
   }
@@ -49,8 +49,10 @@ export class ReservationComponent implements OnInit {
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
-    this.communicationService.getRooms(sessionId).subscribe(rooms =>this.rooms = rooms);
+
+    this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
     this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
+
     setTimeout(()=>
       this.communicationService.getReservationData(sessionId, this.userId)
       .subscribe(reservationData =>this.reservationData = reservationData),500);

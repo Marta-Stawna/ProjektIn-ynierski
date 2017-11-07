@@ -1,12 +1,12 @@
-.main-container{
-    display:flex;
-    justify-content: space-between;
-    flex-direction: column;
-    min-height: 100vh;
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main-content{
-    flex:1;
+.main-content {
+  flex: 1;
 }
 
 .sidenav-content {
@@ -20,39 +20,43 @@
   padding: 20px;
   background-color: white;
 }
-.sidenav ul{
- padding:0;
+
+.sidenav ul {
+  padding:0;
 }
 
 md-sidenav li a{
   text-decoration-line: none;
   font-size: 16px;
-  color:black;
+  color: #000;
 }
-md-sidenav li a:hover{
-  color:purple;
+md-sidenav li a:hover {
+  color: 	#800080;
 }
 md-sidenav li {
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  padding:10px;
+  padding: 10px;
   font-size: 16px;
-  color:black;
+  color: #000;
 }
 
 .button{
-    color:white;
-    font-size: 20px;
-    margin:8px;
+  color: #fff;
+  font-size: 20px;
+  margin: 8px;
 }
 
 .rounded-circle {
-  border-radius: 50%; }
+  border-radius: 50%;
+}
 
-  .float-right {
-  float: right !important; }
+.float-right {
+  float: right !important;
+}
 
 .img-fluid {
   max-width: 100%;
-  height: auto; }
+  height: auto;
+}
