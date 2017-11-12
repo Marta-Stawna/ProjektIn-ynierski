@@ -45,16 +45,13 @@ export class ReservationComponent implements OnInit {
       .subscribe(reservationData =>this.reservationData = reservationData),500);
 
     }
-  } 
+  }
 
   ngOnInit() {
-    let sessionId = this.userService.getSessionId();
+    const sessionId = this.userService.getSessionId();
 
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
-    this.communicationService.getUserId(sessionId).subscribe(userId =>this.userId = userId);
-
-    setTimeout(()=>
-      this.communicationService.getReservationData(sessionId, this.userId)
-      .subscribe(reservationData =>this.reservationData = reservationData),500);
+    this.communicationService.getReservationData(sessionId, sessionStorage.getItem('userId'))
+      .subscribe(reservationData => this.reservationData = reservationData);
   }
 }

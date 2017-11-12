@@ -5,11 +5,12 @@
 			<li routerLinkActive="active"><a routerLink="/reservation">Nowa Rezerwacja</a></li>
 			<li routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
       <li routerLinkActive="active"><a routerLink="/search">Wyszukaj sali</a></li>
+      <li routerLinkActive="active" (click)="logOut()"><a>Wyloguj się</a></li>
 		</ul>
   </md-sidenav>
   <div class="main-container">
     <app-header>
-       <button  md-button class="btn btn-link button" (click)="sidenav.open()">
+       <button md-button class="btn btn-link button" (click)="sidenav.open()" >
          <span class="glyphicon glyphicon-menu-hamburger"></span>
         </button>
       </app-header>

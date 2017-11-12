@@ -48,10 +48,8 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
-    this.service.getUserId(sessionId).subscribe(userId => this.userId = userId);
-    
-    setTimeout(()=>
-      this.service.getReservationData(sessionId, this.userId)
-        .subscribe(reservationData =>this.reservationData = reservationData),500);
+
+    this.service.getReservationData(sessionId, sessionStorage.getItem('userId'))
+        .subscribe(reservationData => this.reservationData = reservationData)
   }
 }

@@ -15,14 +15,23 @@ export class LoginService {
    }
 
    setSessionId(sessionId) {
-     this.sessionId = sessionId;
+     if(sessionId)
+      this.sessionId = sessionId;
+     else {
+       this.sessionId = sessionStorage.getItem('session');
+     }
    }
 
   getUserData(sessionid){
     return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid)
-    .map((res: Response)=> {
+    .map((res: Response) => {
        let data = res.json().data;
        return data;
     });
+  }
+
+  getUserId(sessionid){
+    return this.http.get('https://dev.alcon.eu.org/ugather/'+ sessionid)
+    .map((res: Response) =>  res.json().data.id)
   }
 }

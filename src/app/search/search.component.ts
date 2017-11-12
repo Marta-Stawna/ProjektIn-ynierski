@@ -12,26 +12,33 @@ import { LoginService } from "app/common/login.service";
 })
 export class SearchComponent implements OnInit {
 
-  private userId;
+  constructor(private communicationService: CommunicationService, private userService: LoginService) { }
+
+  class = {
+    name: '',
+    seats: '',
+    type: '',
+    location: '',
+    projector: true,
+  }
+
+  private data;
   private roomData;
   private check;
-  saved: Number;
-  rooms;
+  saved : Number;
+  private rooms;
 
-  constructor(private communicationService: CommunicationService, private  userService: LoginService) { }
-
-  save(data){
-    this.check=data;
+  save(data) {
+    const sessionId = sessionStorage.getItem('session');
+    this.check = data;
     this.saved = 1;
-    let sessionId = this.userService.getSessionId();
-    setTimeout(()=>
-      this.communicationService.checkRoomData(this.check)
-      .subscribe(roomData=>this.roomData = roomData),500);
-  }
+
+    this.communicationService.checkRoomData(this.check)
+    .subscribe(roomData =>  this.roomData = roomData);
+}
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
-    this.communicationService.getUserId(sessionId).subscribe(userId => this.userId = userId);
   }
 }
