@@ -8,11 +8,10 @@ import { Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   constructor(private login: LoginService, private router: Router){}
 
   logOut(){
     this.login.setSessionId('');
-    this.router.navigate(['/login']);
   }
 }

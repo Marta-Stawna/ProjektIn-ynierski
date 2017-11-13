@@ -7,12 +7,12 @@
     <div class="card-block">
       <div class="form-group">
         <label>
-          <input type="checkbox" ngModel name="projector" [checked]="class.projector" (change)="class.projector = $event.target.checked"> Projektor
+          <input type="checkbox" ngModel name="projector"> Projektor
         </label>
       </div>
       <div class="form-group">
       <label for="seats">Ilość osób:</label>
-        <select class="form-control" id="seats" ngModel name="seats" (change)="class.seats = $event.target.value">
+        <select class="form-control" id="seats" ngModel name="seats">
           <option>4-20</option>
           <option>20-50</option>
           <option>50</option>
@@ -20,12 +20,12 @@
       </div>
       <div class="form-group">
         <label>
-          <input type="checkbox" ngModel name="labs"  [checked]="class.labs" (change)="class.labs = $event.target.checked"> Typ sali: komputerowa
+          <input type="checkbox" name="labs" /> Typ sali: komputerowa
         </label>
       </div>
       <div class="form-group">
         <label for="type">Położenie sali - piętro:</label>
-        <select class="form-control" id="location" ngModel name="location" (change)="class.location = $event.target.value">
+        <select class="form-control" id="location" ngModel name="location" >
           <option>0</option>
           <option>1</option>
           <option>2</option>
@@ -34,13 +34,13 @@
         </select>
       </div>
       <div class="form-group">
-        <button class="btn float-xs-right" >Zapisz</button>
+        <input class="btn float-xs-right" type="submit" value="Zapisz" />
       </div>
     </div>
     </form>
     </div>
 
-    <div *ngIf="saved == 1 " class="col-xs">
+    <div *ngIf="data" class="col-xs">
       <div class="col-xs">
       <table class="table table-striped">
         <thead>
