@@ -34,8 +34,13 @@ export class DashboardComponent implements OnInit {
       return this.color;
   }
 
-  getLabels(data){
-   return this.labels = data;
+  getLabels(){
+    for(let i = 0; i < 7; i++) {
+      let currentDate = new Date();
+      currentDate.setDate(currentDate.getDate() + i);
+      let formatDate = currentDate.getDate() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getFullYear();
+      this.labels.push(formatDate)
+    }
   }
 
   getRooms() {
@@ -44,15 +49,15 @@ export class DashboardComponent implements OnInit {
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
   }
 
-  getPlan(data){
+  getPlan(data) {
     let plan = Object.keys(data).map((key) => data[key]);
     this.schedule = [
-        ['wolny','wolny','wolny','wolny','wolny'],
-        ['wolny','wolny','wolny','wolny','wolny'],
-        ['wolny','wolny','wolny','wolny','wolny'],
-        ['wolny','wolny','wolny','wolny','wolny'],
-        ['wolny','wolny','wolny','wolny','wolny'],
-        ['wolny','wolny','wolny','wolny','wolny']
+        ['wolny','wolny','wolny','wolny','wolny','wolny','wolny'],
+        ['wolny','wolny','wolny','wolny','wolny','wolny','wolny'],
+        ['wolny','wolny','wolny','wolny','wolny','wolny','wolny'],
+        ['wolny','wolny','wolny','wolny','wolny','wolny','wolny'],
+        ['wolny','wolny','wolny','wolny','wolny','wolny','wolny'],
+        ['wolny','wolny','wolny','wolny','wolny','wolny','wolny']
     ];
 
     plan.map((item, index) => {
@@ -74,6 +79,8 @@ export class DashboardComponent implements OnInit {
     return this.plan = this.schedule;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getLabels();
+  }
 
 }

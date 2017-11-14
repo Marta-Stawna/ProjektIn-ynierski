@@ -20,6 +20,8 @@ import {CommunicationService} from './common/communication.service';
 import {TableRowComponent} from './dashboard/table/tableRow/table-row/table-row.component';
 import {  OrderByPipe } from './common/sort.pipe';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { AuthService} from './auth/auth.service';
+import { AuthGuardService} from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     Ng2OrderModule
   ],
 
-  providers: [LoginService, CommunicationService],
+  providers: [LoginService, CommunicationService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

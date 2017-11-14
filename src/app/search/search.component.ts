@@ -1,9 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Http, Response} from "@angular/http";
-import { Subscription } from "rxjs/Subscription";
-import { CommunicationService } from "app/common/communication.service";
-import { LoginService } from "app/common/login.service";
+import { Http, Response} from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
+import { CommunicationService } from 'app/common/communication.service';
+import { LoginService } from 'app/common/login.service';
 
 @Component({
   selector: 'app-search',
@@ -12,26 +12,23 @@ import { LoginService } from "app/common/login.service";
 })
 export class SearchComponent implements OnInit {
 
-  private userId;
+  constructor(private communicationService: CommunicationService, private userService: LoginService) { }
+
   private roomData;
-  private check;
-  saved: Number;
-  rooms;
+  private data;
+  saved : Number;
+  private rooms;
 
-  constructor(private communicationService: CommunicationService, private  userService: LoginService) { }
-
-  save(data){
-    this.check=data;
+  save(data) {
+    this.data = data;
     this.saved = 1;
-    let sessionId = this.userService.getSessionId();
-    setTimeout(()=>
-      this.communicationService.checkRoomData(this.check)
-      .subscribe(roomData=>this.roomData = roomData),500);
+
+    this.communicationService.checkRoomData(this.data)
+    .subscribe(roomData => this.roomData = roomData);
   }
 
   ngOnInit() {
     let sessionId = this.userService.getSessionId();
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
-    this.communicationService.getUserId(sessionId).subscribe(userId => this.userId = userId);
   }
 }

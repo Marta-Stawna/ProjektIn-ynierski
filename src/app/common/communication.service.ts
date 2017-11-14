@@ -22,93 +22,80 @@ export class CommunicationService {
     { name: 'Access-Control-Allow-Origin', value: '*'}];
   }
 
-  getRooms(sessionid){
+  getRooms(sessionid) {
     return this.http.get('https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=id|number|building_id|building_name|type|capacity&services=x_extend/room_scan',
     this.headers )
-    .map((res:Response)=> {
-      let rooms =res.json().data;
-      return rooms;
-     });}
+    .map((res: Response) => res.json().data)
+  }
 
-  getPlan(sessionid, idRoom){
+  getPlan(sessionid, idRoom) {
     let url = 'https://dev.alcon.eu.org/ugather/' + sessionid + '&fields=start_time%7Cend_time%7Cname&services=tt%2Froom&rest=room_id%3D' + idRoom +'%26';
+
     return this.http.get( url)
-    .map((res:Response)=> {let plan =res.json().data;
-    return plan;
-   })
+    .map((res: Response) => res.json().data)
  }
 
- getUserId(sessionid){
+  getUserId(sessionid) {
     return this.http.get('https://dev.alcon.eu.org/ugather/' + sessionid, this.headers)
-    .map((res:Response)=> {
-     let data=res.json().data.id;
-     return data;
-    });
+    .map((res: Response) => res.json().data.id)
   }
 
-   getReservationData(sessionid, userId){
+  getReservationData(sessionid, userId) {
     return this.http.get('http://213.184.22.45/querydb.php?id_u=' + userId,  this.headers)
-    .map((res:Response)=> {
-     let data=res.json().data;
-     return data;
-    });
+    .map((res: Response) => res.json().data)
   }
 
- addReservationData(sessionid, reservation, userId){
-     var sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + userId + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+  addReservationData(sessionid, reservation, userId) {
+    let sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + userId + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
-    .map((res:Response)=> {
-     let data=res.json().data;
-     return data;
-    });
+    .map((res: Response) => res.json().data)
   }
 
-findReservationData( reservation, userId){
-     var findReservation = 'dane={"collection":"rezerwacje", "mode":"find", "dane":{ "sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+  findReservationData(reservation, userId) {
+    let findReservation = 'dane={"collection":"rezerwacje", "mode":"find", "dane":{ "sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+
     return this.http.get('http://213.184.22.45/querydb.php?' + findReservation, this.headers)
-    .map((res:Response)=> {
-     let data=res.json().data;
+    .map((res: Response) => {
+     let data = res.json().data;
+
      return Object.keys(data).length;
     });
   }
 
   checkRoomData(data){
-
     //{"pojemnosc" : "48", "usos_id" : "42", "sala" : "A2-21", "projektor": "1", "poziom" : "2", "komputery" : "0"},
     // var checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "sala":"' + data.sala + '","data":"' + data.date + '","godzina":"' + data.godzina.substring(0,5) + '"}}';
-   var projector;
-   var labs;
-   var checkRoomData;
-    if (data.projector == true){
+   let projector,
+       labs,
+       checkRoomData;
+
+    if (data.projector == true) {
       projector = 1
-    }else{
+    } else{
       projector = 0
     }
-    if (data.labs == true){
+    if(data.labs == true){
       labs = 1
-    }else{
+    } else {
       labs = 0
     }
-    if (data.location == ""){
+    if (data.location == "") {
       console.log("Brak inf o miejscach")
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';
-    } else{
+    } else {
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "poziom" : "'+ data.location +'" , "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';
     }
     // "pojemnosc" : "48" ,
     return this.http.get('http://213.184.22.45/querydb.php?' + checkRoomData, this.headers)
-    .map((res:Response)=> {
-     let data=res.json().data;
-     return data;
-    });
+    .map((res: Response) => res.json().data)
   }
 
-  removeReservationData(sessionid, reservation, userId){
-     var removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+ userId + '","sala":"'+ reservation.sala + '","data":"'+ reservation.data + '","godzina":"' + reservation.godzina +'"}}';
+  removeReservationData(sessionid, reservation, userId) {
+    let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+ userId + '","sala":"'+ reservation.sala + '","data":"'+ reservation.data + '","godzina":"' + reservation.godzina +'"}}';
+
     return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
-    .map((res:Response)=> {
-     let data=res.json().data;
-     return data;
-    });
+    .map((res: Response) => {
+      console.log(res.json().data);res.json().data});
   }
 }
