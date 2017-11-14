@@ -23,6 +23,6 @@
       </tr>
     </tbody>
   </table>
-<app-table-row (labelEmitter)="getLabels($event)" (planEmitter)="getPlan($event)" [roomId]="idRoom"></app-table-row>
+<app-table-row (planEmitter)="getPlan($event)" [roomId]="idRoom"></app-table-row>
 {{data}}
 </div>

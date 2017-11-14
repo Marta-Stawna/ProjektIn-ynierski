@@ -9,7 +9,6 @@ import { LoginService } from 'app/common/login.service';
 })
 export class TableRowComponent implements OnInit {
 
-  @Output() labelEmitter = new EventEmitter();
   @Output() planEmitter = new EventEmitter();
   @Input() public roomId;
   private data = [];
@@ -41,9 +40,6 @@ export class TableRowComponent implements OnInit {
         return result;
       }, {});
 
-      this.labels = Object.keys(this.changedData);
-      if(this.labels.length == 5)
-      this.labelEmitter.emit(this.labels);
       this.planEmitter.emit(this.changedData)
     }
 }
