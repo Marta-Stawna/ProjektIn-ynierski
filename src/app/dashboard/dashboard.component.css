@@ -1,3 +1,33 @@
 .dashboard-container {
   margin: 0 200px;
 }
+
+.dashboard-text {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dashboard-table thead th {
+  max-width: 110px !important;
+  text-align: center;
+}
+
+.dashboard-table tbody td {
+  max-width: 110px !important;
+  text-align: center;
+}
+
+.dashboard-table tbody td:first-child {
+  max-width: 60px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  padding-left: 15px;
+}
+
+.dashboard-table thead th:first-child {
+  max-width: 135px !important;
+  text-align: center;
+}
