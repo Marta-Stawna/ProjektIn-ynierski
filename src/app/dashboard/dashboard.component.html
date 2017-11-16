@@ -6,8 +6,9 @@
     <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.id" [selected]="room.id==9">{{room.number}}</option>
   </select>
 
-  <p>Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
-  <table class="table table-bordered">
+  <p class="dashboard-text">Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
+
+  <table class="table table-bordered dashboard-table">
     <thead>
       <tr>
         <th></th>
