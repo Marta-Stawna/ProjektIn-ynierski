@@ -6,3 +6,9 @@
   width: calc(100% - 400px);
   margin-left: 200px;
 }
+
+.res-date, .res-hour, .res-btn, .res-room {
+  display: block;
+  margin-top: 10px;
+  line-height: 50px;
+}
