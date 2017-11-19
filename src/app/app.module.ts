@@ -22,6 +22,9 @@ import {  OrderByPipe } from './common/sort.pipe';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { AuthService} from './auth/auth.service';
 import { AuthGuardService} from './auth/auth-guard.service';
+import { MyGroupsComponent } from './my-groups/my-groups.component';
+import { NewGroupComponent } from './new-group/new-group.component';
+import { SearchGroupComponent } from './search-group/search-group.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AuthGuardService} from './auth/auth-guard.service';
     FooterComponent,
     LoginComponent,
     TableRowComponent,
-    OrderByPipe
+    OrderByPipe,
+    MyGroupsComponent,
+    NewGroupComponent,
+    SearchGroupComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

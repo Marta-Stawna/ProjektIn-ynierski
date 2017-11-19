@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Nowa grupa</h2>
+    <form #groupForm="ngForm" (ngSubmit)="save(groupForm.value)">
+      <label for="group" class="new_group-input">
+        <span><strong>Podaj nazwę grupy:</strong></span>
+        <input type="text" ngModel [(ngModel)]="group" name="group" required />
+      </label>
+
+      <label class="new_group-btn">
+        <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
+      </label>
+
+      <div *ngIf="saved == 1 " class="card-block">
+        <div class="alert alert-success">
+          <strong>Potwierdzenie:</strong>Jesteś adminem grupy o nazwie {{group}}
+        </div>
+      </div>
+
+      <div *ngIf="saved == 0 " class="card-block">
+        <div class="alert alert-warning">
+          <span><strong>Nazwa grupy jest już zarezerwowana</strong>
+          Proszę wybrać inną nazwę</span>
+        </div>
+      </div>
+    </form>
+</div>

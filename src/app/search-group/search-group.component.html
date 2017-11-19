@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Wyszukiwanie grupy</h1>
+  <div class="col-md-4">
+    <div class="card">
+      <form #checkForm="ngForm" (ngSubmit)="save(checkForm.value)">
+        <div class="card-block">
+          <div class="form-group">
+            <label for="name">
+              <span> Szukaj po nazwie: </span>
+              <input type="type" ngModel name="name" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="room">
+              <span> Szukaj po sali: </span>
+              <input type="type" ngModel name="room" />
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="date">
+              <span> Szukaj po dacie: </span>
+              <input type="date" ngModel name="date" />
+            </label>
+          </div>
+          <div class="form-group">
+            <input class="btn float-xs-right" type="submit" value="Zapisz" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="groupData" class="col-xs">
+    <div class="col-xs">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> # </th>
+            <th> Nazwa </th>
+            <th> Uprawnienia </th>
+            <th> Sala </th>
+            <th> Data </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let group of groupData; let i=index">
+            <td>  {{i+1}} </td>
+            <td>  {{group.name}} </td>
+            <td>  {{group.role}} </td>
+            <td>  {{group.room}} </td>
+            <td>  {{group.date}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

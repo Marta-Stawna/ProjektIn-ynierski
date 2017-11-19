@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Moje grupy</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nazwa grupy</th>
+        <th>Uprawnienia</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let group of groups; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{group.name}}</td>
+        <td>{{group.role}}</td>
+        <td>
+          <button type="button" (click)="adminPanel()" class="btn btn-danger btn-xs">Admin</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
