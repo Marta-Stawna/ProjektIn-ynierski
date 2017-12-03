@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupsService } from '../common/groups.service';
 
 @Component({
   selector: 'app-my-groups',
@@ -7,24 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyGroupsComponent implements OnInit {
 
-  private groups = [
-    {
-      name: 'Pierwsza grupa',
-      role: 'uczestnik'
-    },
-    {
-      name: 'Druga grupa',
-      role: 'admin'
-    },
-
-  ]
-  constructor() { }
+  private groups = [];
+  constructor(private groupsService: GroupsService) { }
 
   ngOnInit() {
+    this.loadGroups();
   }
 
-  adminPanel() {
-    console.log("Admin Panel")
+  removeItem(name) {
+    this.groupsService.removeGroup(name).subscribe(success => this.loadGroups())
   }
 
+  loadGroups() {
+    this.groupsService.getGroups().subscribe(data => this.groups = data,
+    error => console.log(error))
+  }
 }

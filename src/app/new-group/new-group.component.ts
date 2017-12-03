@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupsService } from '../common/groups.service';
 
 @Component({
   selector: 'app-new-group',
@@ -7,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewGroupComponent implements OnInit {
 
-  constructor() { }
+  saved;
+  constructor(private groupsService: GroupsService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   save(data) {
-    console.log(data)
+    this.groupsService.createGroup(data).subscribe(data => {
+    this.saved = 1;
+      },
+    error => {
+      this.saved = 0;
+      console.log(error)
+    });
   }
 
 }

@@ -7,15 +7,21 @@
         <th>Nazwa grupy</th>
         <th>Uprawnienia</th>
         <th></th>
+        <th>Usuń grupę</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let group of groups; let i=index">
         <td>{{i+1}}</td>
         <td>{{group.name}}</td>
-        <td>{{group.role}}</td>
+        <td>{{group.users[0].role === 'creator' ? 'admin' : group.users[0].role }}</td>
         <td>
-          <button type="button" (click)="adminPanel()" class="btn btn-danger btn-xs">Admin</button>
+          <div *ngIf='group.users[0].role === "creator"' >
+            <a class='btn btn-success' routerLink="/my-groups/admin">Admin Panel</a>
+          </div>
+        </td>
+        <td>
+          <button class='btn btn-danger' (click)="removeItem(group.name)">Usuń</button>
         </td>
       </tr>
     </tbody>

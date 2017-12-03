@@ -9,6 +9,7 @@ import { AuthGuardService} from './auth/auth-guard.service';
 import { MyGroupsComponent } from './my-groups/my-groups.component';
 import { NewGroupComponent } from './new-group/new-group.component';
 import { SearchGroupComponent } from './search-group/search-group.component';
+import { AdminComponent } from './my-groups/admin/admin.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const appRoutes: Routes = [
   { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuardService] },
   { path: 'my-groups', component: MyGroupsComponent, canActivate: [AuthGuardService] },
+  { path: 'my-groups/admin', component: AdminComponent, canActivate: [AuthGuardService] },
   { path: 'new-group', component: NewGroupComponent, canActivate: [AuthGuardService] },
   { path: 'search-group', component: SearchGroupComponent, canActivate: [AuthGuardService] }
 ];
