@@ -50,6 +50,7 @@ export class CommunicationService {
 
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
     .map((res: Response) => res.json().data)
+    .catch(error => error)
   }
 
   findReservationData(reservation, userId) {
@@ -95,7 +96,6 @@ export class CommunicationService {
     let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+ userId + '","sala":"'+ reservation.sala + '","data":"'+ reservation.data + '","godzina":"' + reservation.godzina +'"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
-    .map((res: Response) => {
-      console.log(res.json().data);res.json().data});
+    .map((res: Response) => res.json().data);
   }
 }

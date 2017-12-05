@@ -1,0 +1,9 @@
+.container {
+  width: calc(100% - 400px);
+  margin-left: 200px;
+}
+
+span {
+  display: block;
+  padding-bottom: 10px;
+}

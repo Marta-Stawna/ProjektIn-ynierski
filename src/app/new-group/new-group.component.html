@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Nowa grupa</h2>
+    <form #groupForm="ngForm" (ngSubmit)="save(groupForm.value)">
+      <label for="group" class="new_group-input">
+        <span><strong>Podaj nazwę grupy:</strong></span>
+        <input type="text" ngModel [(ngModel)]="group" name="group" required />
+      </label>
+
+      <label class="new_group-btn">
+        <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
+      </label>
+    </form>
+    <div *ngIf="info" class="card-block">
+      <div [ngClass]="{ 'alert': true, 'alert-success': info.status, 'alert-warning': !info.status }">
+        <strong>{{info.data[0]}}</strong>{{info.data[1]}} {{info.status ? group : null}}
+      </div>
+    </div>
+</div>

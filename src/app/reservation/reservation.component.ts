@@ -18,23 +18,25 @@ export class ReservationComponent implements OnInit {
   public rooms;
   private userId;
   private sessionId;
-  saved : Number;
   private reservationData;
+  public info;
 
   constructor(private communicationService: CommunicationService, private userService: LoginService) { }
 
   save(data) {
-  this.saved = 1
   this.reservation = data;
-
-  this.communicationService.findReservationData(this.reservation, sessionStorage.getItem('userId'))
-  .subscribe(reservation => {
-    if(reservation == 0)
-      this.communicationService.addReservationData(this.userService.getSessionId(), this.reservation, sessionStorage.getItem('userId'))
-      .subscribe(reservation => this.data = reservation)
-    else {
-      this.saved =0;
-      }
+  this.communicationService.addReservationData(this.userService.getSessionId(), this.reservation, sessionStorage.getItem('userId'))
+      .subscribe(reservation => {
+        this.data = reservation;
+        this.info = {
+          status: true,
+          data: ['Potwierdzenie: ','Zatwierdzono rezerwację.']
+        }
+      },
+      error => this.info = {
+        status: false,
+        data: ['Sala w powyższym terminie została już wcześniej zarezerwowana: ',
+      'Proszę wybrać inną salę lub wolny termin.']
     });
   }
 

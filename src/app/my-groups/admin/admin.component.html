@@ -1,0 +1,36 @@
+<div class='container'>
+  <h2>Panel założyciela grupy XYZ</h2>
+  <h4> Dodaj notakę dla uczestników grupy</h4>
+
+  <form #messageForm='ngForm' (ngSubmit)='save(messageForm.value)'>
+    <label for='textarea'>
+      <textarea id='textarea' rows='4' cols='50'>
+      </textarea>
+    </label>
+
+    <div>
+      <input class='btn btn-success' type='submit' value='Wyslij'/>
+    </div>
+  </form>
+
+  <h4> Zarządzaj uczestnikami grupy </h4>
+
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Imie </th>
+        <th> Nazwisko </th>
+        <th> Usuń </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let group of groupData; let i=index'>
+        <td>  {{i+1}} </td>
+        <td>  {{group.name}} </td>
+        <td>  {{group.role}} </td>
+        <td>  {{group.room}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

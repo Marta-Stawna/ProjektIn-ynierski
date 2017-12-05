@@ -1,0 +1,13 @@
+.container {
+  width: calc(100% - 400px);
+  margin-left: 200px;
+}
+
+.new_group-input {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.new_group-input span {
+  padding-right: 10px;
+}
