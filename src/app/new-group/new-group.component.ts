@@ -8,18 +8,22 @@ import { GroupsService } from '../common/groups.service';
 })
 export class NewGroupComponent implements OnInit {
 
-  saved;
+  public info;
   constructor(private groupsService: GroupsService) { }
 
   ngOnInit() {}
 
   save(data) {
     this.groupsService.createGroup(data).subscribe(data => {
-    this.saved = 1;
-      },
-    error => {
-      this.saved = 0;
-      console.log(error)
+      this.info = {
+        status: true,
+        data: ['Potwierdzenie: ','Jesteś założycielem grupy o nazwie ']
+      }
+    },
+    error => this.info = {
+      status: false,
+      data: ['Nazwa grupy jest już zarezerwowana: ',
+      'Proszę wybrać inną nazwę']
     });
   }
 

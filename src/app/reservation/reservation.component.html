@@ -33,16 +33,9 @@
         <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
       </label>
 
-      <div *ngIf="saved == 1 " class="card-block">
-        <div class="alert alert-success">
-          <strong>Potwierdzenie:</strong> Zatwierdzono rezerwację.
-        </div>
-      </div>
-
-      <div *ngIf="saved == 0 " class="card-block">
-        <div class="alert alert-warning">
-          <span><strong>Sala w powyższym terminie została już wcześniej zarezerwowana.</strong>
-          Proszę wybrać inną salę lub wolny termin.</span>
+      <div *ngIf="info" class="card-block">
+        <div [ngClass]="{ 'alert': true, 'alert-success': info.status, 'alert-warning': !info.status }">
+          <strong>{{info.data[0]}}</strong>{{info.data[1]}}
         </div>
       </div>
     </form>

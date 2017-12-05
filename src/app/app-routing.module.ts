@@ -18,8 +18,8 @@ export const appRoutes: Routes = [
   { path: 'edit', component: EditComponent, canActivate: [AuthGuardService] },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuardService] },
+  { path: 'my-groups/admin/:id', component: AdminComponent, canActivate: [AuthGuardService] },
   { path: 'my-groups', component: MyGroupsComponent, canActivate: [AuthGuardService] },
-  { path: 'my-groups/admin', component: AdminComponent, canActivate: [AuthGuardService] },
   { path: 'new-group', component: NewGroupComponent, canActivate: [AuthGuardService] },
   { path: 'search-group', component: SearchGroupComponent, canActivate: [AuthGuardService] }
 ];

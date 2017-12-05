@@ -9,18 +9,10 @@
       <label class="new_group-btn">
         <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
       </label>
-
-      <div *ngIf="saved == 1" class="card-block">
-        <div class="alert alert-success">
-          <strong>Potwierdzenie:</strong>Jesteś adminem grupy o nazwie {{group}}
-        </div>
-      </div>
-
-      <div *ngIf="saved == 0 " class="card-block">
-        <div class="alert alert-warning">
-          <span><strong>Nazwa grupy jest już zarezerwowana</strong>
-          Proszę wybrać inną nazwę</span>
-        </div>
-      </div>
     </form>
+    <div *ngIf="info" class="card-block">
+      <div [ngClass]="{ 'alert': true, 'alert-success': info.status, 'alert-warning': !info.status }">
+        <strong>{{info.data[0]}}</strong>{{info.data[1]}} {{info.status ? group : null}}
+      </div>
+    </div>
 </div>

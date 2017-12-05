@@ -49,7 +49,8 @@ export class CommunicationService {
     let sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + userId + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
-    .map((res: Response) => {console.log(res, 'reservation') ;res.json().data})
+    .map((res: Response) => res.json().data)
+    .catch(error => error)
   }
 
   findReservationData(reservation, userId) {
