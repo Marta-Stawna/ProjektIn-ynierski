@@ -2,6 +2,7 @@
     <md-sidenav #sidenav class="sidenav">
     <ul>
       <li routerLinkActive="active"><a routerLink="/dashboard">Strona Główna</a></li>
+      <li routerLinkActive="active"><a routerLink="/plan">Plan zajęć</a></li>
 			<li routerLinkActive="active"><a routerLink="/reservation">Nowa Rezerwacja</a></li>
 			<li routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
       <li routerLinkActive="active"><a routerLink="/search">Wyszukaj sali</a></li>
@@ -14,7 +15,7 @@
   <div class="main-container">
     <app-header>
        <button md-button class="btn btn-link button" (click)="sidenav.open()" >
-         <span class="glyphicon glyphicon-menu-hamburger"></span>
+         <span>MENU</span>
         </button>
       </app-header>
       <div class="main-content">

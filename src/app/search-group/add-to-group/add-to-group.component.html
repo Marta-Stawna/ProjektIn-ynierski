@@ -1,0 +1,22 @@
+<div class="container">
+  <h4> Zapisz się do danej rezerwacji</h4>
+
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Imie </th>
+        <th> Nazwisko </th>
+        <th> Usuń </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let group of groupData; let i=index'>
+        <td>  {{i+1}} </td>
+        <td>  {{group.name}} </td>
+        <td>  {{group.role}} </td>
+        <td>  {{group.room}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

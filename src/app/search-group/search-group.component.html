@@ -11,18 +11,6 @@
             </label>
           </div>
           <div class="form-group">
-            <label for="room">
-              <span> Szukaj po sali: </span>
-              <input type="type" ngModel name="room" />
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="date">
-              <span> Szukaj po dacie: </span>
-              <input type="date" ngModel name="date" />
-            </label>
-          </div>
-          <div class="form-group">
             <input class="btn float-xs-right" type="submit" value="Zapisz" />
           </div>
         </div>
@@ -36,18 +24,20 @@
           <tr>
             <th> # </th>
             <th> Nazwa </th>
-            <th> Uprawnienia </th>
-            <th> Sala </th>
-            <th> Data </th>
+            <th> Założyciel </th>
+            <th> Notatka od założyciela </th>
+            <th> Dołącz </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let group of groupData; let i=index">
             <td>  {{i+1}} </td>
             <td>  {{group.name}} </td>
-            <td>  {{group.role}} </td>
-            <td>  {{group.room}} </td>
-            <td>  {{group.date}} </td>
+            <td>  {{group.creator[0].imie}} {{group.creator[0].nazwisko}}</td>
+            <td>  {{group.notatka}} </td>
+            <td>
+              <a class='btn btn-success' [routerLink]="['/search-group', group._id.$id]">Dołącz do grupy</a>
+            </td>
           </tr>
         </tbody>
       </table>

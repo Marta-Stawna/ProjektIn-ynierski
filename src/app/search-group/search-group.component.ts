@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupsService } from '../common/groups.service';
 
 @Component({
   selector: 'app-search-group',
@@ -7,28 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchGroupComponent implements OnInit {
 
-  private groupData = [
-    {
-      name: 'aaaa',
-      role: 'admin',
-      room: 'Aula A',
-      date: '12-12-2017'
-    },
-    {
-      name: 'bbbb',
-      role: 'uczestnik',
-      room: 'Aula A',
-      date: '16-12-2017'
-    },
+  private groupData = [];
+  constructor(private groupsService: GroupsService) { }
 
-  ]
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   save(data) {
-    console.log(data)
+    this.groupsService.searchGroup(data.name).subscribe(data => this.groupData = data,
+    error => console.log(error))
   }
-
 }

@@ -10,7 +10,8 @@ import { Subscription } from "rxjs/Subscription";
             <div [style.display]="path">
             <ng-content></ng-content></div>
             <div *ngIf="user" class="user">
-              Jesteś zalogowany jako: {{user.first_name }} {{user.last_name}}
+              Jesteś zalogowany jako: {{user.first_name }} {{user.last_name}} |
+              <a href="https://dev.alcon.eu.org/ugather/?logout">Wyloguj się</a>
             </div>
           </div>
   `,
@@ -26,6 +27,12 @@ import { Subscription } from "rxjs/Subscription";
             .user {
               margin: 10px;
               padding: 5px;
+            }
+
+            a {
+              text-decoration: none;
+              color: #fff;
+              font-weight: bold;
             }`
           ]
 })
