@@ -27,15 +27,15 @@
         <th> # </th>
         <th> Imie </th>
         <th> Nazwisko </th>
-        <th> Usuń </th>
+        <th> Usuń użytkownika</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let group of groupData; let i=index'>
         <td>  {{i+1}} </td>
-        <td>  {{group.name}} </td>
-        <td>  {{group.role}} </td>
-        <td>  {{group.room}} </td>
+        <td>  {{group.imie}} </td>
+        <td>  {{group.nazwisko}} </td>
+        <td><button class='btn btn-danger' (click)="removeUser(group.id, group.imie, group.nazwisko)">Usuń</button></td>
       </tr>
     </tbody>
   </table>

@@ -38,7 +38,7 @@ export class GroupsService {
   }
 
   getUserGroups(first_name, last_name) {
-    let groups = 'dane={"collection":"groups", "mode":"find","dane":{ "users":[{"id_u":"'+ sessionStorage.getItem("userId") +'","imie":"'+ first_name + '","nazwisko":"'+ last_name +'"}]}}';
+    let groups = 'dane={"collection":"groups", "mode":"find","dane":{ "users":{"id_u":"'+ sessionStorage.getItem("userId") +'","imie":"'+ first_name + '","nazwisko":"'+ last_name +'"}}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + groups, this.headers)
       .map((res: Response) => res.json().data)
@@ -87,7 +87,14 @@ export class GroupsService {
   }
 
   getGroupsInfo(id) {
-    let group = 'dane={"collection":"groups","mode":"find","key":{"_id":"ObjectId(\\"'+ id +'\\")"}}}';
+    let group = 'dane={"collection":"groups","mode":"find","dane":{"_id":"ObjectId(\\"'+ id +'\\")"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
+      .map((res: Response) => res.json().data)
+  }
+
+  removeUser(id_group, first_name, last_name, id_remove, first_name_remove, last_name_remove) {
+    let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")","creator":[{"id_u":"'+ sessionStorage.getItem("userId") +'","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}]},"dane":{"$pull":{"users":{"id_u":"'+ id_remove +'","imie":"'+ first_name_remove +'","nazwisko":"'+ last_name_remove +'"}}}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
