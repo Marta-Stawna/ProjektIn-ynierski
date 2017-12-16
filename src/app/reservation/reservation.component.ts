@@ -20,12 +20,15 @@ export class ReservationComponent implements OnInit {
   private sessionId;
   private reservationData;
   public info;
+  public groupName;
+  private first_name;
+  private last_name;
 
   constructor(private communicationService: CommunicationService, private userService: LoginService) { }
 
   save(data) {
   this.reservation = data;
-  this.communicationService.addReservationData(this.userService.getSessionId(), this.reservation, sessionStorage.getItem('userId'))
+  this.communicationService.addReservationData(this.userService.getSessionId(), this.reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
       .subscribe(reservation => {
         this.data = reservation;
         this.info = {
@@ -44,7 +47,12 @@ export class ReservationComponent implements OnInit {
     const sessionId = this.userService.getSessionId();
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
 
-    this.communicationService.getReservationData(sessionId, sessionStorage.getItem('userId'))
-    .subscribe(reservationData => this.reservationData = reservationData);
+    this.userService.getUserData(sessionId).subscribe(data => {
+      this.first_name = data.first_name;
+      this.last_name = data.last_name;
+    });
+
+    // this.communicationService.getReservationData(sessionStorage.getItem('userId'),this.first_name, this.last_name)
+    // .subscribe(reservationData => this.reservationData = reservationData);
   }
 }

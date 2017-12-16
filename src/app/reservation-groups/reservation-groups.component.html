@@ -1,0 +1,55 @@
+<div class="container" >
+  <h2>Grupowa Rezerwacja</h2>
+    <form #reservationFormGroup="ngForm" (ngSubmit)="saveData(reservationFormGroup.value)">
+      <span><strong>Podaj nazwę rezerwacji grupowej</strong></span>
+      <input type="text" name="name" class="res-groups form-control" ngModel required/>
+      <label for="sala" class="res-room">
+        <span>Wybierz salę</span>
+        <span class="asteriskField">*</span>
+      </label>
+      <select multiple class="form-control" id="sala" ngModel name="sala" required>
+        <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.number" [selected]="room.number==9">{{room.number}}</option>
+      </select>
+
+      <label for="date" class="res-date">
+        <span>Wybierz Datę</span>
+        <span class="asteriskField">*</span>
+        <input class="form-control" id="data"  ngModel name="date" placeholder="YYYY-DD-MM" onfocus="(this.type='date')" onblur="(this.type='text')" type="date" required/>
+      </label>
+
+      <label for="godzina" class="res-hour">
+        <span>Wybierz godzinę</span>
+        <span class="asteriskField">*</span>
+
+        <select class="form-control" ngModel name="godzina" required>
+          <option>8:15 - 9:45</option>
+          <option>10:00 - 11:30</option>
+          <option>11:45 - 13:15</option>
+          <option>13:45 - 15:15</option>
+          <option>15:30 - 17:00</option>
+          <option>17:15 - 18:45</option>
+        </select>
+      </label>
+
+      <label for="groups" class="res-for-groups">
+          <span><strong>Wybierz grupę:</strong></span>
+          <select name="groupSelect" ngModel class="res-groups form-control">
+            <option value="" [selected]="false">Wybierz jedną opcje</option>
+            <option *ngFor="let group of groups" [value]="[group._id.$id, group.name]">{{group.name}}</option>
+          </select>
+
+          <span><strong>Zostaw notatkę dla grupy</strong></span>/
+          <textarea name="note" cols="30" rows="3" ngModel class="res-note"></textarea>
+      </label>
+
+      <label class="res-btn">
+        <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
+      </label>
+
+      <div *ngIf="info" class="card-block">
+        <div [ngClass]="{ 'alert': true, 'alert-success': info.status, 'alert-warning': !info.status }">
+          <strong>{{info.data[0]}}</strong>{{info.data[1]}}
+        </div>
+      </div>
+    </form>
+</div>

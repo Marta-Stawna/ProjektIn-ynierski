@@ -39,4 +39,9 @@ export class MyGroupsComponent implements OnInit {
     this.groupsService.getUserGroups(this.first_name, this.last_name).subscribe(data => this.groups = data,
     error => console.log(error))
   }
+
+  removeUser(id) {
+    this.groupsService.removeMe(id, this.first_name, this.last_name).subscribe(data => this.loadGroups(),
+    error => console.log(error))
+  }
 }

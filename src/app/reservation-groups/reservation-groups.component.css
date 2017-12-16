@@ -1,0 +1,14 @@
+.button-color {
+  background-color: #808080;
+}
+
+.container {
+  width: calc(100% - 400px);
+  margin-left: 200px;
+}
+
+.res-date, .res-hour, .res-btn, .res-room, .res-for-groups, .res-groups, .res-note  {
+  display: block;
+  margin-top: 10px;
+  line-height: 50px;
+}

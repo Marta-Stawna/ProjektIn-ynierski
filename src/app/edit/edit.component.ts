@@ -17,11 +17,13 @@ export class EditComponent implements OnInit {
   private reservationData;
   progress: number = 0;
   label: string;
+  private first_name;
+  private last_name;
 
   constructor(private service: CommunicationService, private userService: LoginService) {}
 
   removeReservation(reservation){
-    this.service.removeReservationData(this.userService.getSessionId(), reservation, sessionStorage.getItem('userId'))
+    this.service.removeReservationData(this.userService.getSessionId(), reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(succes => this.getReservation());
     this.deleted = 1;
     this.processWithinAngularZone();
@@ -47,13 +49,17 @@ export class EditComponent implements OnInit {
   }
 
   getReservation(){
-    const sessionId = this.userService.getSessionId();
-
-    this.service.getReservationData(sessionId, sessionStorage.getItem('userId'))
+    this.service.getReservationDataIndyvidual(sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(reservationData => this.reservationData = reservationData);
   }
 
   ngOnInit() {
-    this.getReservation();
+    const sessionId = this.userService.getSessionId();
+
+    this.userService.getUserData(sessionId).subscribe(data => {
+      this.first_name = data.first_name;
+      this.last_name = data.last_name;
+      this.getReservation();
+    });
   }
 }

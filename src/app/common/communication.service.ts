@@ -40,13 +40,29 @@ export class CommunicationService {
     .map((res: Response) => res.json().data.id)
   }
 
-  getReservationData(sessionid, userId) {
-    return this.http.get('http://213.184.22.45/querydb.php?id_u=' + userId,  this.headers)
+  getReservationDataGroupCreator(userId, first_name, last_name) {
+    let reservation = 'dane={"collection":"rezerwacje","mode":"find","dane":{"creator":{ "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"type":"group"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + reservation,  this.headers)
     .map((res: Response) => res.json().data)
   }
 
-  addReservationData(sessionid, reservation, userId) {
-    let sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{ "id_u":"' + userId + '","sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '"}}';
+  getReservationDataGroupUser(userId, first_name, last_name) {
+    let reservation = 'dane={"collection":"rezerwacje","mode":"find","dane":{"users":{ "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"type":"group"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + reservation,  this.headers)
+    .map((res: Response) => res.json().data)
+  }
+
+  getReservationDataIndyvidual(userId, first_name, last_name) {
+    let reservation = 'dane={"collection":"rezerwacje","mode":"find","dane":{"users":{ "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"type":"individual"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + reservation,  this.headers)
+    .map((res: Response) => res.json().data)
+  }
+
+  addReservationData(sessionid, reservation, userId, first_name, last_name) {
+    let sendReservation = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{"users": [{ "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}],"sala":"' + reservation.sala + '","data":"' + reservation.date + '","godzina":"' + reservation.godzina.substring(0,5) + '","type":"individual"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?'+ sendReservation, this.headers)
     .map((res: Response) => res.json().data)
@@ -92,10 +108,32 @@ export class CommunicationService {
     .map((res: Response) => res.json().data)
   }
 
-  removeReservationData(sessionid, reservation, userId) {
-    let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{ "id_u":"'+ userId + '","sala":"'+ reservation.sala + '","data":"'+ reservation.data + '","godzina":"' + reservation.godzina +'"}}';
+  removeReservationData(sessionid, reservation, userId , first_name, last_name) {
+    let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{"users": { "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"sala":"' + reservation.sala + '","data":"' + reservation.data + '","godzina":"' + reservation.godzina.substring(0,5) + '","type":"individual"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
+    .map((res: Response) => res.json().data);
+  }
+
+  removeReservationDataGroupCreator(reservation, userId , first_name, last_name) {
+    let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{"creator": { "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"sala":"' + reservation.sala + '","data":"' + reservation.data + '","godzina":"' + reservation.godzina.substring(0,5) + '","type":"group"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
+    .map((res: Response) => res.json().data);
+  }
+
+  removeReservationDataGroupUser(reservation, userId , first_name, last_name) {
+    let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{"users": { "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"sala":"' + reservation.sala + '","data":"' + reservation.data + '","godzina":"' + reservation.godzina.substring(0,5) + '","type":"group"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
+    .map((res: Response) => res.json().data);
+  }
+
+  addGroupReservation(sessionId, reservation, first_name, last_name , userId) {
+    var reservation_data = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{"sala":"'+ reservation.sala+'","data":"'+ reservation.date+'","godzina":"' + reservation.godzina.substring(0,5) + '","purpose":"'+ reservation.name +'","type":"group","name":"'+ reservation.groupSelect.split(',')[1]+ '",'+
+       '"creator":[{"id_u":"'+ userId +'","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}],"id_g":"ObjectId(\\"'+ reservation.groupSelect.split(',')[0] +'\\")"}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + reservation_data, this.headers)
     .map((res: Response) => res.json().data);
   }
 }

@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ReservationGroupsComponent } from './reservation-groups/reservation-groups.component';
 import { EditComponent } from './edit/edit.component';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +14,7 @@ import { AdminComponent } from './my-groups/admin/admin.component';
 import { AddToGroupComponent } from './search-group/add-to-group/add-to-group.component';
 import { AdminListComponent } from './my-groups/admin-list/admin-list.component';
 import { AboutComponent } from './about/about.component';
+import { MyReservationGroupComponent } from './my-reservation-group/my-reservation-group.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,6 +24,8 @@ export const appRoutes: Routes = [
   { path: 'edit', component: EditComponent, canActivate: [AuthGuardService] },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuardService] },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthGuardService] },
+  { path: 'reservation-groups', component: ReservationGroupsComponent, canActivate: [AuthGuardService] },
+  { path: 'my-reservation-groups', component: MyReservationGroupComponent, canActivate: [AuthGuardService] },
   { path: 'my-groups/admin/:id', component: AdminComponent, canActivate: [AuthGuardService] },
   { path: 'my-groups/admin', component: AdminListComponent, canActivate: [AuthGuardService] },
   { path: 'my-groups', component: MyGroupsComponent, canActivate: [AuthGuardService] },

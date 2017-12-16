@@ -73,14 +73,15 @@ export class GroupsService {
   }
 
   addUserToReservation(id_group, id_user, first_name, last_name) {
-    let group = 'dane={"collection":"reservation","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}}}}';
-
+    console.log(id_group, 'kkkkkkkkkkkkkkkk')
+    let group = 'dane={"collection":"rezerwacje","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}}}}';
+// http://213.184.22.45/querydb.php?dane={"collection":"rezerwacje","mode":"update","key":{"_id":"ObjectId(\"5a2e5b006bf095546d3c986b\")"},"dane":{"$addToSet":{"users":{"id_u":"123456","imie":"Daniela", "nazwisko":"Jurgielewicz"}}}}
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
   }
 
   addUserToGroup(id_group, id_user, first_name, last_name) {
-    let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}}}}';
+    let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":[{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}]}}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
@@ -95,6 +96,20 @@ export class GroupsService {
 
   removeUser(id_group, first_name, last_name, id_remove, first_name_remove, last_name_remove) {
     let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")","creator":[{"id_u":"'+ sessionStorage.getItem("userId") +'","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}]},"dane":{"$pull":{"users":{"id_u":"'+ id_remove +'","imie":"'+ first_name_remove +'","nazwisko":"'+ last_name_remove +'"}}}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
+      .map((res: Response) => res.json().data)
+  }
+
+  removeMe(id_group, first_name, last_name) {
+    let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$pull":{"users":{"id_u":"'+ sessionStorage.getItem("userId") +'","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}}}}';
+
+    return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
+      .map((res: Response) => res.json().data)
+  }
+
+  findReservationGroup(id_group) {
+    let group = 'dane={"collection":"rezerwacje","mode":"find","dane":{"id_g":"ObjectId(\\"'+ id_group +'\\")"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)

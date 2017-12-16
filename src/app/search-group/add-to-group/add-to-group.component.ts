@@ -30,7 +30,7 @@ export class AddToGroupComponent implements OnInit {
     setTimeout(() => this.groupsService.addUserToGroup(this.id, this.user_id, this.first_name, this.last_name)
       .subscribe((success) => console.log(success)),800)
 
-    this.groupsService.getGroupsInfo(this.id).subscribe(data => this.groups = data)
+    this.groupsService.findReservationGroup(this.id).subscribe(data => this.groups = data)
   }
 
   addToReservation() {

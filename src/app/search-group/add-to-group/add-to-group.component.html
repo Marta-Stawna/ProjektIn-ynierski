@@ -1,22 +1,35 @@
 <div class="container">
+  <br/>
+  <div class="alert alert-success">
+  <strong>Success!</strong> Pomyślnie zapisałeś się do tej grupy
+  </div>
+  <hr/>
   <h4> Zapisz się do danej rezerwacji</h4>
 
-  <table class='table table-striped'>
+  <table class='table table-striped' *ngIf="groups">
     <thead>
       <tr>
         <th> # </th>
-        <th> Imie </th>
-        <th> Nazwisko </th>
-        <th> Usuń </th>
+        <th> Cel Spotkania </th>
+        <th> Data </th>
+        <th> Godzina </th>
+        <th> Zapisz </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let group of groupData; let i=index'>
+      <tr *ngFor='let group of groups; let i=index'>
         <td>  {{i+1}} </td>
-        <td>  {{group.name}} </td>
-        <td>  {{group.role}} </td>
-        <td>  {{group.room}} </td>
+        <td>  {{group.purpose}} </td>
+        <td>  {{group.data}} </td>
+        <td>  {{group.godzina}} </td>
+        <td>
+          <button class='btn btn-success' (click)="addToReservation(group.id_g.$id)"> Zapisz </button>
+        </td>
       </tr>
     </tbody>
   </table>
+
+  <div class="alert alert-danger" *ngIf="!groups">
+    W tej grupie nie ma żadnych rezerwacji grupowych.
+  </div>
 </div>

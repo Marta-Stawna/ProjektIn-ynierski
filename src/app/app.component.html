@@ -1,15 +1,19 @@
  <md-sidenav-container>
     <md-sidenav #sidenav class="sidenav">
     <ul>
-      <li routerLinkActive="active"><a routerLink="/dashboard">Strona Główna</a></li>
-      <li routerLinkActive="active"><a routerLink="/plan">Plan zajęć</a></li>
-			<li routerLinkActive="active"><a routerLink="/reservation">Nowa Rezerwacja</a></li>
-			<li routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
-      <li routerLinkActive="active"><a routerLink="/search">Wyszukaj sali</a></li>
-      <li routerLinkActive="active"><a routerLink="/new-group">Nowa Grupa</a></li>
-			<li routerLinkActive="active"><a routerLink="/my-groups">Moje Grupy</a></li>
-			<li routerLinkActive="active"><a routerLink="/search-group">Wyszukaj grupy</a></li>
-      <li routerLinkActive="active" (click)="logOut()"><a href="https://dev.alcon.eu.org/ugather/?logout">Wyloguj się</a></li>
+      <li routerLinkActive="active"><a routerLink="/dashboard"><strong>Strona Główna</strong></a></li>
+      <li class="menu-header"><strong>Tryb indywidulany</strong></li>
+      <li routerLinkActive="active"><a routerLink="/search">Wyszukaj salę</a></li>
+      <li routerLinkActive="active"><a routerLink="/plan">Plan dostępności sal</a></li>
+			<li routerLinkActive="active"><a routerLink="/reservation">Zarezerwuj salę</a></li>
+      <li routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
+      <li class="menu-header"><strong>Tryb grupowy</strong></li>
+      <li routerLinkActive="active"><a routerLink="/search-group">Wyszukaj grupę</a></li>
+      <li routerLinkActive="active"><a routerLink="/new-group">Utwórz grupę</a></li>
+      <li routerLinkActive="active"><a routerLink="/my-groups">Moje Grupy</a></li>
+			<li routerLinkActive="active"><a routerLink="/reservation-groups">Zarezerwuj salę dla grupy</a></li>
+			<li routerLinkActive="active"><a routerLink="/my-reservation-groups">Moje Rezerwacje grupowe</a></li>
+      <li routerLinkActive="active" (click)="logOut()"><a href="https://dev.alcon.eu.org/ugather/?logout"><strong>Wyloguj się</strong></a></li>
 		</ul>
   </md-sidenav>
   <div class="main-container">
