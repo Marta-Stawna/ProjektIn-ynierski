@@ -60,3 +60,7 @@ md-sidenav li {
   max-width: 100%;
   height: auto;
 }
+
+.menu-header {
+  background-color: #D3D3D3;
+}

@@ -2,9 +2,9 @@
   <h2>Panel założyciela grupy XYZ</h2>
   <h4> Dodaj notakę dla uczestników grupy</h4>
 
-  <form #messageForm='ngForm' (ngSubmit)='save(messageForm.value)'>
+  <form #messageForm='ngForm' (ngSubmit)='saveNote(messageForm.value)'>
     <label for='textarea'>
-      <textarea id='textarea' rows='4' cols='50'>
+      <textarea name='textarea' ngModel rows='4' cols='50'>
       </textarea>
     </label>
 
@@ -12,6 +12,12 @@
       <input class='btn btn-success' type='submit' value='Wyslij'/>
     </div>
   </form>
+
+  <div *ngIf="text" class="card-block">
+    <div class="alert alert-success">
+        Twoj notatka została wysłana
+    </div>
+  </div>
 
   <h4> Zarządzaj uczestnikami grupy </h4>
 
@@ -21,15 +27,15 @@
         <th> # </th>
         <th> Imie </th>
         <th> Nazwisko </th>
-        <th> Usuń </th>
+        <th> Usuń użytkownika</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor='let group of groupData; let i=index'>
         <td>  {{i+1}} </td>
-        <td>  {{group.name}} </td>
-        <td>  {{group.role}} </td>
-        <td>  {{group.room}} </td>
+        <td>  {{group.imie}} </td>
+        <td>  {{group.nazwisko}} </td>
+        <td><button class='btn btn-danger' (click)="removeUser(group.id, group.imie, group.nazwisko)">Usuń</button></td>
       </tr>
     </tbody>
   </table>

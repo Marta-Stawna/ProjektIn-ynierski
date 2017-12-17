@@ -27,6 +27,11 @@ import { NewGroupComponent } from './new-group/new-group.component';
 import { SearchGroupComponent } from './search-group/search-group.component';
 import { GroupsService } from './common/groups.service';
 import { AdminComponent } from './my-groups/admin/admin.component';
+import { AddToGroupComponent } from './search-group/add-to-group/add-to-group.component';
+import { AdminListComponent } from './my-groups/admin-list/admin-list.component';
+import { AboutComponent } from './about/about.component';
+import { ReservationGroupsComponent } from './reservation-groups/reservation-groups.component';
+import { MyReservationGroupComponent } from './my-reservation-group/my-reservation-group.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,12 @@ import { AdminComponent } from './my-groups/admin/admin.component';
     MyGroupsComponent,
     NewGroupComponent,
     SearchGroupComponent,
-    AdminComponent
+    AdminComponent,
+    AddToGroupComponent,
+    AdminListComponent,
+    AboutComponent,
+    ReservationGroupsComponent,
+    MyReservationGroupComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

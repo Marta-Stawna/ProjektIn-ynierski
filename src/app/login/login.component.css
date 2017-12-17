@@ -14,7 +14,11 @@
   text-decoration: none;
   position: absolute;
   left: calc(50% - 200px);
-  top: calc(50% - 100px);
+  top: calc(50%);
+}
+
+img {
+  margin-left: calc(50% - 400px)
 }
 
 .sign-in-button:hover {
