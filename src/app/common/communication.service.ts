@@ -131,7 +131,7 @@ export class CommunicationService {
 
   addGroupReservation(sessionId, reservation, first_name, last_name , userId) {
     var reservation_data = 'dane={"collection":"rezerwacje", "mode":"insert", "dane":{"sala":"'+ reservation.sala+'","data":"'+ reservation.date+'","godzina":"' + reservation.godzina.substring(0,5) + '","purpose":"'+ reservation.name +'","type":"group","name":"'+ reservation.groupSelect.split(',')[1]+ '",'+
-       '"creator":[{"id_u":"'+ userId +'","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}],"id_g":"ObjectId(\\"'+ reservation.groupSelect.split(',')[0] +'\\")"}}';
+       '"creator":[{"id_u":"'+ userId +'","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"}],"id_g":"'+ reservation.groupSelect.split(',')[0] +'"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + reservation_data, this.headers)
     .map((res: Response) => res.json().data);

@@ -18,11 +18,11 @@ export class MyReservationGroupComponent implements OnInit {
   constructor(private service: CommunicationService, private userService: LoginService) {}
 
   removeReservationUser(reservation){
-    this.service.removeReservationDataGroupUser(this.userService.getSessionId(), reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
+    this.service.removeReservationDataGroupUser(reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(succes => this.getReservationUser());
   }
 
-  removeReservationCreator(reservation){
+  removeReservationCreator(reservation) {
       this.service.removeReservationDataGroupCreator(reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
       .subscribe(succes => {
         this.getReservationCreator();

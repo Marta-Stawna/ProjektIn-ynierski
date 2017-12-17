@@ -23,13 +23,17 @@
         <td>  {{group.data}} </td>
         <td>  {{group.godzina}} </td>
         <td>
-          <button class='btn btn-success' (click)="addToReservation(group.id_g.$id)"> Zapisz </button>
+          <button class='btn btn-success' (click)="addToReservation(group._id.$id)"> Zapisz </button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <div class="alert alert-danger" *ngIf="!groups">
+  <div class="alert alert-success" *ngIf="status">
+    Zostałeś zapisany do rezerwacji.
+  </div>
+
+  <div class="alert alert-danger" *ngIf="groups.length == 0">
     W tej grupie nie ma żadnych rezerwacji grupowych.
   </div>
 </div>

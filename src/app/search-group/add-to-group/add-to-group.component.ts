@@ -14,7 +14,8 @@ export class AddToGroupComponent implements OnInit {
   private first_name;
   private last_name;
   private user_id;
-  private groups;
+  public status = false;
+  private groups = [];
 
   constructor(private activatedRoute: ActivatedRoute, private groupsService: GroupsService, private userService: LoginService) { }
 
@@ -33,9 +34,9 @@ export class AddToGroupComponent implements OnInit {
     this.groupsService.findReservationGroup(this.id).subscribe(data => this.groups = data)
   }
 
-  addToReservation() {
-    this.groupsService.addUserToReservation(this.id, this.user_id, this.first_name, this.last_name)
-      .subscribe((success) => console.log(success))
+  addToReservation(id) {
+    this.groupsService.addUserToReservation(id, this.user_id, this.first_name, this.last_name)
+      .subscribe((success) => this.status = true)
   }
 
 }

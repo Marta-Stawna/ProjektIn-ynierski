@@ -73,9 +73,8 @@ export class GroupsService {
   }
 
   addUserToReservation(id_group, id_user, first_name, last_name) {
-    console.log(id_group, 'kkkkkkkkkkkkkkkk')
     let group = 'dane={"collection":"rezerwacje","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}}}}';
-// http://213.184.22.45/querydb.php?dane={"collection":"rezerwacje","mode":"update","key":{"_id":"ObjectId(\"5a2e5b006bf095546d3c986b\")"},"dane":{"$addToSet":{"users":{"id_u":"123456","imie":"Daniela", "nazwisko":"Jurgielewicz"}}}}
+
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
   }
@@ -88,7 +87,7 @@ export class GroupsService {
   }
 
   getGroupsInfo(id) {
-    let group = 'dane={"collection":"groups","mode":"find","dane":{"_id":"ObjectId(\\"'+ id +'\\")"}}';
+    let group = 'dane={"collection":"groups","mode":"find","dane":{"_id":"'+ id +'"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
@@ -109,7 +108,7 @@ export class GroupsService {
   }
 
   findReservationGroup(id_group) {
-    let group = 'dane={"collection":"rezerwacje","mode":"find","dane":{"id_g":"ObjectId(\\"'+ id_group +'\\")"}}';
+    let group = 'dane={"collection":"rezerwacje","mode":"find","dane":{"id_g":"'+ id_group +'"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
