@@ -51,8 +51,5 @@ export class ReservationComponent implements OnInit {
       this.first_name = data.first_name;
       this.last_name = data.last_name;
     });
-
-    // this.communicationService.getReservationData(sessionStorage.getItem('userId'),this.first_name, this.last_name)
-    // .subscribe(reservationData => this.reservationData = reservationData);
   }
 }

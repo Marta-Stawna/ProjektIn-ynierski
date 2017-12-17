@@ -45,17 +45,11 @@ export class ReservationGroupsComponent implements OnInit {
     const sessionId = this.userService.getSessionId();
     this.communicationService.getRooms(sessionId).subscribe(rooms => this.rooms = rooms);
 
-    console.log(sessionId)
     this.userService.getUserData(sessionId).subscribe(data => {
       this.first_name = data.first_name;
       this.last_name = data.last_name;
       this.loadGroups();
-      console.log(sessionId)
-
     });
-
-    // this.communicationService.getReservationData(sessionStorage.getItem('userId'), this.first_name, this.last_name)
-    // .subscribe(reservationData => this.reservationData = reservationData);
   }
 
   loadGroups() {
