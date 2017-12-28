@@ -2,3 +2,14 @@
   width: calc(100% - 400px);
   margin: 0 200px;
 }
+
+@media screen and (max-width: 780px) {
+  .container {
+    margin: 0;
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}

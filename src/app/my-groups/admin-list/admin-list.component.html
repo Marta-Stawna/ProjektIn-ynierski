@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Grupy w których jestem założycielem</h2>
+  <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -16,7 +17,7 @@
         <td>{{group.name}}</td>
         <td>{{group.notatka}}</td>
         <td>
-            <a class='btn btn-success' [routerLink]="['/my-groups','admin', group._id.$id]">Zarządzaj grupą</a>
+            <a class='btn btn-success btn-xs' [routerLink]="['/my-groups','admin', group._id.$id]">Zarządzaj grupą</a>
         </td>
         <td>
           <div>
@@ -29,4 +30,5 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>

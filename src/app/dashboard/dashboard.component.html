@@ -8,6 +8,7 @@
 
   <p class="dashboard-text">Wybierz odpowiedni dzień tygodnia i godzinę. Następnie sprawdź dostępność wybranej sali na planie.</p>
 
+  <div class="dashboard-table-div">
   <table class="table table-bordered dashboard-table">
     <thead>
       <tr>
@@ -24,6 +25,7 @@
       </tr>
     </tbody>
   </table>
-<app-table-row (planEmitter)="getPlan($event)" [roomId]="idRoom"></app-table-row>
-{{data}}
+  <app-table-row (planEmitter)="getPlan($event)" [roomId]="idRoom"></app-table-row>
+  {{data}}
+  </div>
 </div>

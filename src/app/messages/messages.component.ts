@@ -48,23 +48,13 @@ export class MessagesComponent implements OnInit {
       this.first_name = data.first_name;
       this.last_name = data.last_name;
       this.loadGroups();
-      this.getAllMessages();
     });
-
-  }
-
-  getAllMessages() {
-    this.messageService.allMessages(this.first_name, this.last_name).subscribe(data => console.log(data, "bbbb"))
 
   }
 
   loadGroups() {
     this.groupsService.getUserGroups(this.first_name, this.last_name).subscribe(data => this.groups = data,
     error => console.log(error))
-  }
-
-  getGroup(id) {
-    this.groupsService.getGroupsInfo(id).subscribe(data => console.log(data,'ooo'))
   }
 
   saveData(data) {

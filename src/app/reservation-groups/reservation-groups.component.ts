@@ -53,6 +53,6 @@ export class ReservationGroupsComponent implements OnInit {
   }
 
   loadGroups() {
-      this.groupsService.getCreatorGroups(this.first_name,this.last_name).subscribe(data => {this.groups = data; console.log(this.groups, 'gropus');})
+      this.groupsService.getCreatorGroups(this.first_name,this.last_name).subscribe(data => this.groups = data)
   }
 }

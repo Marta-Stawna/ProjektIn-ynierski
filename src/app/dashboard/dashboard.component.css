@@ -31,3 +31,41 @@
   max-width: 135px !important;
   text-align: center;
 }
+
+@media screen and (max-width: 780px) {
+  .dashboard-container {
+    margin: 0;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .dashboard-text {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .dashboard-table thead th {
+    text-align: center;
+  }
+
+  .dashboard-table tbody td {
+    text-align: center;
+  }
+
+  .dashboard-table tbody td:first-child {
+    max-width: 60px;
+    text-align: left;
+    font-size: 11px;
+    padding-left: 5px;
+  }
+
+  .dashboard-table thead th:first-child {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .dashboard-table-div {
+    overflow: scroll;
+    max-width: 320px;
+  }
+}
