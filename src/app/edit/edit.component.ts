@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommunicationService } from "app/common/communication.service";
 import { LoginService } from "app/common/login.service";
 import { Subscription } from "rxjs/Subscription";
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-edit',
@@ -20,7 +21,19 @@ export class EditComponent implements OnInit {
   private first_name;
   private last_name;
 
-  constructor(private service: CommunicationService, private userService: LoginService) {}
+  constructor(private service: CommunicationService, private userService: LoginService, private popup: Popup) {
+    this.popup.options = {
+      header: "",
+      color: "purple",
+      widthProsentage: 40,
+      showButtons: true,
+      confirmBtnContent: "Tak",
+      cancleBtnContent: "Wróć",
+      confirmBtnClass: "btn btn-default",
+      cancleBtnClass: "btn btn-default",
+      animation: "fadeInDown"
+    };
+  }
 
   removeReservation(reservation){
     this.service.removeReservationData(this.userService.getSessionId(), reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
@@ -28,6 +41,10 @@ export class EditComponent implements OnInit {
     this.deleted = 1;
     this.processWithinAngularZone();
 
+  }
+
+  clickButton(){
+    this.popup.show();
   }
 
   _increaseProgress(doneCallback: () => void) {

@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { appRoutes } from './app-routing.module';
 import { LoginService } from './common/login.service';
 import { MdSidenavModule } from '@angular/material';
+import { PopupModule } from 'ng2-opd-popup';
 import { CommunicationService } from './common/communication.service';
 import { TableRowComponent } from './dashboard/table/tableRow/table-row/table-row.component';
 import { OrderByPipe } from './common/sort.pipe';
@@ -32,6 +33,9 @@ import { AdminListComponent } from './my-groups/admin-list/admin-list.component'
 import { AboutComponent } from './about/about.component';
 import { ReservationGroupsComponent } from './reservation-groups/reservation-groups.component';
 import { MyReservationGroupComponent } from './my-reservation-group/my-reservation-group.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessagesService } from './common/messages.service';
+import { BoxMessagesComponent } from './box-messages/box-messages.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,9 @@ import { MyReservationGroupComponent } from './my-reservation-group/my-reservati
     AdminListComponent,
     AboutComponent,
     ReservationGroupsComponent,
-    MyReservationGroupComponent
+    MyReservationGroupComponent,
+    MessagesComponent,
+    BoxMessagesComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -61,10 +67,11 @@ import { MyReservationGroupComponent } from './my-reservation-group/my-reservati
     FormsModule,
     HttpModule,
     MdSidenavModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    PopupModule.forRoot()
   ],
 
-  providers: [LoginService, CommunicationService, AuthService, AuthGuardService, GroupsService],
+  providers: [LoginService, CommunicationService, AuthService, AuthGuardService, GroupsService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

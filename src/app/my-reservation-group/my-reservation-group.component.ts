@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommunicationService } from "app/common/communication.service";
 import { LoginService } from "app/common/login.service";
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-my-reservation-group',
@@ -14,8 +15,22 @@ export class MyReservationGroupComponent implements OnInit {
   private reservationDataCreator;
   private first_name;
   private last_name;
+  @ViewChild('popup1') popup1: Popup;
+  @ViewChild('popup2') popup2: Popup;
 
-  constructor(private service: CommunicationService, private userService: LoginService) {}
+  constructor(private service: CommunicationService, private userService: LoginService, private popup: Popup) {
+    this.popup.options = {
+      header: "",
+      color: "purple",
+      widthProsentage: 40,
+      showButtons: true,
+      confirmBtnContent: "Tak",
+      cancleBtnContent: "Wróć",
+      confirmBtnClass: "btn btn-default",
+      cancleBtnClass: "btn btn-default",
+      animation: "fadeInDown"
+    };
+  }
 
   removeReservationUser(reservation){
     this.service.removeReservationDataGroupUser(reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
@@ -48,5 +63,13 @@ export class MyReservationGroupComponent implements OnInit {
       this.getReservationUser();
       this.getReservationCreator();
     });
+  }
+
+  clickButtonPop1(){
+    this.popup1.show();
+  }
+
+  clickButtonPop2(){
+    this.popup2.show();
   }
 }

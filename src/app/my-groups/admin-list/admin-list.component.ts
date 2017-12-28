@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '../../common/groups.service';
 import { LoginService } from '../../common/login.service';
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-admin-list',
@@ -12,7 +13,23 @@ export class AdminListComponent implements OnInit {
   private groups = [];
   private first_name;
   private last_name;
-  constructor(private groupsService: GroupsService, private userService: LoginService) { }
+  constructor(private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
+    this.popup.options = {
+      header: "",
+      color: "purple",
+      widthProsentage: 40,
+      showButtons: true,
+      confirmBtnContent: "Tak",
+      cancleBtnContent: "Wróć",
+      confirmBtnClass: "btn btn-default",
+      cancleBtnClass: "btn btn-default",
+      animation: "fadeInDown"
+    };
+   }
+
+  clickButton(){
+    this.popup.show();
+  }
 
   ngOnInit() {
     this.userService.getUserData(sessionStorage.getItem('session')).subscribe(data => {

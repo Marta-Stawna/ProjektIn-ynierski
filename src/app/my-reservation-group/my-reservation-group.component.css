@@ -2,3 +2,12 @@
   width: calc(100% - 400px);
   margin: 0 200px;
 }
+
+h2.headertekst {
+  text-align: center;
+  width:100%;
+}
+
+/deep/ .ng2-opd-popup-content-main {
+  margin-left: -500px !important;
+}

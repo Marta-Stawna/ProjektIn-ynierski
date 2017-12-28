@@ -1,6 +1,6 @@
 <div class='container'>
-  <h2>Panel założyciela grupy XYZ</h2>
-  <h4> Dodaj notakę dla uczestników grupy</h4>
+  <h2>Panel założyciela grupy</h2><br>
+  <h4> Edytuj opis grupy:</h4>
 
   <form #messageForm='ngForm' (ngSubmit)='saveNote(messageForm.value)'>
     <label for='textarea'>
@@ -9,25 +9,25 @@
     </label>
 
     <div>
-      <input class='btn btn-success' type='submit' value='Wyslij'/>
+      <input class='btn btn-success' type='submit' value='Zatwierdź opis'/>
     </div>
   </form>
 
   <div *ngIf="text" class="card-block">
     <div class="alert alert-success">
-        Twoj notatka została wysłana
+        Opis grupy został zaktualizowany.
     </div>
   </div>
-
-  <h4> Zarządzaj uczestnikami grupy </h4>
+  <br><br><br>
+  <h4> Zarządzaj uczestnikami w grupie:</h4>
 
   <table class='table table-striped'>
     <thead>
       <tr>
-        <th> # </th>
-        <th> Imie </th>
+        <th> </th>
+        <th> Imię </th>
         <th> Nazwisko </th>
-        <th> Usuń użytkownika</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +35,14 @@
         <td>  {{i+1}} </td>
         <td>  {{group.imie}} </td>
         <td>  {{group.nazwisko}} </td>
-        <td><button class='btn btn-danger' (click)="removeUser(group.id, group.imie, group.nazwisko)">Usuń</button></td>
+        <td>
+          <div>
+            <button class="btn btn-danger btn-xs" (click)="clickButton()">Usuń osobę z grup</button>
+            <popup (confirmClick)="removeUser(group.id_u, group.imie, group.nazwisko)">
+                <h3>Czy jesteś pewny, że chcesz usunąć osobę z grupy ?</h3>
+            </popup>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

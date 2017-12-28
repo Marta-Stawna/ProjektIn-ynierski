@@ -5,7 +5,7 @@
         <span>Wybierz salę</span>
         <span class="asteriskField">*</span>
       </label>
-      <select multiple class="form-control" id="sala" ngModel name="sala" required>
+      <select class="form-control" id="sala" ngModel name="sala" required>
         <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.number" [selected]="room.number==9">{{room.number}}</option>
       </select>
 
@@ -30,7 +30,7 @@
       </label>
 
       <label class="res-btn">
-        <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
+        <input class="btn float-xs-right" type="submit" value="Rezerwuj salę" />
       </label>
 
       <div *ngIf="info" class="card-block">

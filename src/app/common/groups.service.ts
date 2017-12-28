@@ -80,14 +80,14 @@ export class GroupsService {
   }
 
   addUserToGroup(id_group, id_user, first_name, last_name) {
-    let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":[{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}]}}}';
+    let group = 'dane={"collection":"groups","mode":"update","key":{"_id":"ObjectId(\\"'+ id_group +'\\")"},"dane":{"$addToSet":{"users":{"id_u":"'+ id_user +'","imie":"'+ first_name +'", "nazwisko":"'+ last_name +'"}}}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
   }
 
   getGroupsInfo(id) {
-    let group = 'dane={"collection":"groups","mode":"find","dane":{"_id":"'+ id +'"}}';
+    let group = 'dane={"collection":"groups","mode":"find","dane":{"_id":"ObjectId(\\"'+ id +'\\")"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + group, this.headers)
       .map((res: Response) => res.json().data)
