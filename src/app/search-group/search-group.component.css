@@ -7,3 +7,10 @@ span {
   display: block;
   padding-bottom: 10px;
 }
+
+@media screen and (max-width: 780px) {
+  .container {
+    margin: 0;
+    width: 100%;
+  }
+}

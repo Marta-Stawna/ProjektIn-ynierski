@@ -33,6 +33,12 @@ import { Subscription } from "rxjs/Subscription";
               text-decoration: none;
               color: #fff;
               font-weight: bold;
+            }
+
+            @media screen and (max-width: 780px) {
+              .header {
+                height: 100%;
+              }
             }`
           ]
 })

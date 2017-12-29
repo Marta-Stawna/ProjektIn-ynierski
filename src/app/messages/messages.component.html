@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Moje wiadmości</h2>
+  <hr/>
+
+  <form #messagesForm="ngForm" (ngSubmit)="saveData(messagesForm.value)">
+  <p><strong>Wybierz grupę, do której chcesz wysłać wiadomość</strong></p>
+  <select name="groupSelect" [(ngModel)]="selectedGroup" class="res-groups form-control" (change)="getUsers()">
+      <option *ngFor="let group of groups" [value]="[group._id.$id, group.name]">{{group.name}}</option>
+  </select>
+
+  <br/>
+  <textarea name='messages' ngModel rows='4' cols='50'></textarea>
+  <br/>
+
+  <input type="submit" class="btn btn-success" value="Wyślij"/>
+
+  <div *ngIf="info" class="card-block">
+    <div [ngClass]="{ 'alert': true, 'alert-success': info.status, 'alert-warning': !info.status }">
+      <strong>{{info.data[0]}}</strong>{{info.data[1]}}
+    </div>
+  </div>
+  </form>
+</div>

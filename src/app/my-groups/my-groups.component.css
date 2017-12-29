@@ -2,3 +2,19 @@
   width: calc(100% - 400px);
   margin-left: 200px;
 }
+
+/deep/ .ng2-opd-popup-content-main {
+  margin-left: -500px !important;
+}
+
+@media screen and (max-width: 780px) {
+  .container {
+    margin: 0;
+    width: 100%;
+  }
+
+  /deep/ .ng2-opd-popup-content-main {
+    margin-left: -275px !important;
+    width: 100% !important;
+  }
+}

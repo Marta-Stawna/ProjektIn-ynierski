@@ -9,11 +9,11 @@
   <table class='table table-striped' *ngIf="groups">
     <thead>
       <tr>
-        <th> # </th>
-        <th> Cel Spotkania </th>
+        <th>  </th>
+        <th> Nazwa rezerwacji</th>
         <th> Data </th>
         <th> Godzina </th>
-        <th> Zapisz </th>
+        <th>  </th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
         <td>  {{group.data}} </td>
         <td>  {{group.godzina}} </td>
         <td>
-          <button class='btn btn-success' (click)="addToReservation(group._id.$id)"> Zapisz </button>
+          <button class='btn btn-success' (click)="addToReservation(group._id.$id)"> Dołącz do rezerwacji </button>
         </td>
       </tr>
     </tbody>

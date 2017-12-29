@@ -1,16 +1,18 @@
 <div class="container" >
-  <h2>Moje rezerwacje grupowe</h2>
-  <h3>Moje założycielskie rezerwacje grupowe</h3>
+  <h3 class="headertekst">Moje rezerwacje grupowe</h3><br>
+  <h4>Rezerwacje w grupach - w których jestem założycielem</h4>
+
+  <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Dzień</th>
+        <th></th>
+        <th>Data</th>
         <th>Godzina</th>
         <th>Sala</th>
-        <th>Cel rezerwacji</th>
+        <th>Nazwa rezerwacji</th>
         <th>Nazwa grupy</th>
-        <th>Usuń</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -22,23 +24,31 @@
         <td>{{res.purpose}}</td>
         <td>{{res.name}}</td>
         <td>
-          <button type="button" (click)="removeReservationCreator(res)" class="btn btn-danger btn-xs">Usuń</button>
+          <div>
+            <button class="btn btn-danger btn-xs" (click)="clickButtonPop1()">Usuń rezerwację</button>
+            <popup #popup1 (confirmClick)="removeReservationCreator(res)">
+                <h3>Czy jesteś pewny, że chcesz usunąć rezerwację ?</h3>
+            </popup>
+          </div>
         </td>
       </tr>
     </tbody>
-  </table>
+  </table><br><br>
+</div>
 
-  <h3>Moje rezerwacje grupowe jako uczestnik</h3>
+  <h4>Rezerwacje w grupach - w których jestem uczestnikiem</h4>
+  <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Dzień</th>
+        <th></th>
+        <th>Data</th>
         <th>Godzina</th>
         <th>Sala</th>
-        <th>Cel Spotkania</th>
+        <th>Nazwa rezerwacji</th>
+        <th>Cel spotkania</th>
         <th>Nazwa Grupy</th>
-        <th>Usuń</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -50,10 +60,15 @@
         <td>{{resUser.purpose}}</td>
         <td>{{resUser.name}}</td>
         <td>
-          <button type="button" (click)="removeReservationUser(resUser)" class="btn btn-danger btn-xs">Usuń</button>
+          <div>
+            <button class="btn btn-danger btn-xs" (click)="clickButtonPop2()">Nie bierz udziału</button>
+            <popup #popup2 (confirmClick)="removeReservationUser(resUser)">
+                <h3>Czy jesteś pewny, że chcesz wypisać się z rezerwacji ?</h3>
+            </popup>
+          </div>
         </td>
       </tr>
     </tbody>
   </table>
-
+  </div>
 </div>

@@ -1,13 +1,13 @@
 <div class="container" >
-  <h2>Moje rezerwacje</h2>
+  <h2>Moje rezerwacje</h2><br>
   <table class="table">
     <thead>
       <tr>
-        <th>Id</th>
+        <th></th>
         <th>Dzień</th>
         <th>Godzina</th>
         <th>Sala</th>
-        <th>Usuń</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +17,12 @@
         <td>{{res.godzina}}</td>
         <td>{{res.sala}}</td>
         <td>
-          <button type="button" (click)="removeReservation(res)" class="btn btn-danger btn-xs">Usuń</button>
+          <div>
+            <button class="btn btn-danger btn-xs" (click)="clickButton()">Usuń rezerwację</button>
+            <popup (confirmClick)="removeReservation(res)">
+                <h3>Czy jesteś pewny, że chcesz usunąć rezerwacje ?</h3>
+            </popup>
+          </div>
         </td>
       </tr>
     </tbody>

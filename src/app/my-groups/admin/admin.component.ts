@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupsService } from '../../common/groups.service';
 import { LoginService } from '../../common/login.service';
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,19 @@ import { LoginService } from '../../common/login.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private groupsService: GroupsService, private userService: LoginService) { }
+  constructor(private activatedRoute: ActivatedRoute, private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
+    this.popup.options = {
+      header: "",
+      color: "purple",
+      widthProsentage: 40,
+      showButtons: true,
+      confirmBtnContent: "Tak",
+      cancleBtnContent: "Wróć",
+      confirmBtnClass: "btn btn-default",
+      cancleBtnClass: "btn btn-default",
+      animation: "fadeInDown"
+    };
+   }
 
   private groupData = []
   private id;
@@ -26,6 +39,10 @@ export class AdminComponent implements OnInit {
       this.getGroupsInfo();
     });
 
+  }
+
+  clickButton(){
+    this.popup.show();
   }
 
   saveNote(data) {

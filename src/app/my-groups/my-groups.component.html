@@ -7,10 +7,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Id</th>
-        <th>Nazwa grupy</th>
-        <th>Wiadomość od założyciela</th>
-        <th>Usuń się z grupy</th>
+        <th></th>
+        <th>Nazwa </th>
+        <th>Opis grupy</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,31 +18,15 @@
         <td>{{i+1}}</td>
         <td>{{group.name}}</td>
         <td>{{group.notatka}}</td>
-        <!-- <td>
-          <div *ngIf='group.users[0].role === "creator"' >
-            <a class='btn btn-success' [routerLink]="['/my-groups','admin', group._id.$id]">Admin Panel</a>
-          </div>
-        </td> -->
         <td>
-            <button class='btn btn-danger' (click)="removeUser(group._id.$id)">Usuń</button>
+          <div>
+            <button class="btn btn-danger btn-xs" (click)="clickButton()">Opuść grupę</button>
+            <popup (confirmClick)="removeUser(group._id.$id)">
+                <h3>Czy jesteś pewny, że chcesz opuścić grupę ?</h3>
+            </popup>
+          </div>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-<!-- <div>
-  <h2 md-dialog-title>MY DIALOG</h2>
-  <hr>
-  <md-dialog-content>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam maxime cum dolorem officiis assumenda rem alias, omnis nobis nam. Ratione soluta libero architecto cupiditate at fugit consectetur sit dignissimos vitae.
-    <br>
-    <br>
-    <strong>{{data}}</strong>
-  </md-dialog-content>
-  <hr>
-  <md-dialog-actions>
-    <button md-raised-button (click)="onCloseConfirm()">CONFIRM</button>&nbsp;
-    <button md-raised-button (click)="onCloseCancel()">CANCEL</button>
-  </md-dialog-actions>
-</div> -->

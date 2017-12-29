@@ -1,0 +1,66 @@
+<div class="container">
+  <h2>Skrzynka odbiorcza</h2>
+  <hr/>
+  <div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nadawca</th>
+        <th>Data</th>
+        <th>Treść</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mess of messages; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{mess.writer[0].imie}} {{mess.writer[0].nazwisko}}</td>
+        <td>{{mess.date}}</td>
+        <td>{{mess.message}}</td>
+        <td>
+          <div>
+            <button class='btn btn-danger btn-xs' (click)="clickButtonPop1()">Usuń Wiadmość</button>
+            <popup #popup1 (confirmClick)="removeMessage(mess._id.$id)">
+                <h3>Czy jesteś pewny, że chcesz usunąć wiadmość ?</h3>
+            </popup>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Zarządzaj swoimi wysłanymi wiadmościami</h2>
+  <p> Usunięcie wiadmości spowoduje, że u każdego odbiorcy wiadmości zniknie ona ze skrzynki odbiorczej</p>
+  <hr/>
+  <div class="table-responsive">
+  <table class="table" *ngIf="myMessages">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nadawca</th>
+        <th>Data</th>
+        <th>Treść</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let my of myMessages; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{my.writer[0].imie}} {{my.writer[0].nazwisko}}</td>
+        <td>{{my.date}}</td>
+        <td>{{my.message}}</td>
+        <td>
+          <div>
+            <button class='btn btn-danger btn-xs' (click)="clickButtonPop2()">Usuń Wiadmość</button>
+            <popup #popup2 (confirmClick)="removeMyMessage(my._id.$id)">
+                <h3>Czy jesteś pewny, że chcesz usunąć wiadmość ?</h3>
+            </popup>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

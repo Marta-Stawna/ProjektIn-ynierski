@@ -15,6 +15,8 @@ import { AddToGroupComponent } from './search-group/add-to-group/add-to-group.co
 import { AdminListComponent } from './my-groups/admin-list/admin-list.component';
 import { AboutComponent } from './about/about.component';
 import { MyReservationGroupComponent } from './my-reservation-group/my-reservation-group.component';
+import { MessagesComponent } from './messages/messages.component';
+import { BoxMessagesComponent } from './box-messages/box-messages.component';
 
 export const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -31,5 +33,7 @@ export const appRoutes: Routes = [
   { path: 'my-groups', component: MyGroupsComponent, canActivate: [AuthGuardService] },
   { path: 'new-group', component: NewGroupComponent, canActivate: [AuthGuardService] },
   { path: 'search-group', component: SearchGroupComponent, canActivate: [AuthGuardService] },
+  { path: 'new-message', component: MessagesComponent, canActivate: [AuthGuardService] },
+  { path: 'messages', component: BoxMessagesComponent, canActivate: [AuthGuardService] },
   { path: 'search-group/:id', component: AddToGroupComponent, canActivate: [AuthGuardService] }
 ];

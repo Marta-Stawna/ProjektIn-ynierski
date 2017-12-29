@@ -1,13 +1,18 @@
 <div class="container" >
-  <h2>Grupowa Rezerwacja</h2>
+  <h2>Zarezerwuj salę dla grupy</h2><br>
     <form #reservationFormGroup="ngForm" (ngSubmit)="saveData(reservationFormGroup.value)">
+	    <span><strong>Wybierz grupę, dla której chcesz zarezerwować salę:</strong></span>
+      <select name="groupSelect" ngModel class="res-groups form-control">
+        <option value="" [selected]="false">Wybierz jedną grupę</option>
+        <option *ngFor="let group of groups" [value]="[group._id.$id, group.name]">{{group.name}}</option>
+      </select>
       <span><strong>Podaj nazwę rezerwacji grupowej</strong></span>
       <input type="text" name="name" class="res-groups form-control" ngModel required/>
       <label for="sala" class="res-room">
         <span>Wybierz salę</span>
-        <span class="asteriskField">*</span>
+
       </label>
-      <select multiple class="form-control" id="sala" ngModel name="sala" required>
+      <select class="form-control" id="sala" ngModel name="sala" required>
         <option *ngFor="let room of rooms | orderBy :'number' " [value]="room.number" [selected]="room.number==9">{{room.number}}</option>
       </select>
 
@@ -31,19 +36,8 @@
         </select>
       </label>
 
-      <label for="groups" class="res-for-groups">
-          <span><strong>Wybierz grupę:</strong></span>
-          <select name="groupSelect" ngModel class="res-groups form-control">
-            <option value="" [selected]="false">Wybierz jedną opcje</option>
-            <option *ngFor="let group of groups" [value]="[group._id.$id, group.name]">{{group.name}}</option>
-          </select>
-
-          <span><strong>Zostaw notatkę dla grupy</strong></span>/
-          <textarea name="note" cols="30" rows="3" ngModel class="res-note"></textarea>
-      </label>
-
       <label class="res-btn">
-        <input class="btn float-xs-right" type="submit" value="Zatwierdź" />
+        <input class="btn float-xs-right" type="submit" value="Zapisz rezerwację" />
       </label>
 
       <div *ngIf="info" class="card-block">

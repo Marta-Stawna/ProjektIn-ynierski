@@ -24,3 +24,16 @@ img {
 .sign-in-button:hover {
   background-color: #bc3315;
 }
+
+@media screen and (max-width: 780px) {
+    img {
+      display: none;
+    }
+
+    .sign-in-button {
+      padding: 15px 50px;
+      position: absolute;
+      left: calc(50% - 120px);
+      top: calc(50%);
+    }
+}
