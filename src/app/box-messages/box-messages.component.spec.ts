@@ -2,6 +2,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { PopupModule } from 'ng2-opd-popup';
+import { LoginService } from 'app/common/login.service';
+import { MessagesService } from 'app/common/messages.service';
+import { GroupsService } from 'app/common/groups.service';
+import { HttpModule } from '@angular/http';
 
 import { BoxMessagesComponent } from './box-messages.component';
 
@@ -11,7 +16,9 @@ describe('BoxMessagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoxMessagesComponent ]
+      declarations: [ BoxMessagesComponent ],
+      imports: [ PopupModule.forRoot(), HttpModule ],
+      providers: [ MessagesService, LoginService, GroupsService ]
     })
     .compileComponents();
   }));

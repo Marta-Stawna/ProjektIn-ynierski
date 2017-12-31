@@ -11,7 +11,7 @@ import { Popup } from 'ng2-opd-popup';
 })
 export class BoxMessagesComponent implements OnInit {
 
-  constructor(private messageService: MessagesService, private groupsService: GroupsService, private userService: LoginService, private popup:Popup) {
+  constructor(private messageService: MessagesService, private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
       header: "",
       color: "purple",

@@ -2,6 +2,7 @@
 // https://karma-runner.github.io/0.13/config/configuration-file.html
 
 module.exports = function (config) {
+  var appBase = 'src/app/';
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
@@ -12,7 +13,8 @@ module.exports = function (config) {
       require('@angular/cli/plugins/karma')
     ],
     files: [
-      { pattern: './src/test.ts', watched: false }
+      { pattern: './src/test.ts', watched: false },
+      { pattern: appBase + '**/*.js', included: false, watched: true },
     ],
     preprocessors: {
       './src/test.ts': ['@angular/cli']

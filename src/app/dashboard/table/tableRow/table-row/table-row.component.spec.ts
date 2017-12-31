@@ -2,6 +2,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { CommunicationService } from 'app/common/communication.service';
+import { LoginService } from 'app/common/login.service';
+import { HttpModule } from '@angular/http';
 
 import { TableRowComponent } from './table-row.component';
 
@@ -11,7 +14,9 @@ describe('TableRowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TableRowComponent ]
+      imports: [ HttpModule ],
+      declarations: [ TableRowComponent ],
+      providers: [CommunicationService, LoginService]
     })
     .compileComponents();
   }));
@@ -25,4 +30,5 @@ describe('TableRowComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
