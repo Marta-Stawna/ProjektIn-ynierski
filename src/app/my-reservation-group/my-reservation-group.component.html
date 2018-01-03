@@ -25,8 +25,8 @@
         <td>{{res.name}}</td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="clickButtonPop1()">Usuń rezerwację</button>
-            <popup #popup1 (confirmClick)="removeReservationCreator(res)">
+            <button class="btn btn-danger btn-xs" (click)="clickButtonPop1(res)">Usuń rezerwację</button>
+            <popup #popup1 (confirmClick)="removeReservationCreator()">
                 <h3>Czy jesteś pewny, że chcesz usunąć rezerwację ?</h3>
             </popup>
           </div>
@@ -61,8 +61,8 @@
         <td>{{resUser.name}}</td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="clickButtonPop2()">Nie bierz udziału</button>
-            <popup #popup2 (confirmClick)="removeReservationUser(resUser)">
+            <button class="btn btn-danger btn-xs" (click)="clickButtonPop2(resUser)">Nie bierz udziału</button>
+            <popup #popup2 (confirmClick)="removeReservationUser()">
                 <h3>Czy jesteś pewny, że chcesz wypisać się z rezerwacji ?</h3>
             </popup>
           </div>

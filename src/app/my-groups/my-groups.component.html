@@ -20,8 +20,8 @@
         <td>{{group.notatka}}</td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="clickButton()">Opuść grupę</button>
-            <popup (confirmClick)="removeUser(group._id.$id)">
+            <button class="btn btn-danger btn-xs" (click)="clickButton(group._id.$id)">Opuść grupę</button>
+            <popup (confirmClick)="removeUser()">
                 <h3>Czy jesteś pewny, że chcesz opuścić grupę ?</h3>
             </popup>
           </div>

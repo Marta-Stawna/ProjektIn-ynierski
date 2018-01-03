@@ -83,9 +83,9 @@ export class CommunicationService {
   checkRoomData(data){
     //{"pojemnosc" : "48", "usos_id" : "42", "sala" : "A2-21", "projektor": "1", "poziom" : "2", "komputery" : "0"},
     // var checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "sala":"' + data.sala + '","data":"' + data.date + '","godzina":"' + data.godzina.substring(0,5) + '"}}';
-   let projector,
-       labs,
-       checkRoomData;
+   let projector;
+   let labs;
+   let checkRoomData;
 
     if (data.projector == true) {
       projector = 1
@@ -97,6 +97,7 @@ export class CommunicationService {
     } else {
       labs = 0
     }
+
     if (data.location == "") {
       console.log("Brak inf o miejscach")
       checkRoomData = 'dane={"collection":"sale", "mode":"find", "dane":{ "projektor": "' + projector + '" , "komputery" : "'+ labs +'" }}';

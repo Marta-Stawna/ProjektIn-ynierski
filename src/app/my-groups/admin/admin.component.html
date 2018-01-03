@@ -37,8 +37,8 @@
         <td>  {{group.nazwisko}} </td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="clickButton()">Usuń osobę z grup</button>
-            <popup (confirmClick)="removeUser(group.id_u, group.imie, group.nazwisko)">
+            <button class="btn btn-danger btn-xs" (click)="clickButton(group.id_u, group.imie, group.nazwisko)">Usuń osobę z grup</button>
+            <popup (confirmClick)="removeUser()">
                 <h3>Czy jesteś pewny, że chcesz usunąć osobę z grupy ?</h3>
             </popup>
           </div>

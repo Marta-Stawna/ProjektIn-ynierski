@@ -20,6 +20,7 @@ export class EditComponent implements OnInit {
   label: string;
   private first_name;
   private last_name;
+  private res;
 
   constructor(private service: CommunicationService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
@@ -35,16 +36,17 @@ export class EditComponent implements OnInit {
     };
   }
 
-  removeReservation(reservation){
-    this.service.removeReservationData(this.userService.getSessionId(), reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
+  removeReservation(){
+    this.service.removeReservationData(this.userService.getSessionId(), this.res, sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(succes => this.getReservation());
     this.deleted = 1;
     this.processWithinAngularZone();
 
   }
 
-  clickButton(){
+  clickButton(res){
     this.popup.show();
+    this.res = res;
   }
 
   _increaseProgress(doneCallback: () => void) {

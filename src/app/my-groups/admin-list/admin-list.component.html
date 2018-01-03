@@ -21,8 +21,8 @@
         </td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="clickButton()">Usuń grupę</button>
-            <popup (confirmClick)="removeItem(group.name)">
+            <button class="btn btn-danger btn-xs" (click)="clickButton(group.name)">Usuń grupę</button>
+            <popup (confirmClick)="removeItem()">
                 <h3>Czy jesteś pewny, że chcesz usunąć grupę ?</h3>
             </popup>
           </div>

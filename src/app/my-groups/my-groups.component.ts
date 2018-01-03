@@ -13,6 +13,7 @@ export class MyGroupsComponent implements OnInit {
   private groups = [];
   private first_name;
   private last_name;
+  public id;
   constructor(private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
       header: "",
@@ -27,8 +28,9 @@ export class MyGroupsComponent implements OnInit {
     };
    }
 
-  clickButton(){
+  clickButton(id){
     this.popup.show();
+    this.id = id;
   }
 
   ngOnInit() {
@@ -44,8 +46,8 @@ export class MyGroupsComponent implements OnInit {
     error => console.log(error))
   }
 
-  removeUser(id) {
-    this.groupsService.removeMe(id, this.first_name, this.last_name).subscribe(data => this.loadGroups(),
+  removeUser() {
+    this.groupsService.removeMe(this.id, this.first_name, this.last_name).subscribe(data => this.loadGroups(),
     error => console.log(error))
   }
 }
