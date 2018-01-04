@@ -27,19 +27,18 @@
 
 md-sidenav li a{
   text-decoration-line: none;
-  font-size: 16px;
+  font-size: 13px;
   color: #000;
 }
 md-sidenav li a:hover {
-  color: 	#800080;
+  text-decoration: underline;
 }
 md-sidenav li {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   padding: 10px;
-  font-size: 16px;
-  color: #000;
+  font-size: 12px;
 }
 
 .button{
@@ -61,6 +60,45 @@ md-sidenav li {
   height: auto;
 }
 
-.menu-header {
-  background-color: #D3D3D3;
+.h0 {
+    border-radius: 15px;
+    border: 2px solid #CCD6DD;
+    text-align: center;
 }
+
+.h1 {
+ background-color:#3B5998 ;
+  border-radius: 10px;
+  color: white;
+ text-align: center;
+}
+
+.h1a {
+  background-color: #eef0f6;
+}
+
+.h2 {
+ background-color:#3B5998 ;
+  border-radius: 10px;
+  color: white;
+}
+
+.h2a {
+  background-color:#eef0f6;
+}
+
+.h3 {
+  background-color:#3B5998 ;
+  border-radius: 10px;
+  color: white;
+}
+
+.h3a {
+  background-color: #eef0f6;
+}
+
+.h4 {
+  border-radius: 15px;
+  border: 2px solid #CCD6DD;
+}
+

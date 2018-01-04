@@ -58,6 +58,7 @@ export class GroupsService {
       .map((res: Response) => res.json().data)
   }
 
+
   searchGroup(phrase) {
     let group = 'dane={"collection":"groups","mode":"find","dane":{"name":{"$regex":"'+ phrase +'","$options":"i"}}}';
 

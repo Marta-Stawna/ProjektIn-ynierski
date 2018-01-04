@@ -21,7 +21,7 @@ import { Subscription } from "rxjs/Subscription";
               justify-content: space-between;
               width: 100%;
               height: 50px;
-              background-color:rgb(128, 0, 128);
+              background-color:#034F84;
               color: white
             }
             .user {

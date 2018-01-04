@@ -1,23 +1,23 @@
  <md-sidenav-container>
     <md-sidenav #sidenav class="sidenav">
     <ul>
-      <li routerLinkActive="active"><a routerLink="/dashboard"><strong>Strona Główna</strong></a></li>
-      <li class="menu-header"><strong>Tryb indywidulany</strong></li>
-      <li routerLinkActive="active"><a routerLink="/search">Wyszukaj salę</a></li>
-      <li routerLinkActive="active"><a routerLink="/plan">Plan dostępności sal</a></li>
-			<li routerLinkActive="active"><a routerLink="/reservation">Zarezerwuj salę</a></li>
-      <li routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
-      <li class="menu-header"><strong>Tryb grupowy</strong></li>
-      <li routerLinkActive="active"><a routerLink="/search-group">Wyszukaj grupę</a></li>
-      <li routerLinkActive="active"><a routerLink="/new-group">Utwórz grupę</a></li>
-      <li routerLinkActive="active"><a routerLink="/my-groups">Moje Grupy</a></li>
-			<li routerLinkActive="active"><a routerLink="/reservation-groups">Zarezerwuj salę dla grupy</a></li>
-			<li routerLinkActive="active"><a routerLink="/my-reservation-groups">Moje Rezerwacje grupowe</a></li>
-      <li class="menu-header"><strong>Wiadmości</strong></li>
-      <li routerLinkActive="active"><a routerLink="/new-message">Skrzynka Nadawcza</a></li>
-      <li routerLinkActive="active"><a routerLink="/messages">Skrzynka Odbiorcza</a></li>
-      <li routerLinkActive="active" (click)="logOut()"><a href="https://dev.alcon.eu.org/ugather/?logout"><strong>Wyloguj się</strong></a></li>
-		</ul>
+      <li class="h0" routerLinkActive="active"><a routerLink="/dashboard"><strong>Strona Główna</strong></a></li>
+      <li class="h1"><strong>Tryb indywidulany</strong></li>
+      <li class="h1a" routerLinkActive="active"><a routerLink="/search">Wyszukaj salę</a></li>
+      <li class="h1a" routerLinkActive="active"><a routerLink="/plan">Plan dostępności sal</a></li>
+      <li  class="h1a"routerLinkActive="active"><a routerLink="/reservation">Zarezerwuj salę</a></li>
+      <li class="h1a" routerLinkActive="active"><a routerLink="/edit">Moje Rezerwacje</a></li>
+      <li class="h2"><strong>Tryb grupowy</strong></li>
+      <li class="h2a" routerLinkActive="active"><a routerLink="/search-group">Wyszukaj grupę</a></li>
+      <li class="h2a" routerLinkActive="active"><a routerLink="/new-group">Utwórz grupę</a></li>
+      <li class="h2a" routerLinkActive="active"><a routerLink="/my-groups">Moje Grupy</a></li>
+	<li class="h2a" routerLinkActive="active"><a routerLink="/reservation-groups">Zarezerwuj salę dla grupy</a></li>
+	<li class="h2a" routerLinkActive="active"><a routerLink="/my-reservation-groups">Moje Rezerwacje grupowe</a></li>
+      <li class="h3"><strong>Wiadomości grupowe</strong></li>
+      <li class="h3a" routerLinkActive="active"><a routerLink="/new-message">Skrzynka Nadawcza</a></li>
+      <li class="h3a" routerLinkActive="active"><a routerLink="/messages">Skrzynka Odbiorcza</a></li>
+      <li class="h4" routerLinkActive="active" (click)="logOut()"><a href="https://dev.alcon.eu.org/ugather/?logout"><strong>Wyloguj się</strong></a></li>
+	</ul>
   </md-sidenav>
   <div class="main-container">
     <app-header>
