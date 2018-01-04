@@ -25,24 +25,24 @@
   padding:0;
 }
 
-md-sidenav li a{
+md-sidenav li a {
   text-decoration-line: none;
-  font-size: 16px;
+  font-size: 13px;
   color: #000;
 }
 md-sidenav li a:hover {
-  color: 	#800080;
+  text-decoration: underline;
 }
+
 md-sidenav li {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   padding: 10px;
-  font-size: 16px;
-  color: #000;
+  font-size: 12px;
 }
 
-.button{
+.button {
   color: #fff;
   font-size: 20px;
   margin: 8px;
@@ -61,6 +61,44 @@ md-sidenav li {
   height: auto;
 }
 
-.menu-header {
-  background-color: #D3D3D3;
+.dashboard-header {
+    border-radius: 15px;
+    border: 2px solid #CCD6DD;
+    text-align: center;
+}
+
+.indywidual-static-header {
+  background-color:#3B5998 ;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.indywidual-header {
+  background-color: #eef0f6;
+}
+
+.group-static-header {
+  background-color:#3B5998 ;
+  border-radius: 10px;
+  color: white;
+}
+
+.group-header {
+  background-color:#eef0f6;
+}
+
+.messages-static-header {
+  background-color:#3B5998 ;
+  border-radius: 10px;
+  color: white;
+}
+
+.messages-header {
+  background-color: #eef0f6;
+}
+
+.log-out {
+  border-radius: 15px;
+  border: 2px solid #CCD6DD;
 }

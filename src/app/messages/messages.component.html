@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Moje wiadmości</h2>
+  <h2>Wysłane wiadomości</h2>
   <hr/>
 
   <form #messagesForm="ngForm" (ngSubmit)="saveData(messagesForm.value)">
@@ -12,7 +12,7 @@
   <textarea name='messages' ngModel rows='4' cols='50'></textarea>
   <br/>
 
-  <input type="submit" class="btn btn-success" value="Wyślij"/>
+  <input type="submit" class="btn btn-success" value="Wyślij wiadomość"/>
 
   <div *ngIf="info" class="card-block">
     <div [ngClass]="{ 'alert': true, 'alert-success': info.status, 'alert-warning': !info.status }">

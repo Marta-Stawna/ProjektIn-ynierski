@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   private id;
   private rooms;
   private idRoom = 9;
-  private color  = 'green';
+  private color  = '#DFE3EE';
   public hours = ['8:15 - 9:45 ','10:00 - 11:30','11:45 - 13.15','13:45 - 15:15','15:30 - 17:00','17:15 - 18:45'];
 
   constructor(private userService: LoginService,

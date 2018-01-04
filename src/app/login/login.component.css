@@ -1,13 +1,13 @@
 .login {
-  background-color:	#F0F0F0;
+  background-color:	white;
   height: calc(100vh - 100px);
   position: relative;
 }
 
 .sign-in-button {
   padding: 15px 100px;
-  background-color: #d34836;
-  border-radius: 3px;
+  background-color:  #4C6A92;
+  border-radius: 5px;
   color:#fff;
   font-family: Roboto, sans-serif;
   font-size: 20px;
@@ -22,7 +22,7 @@ img {
 }
 
 .sign-in-button:hover {
-  background-color: #bc3315;
+  background-color: #838487;
 }
 
 @media screen and (max-width: 780px) {
@@ -33,7 +33,7 @@ img {
     .sign-in-button {
       padding: 15px 50px;
       position: absolute;
-      left: calc(50% - 120px);
+      left: calc(50% - 100px);
       top: calc(50%);
     }
 }
