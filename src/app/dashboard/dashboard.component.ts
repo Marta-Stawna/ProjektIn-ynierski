@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'app/common/login.service';
-import {CommunicationService } from 'app/common/communication.service';
-import { Subscription } from 'rxjs/Subscription';
-import {OrderByPipe} from '../common/sort.pipe';
+import { CommunicationService } from 'app/common/communication.service';
 
 @Component({
   selector: 'app-dashboard',

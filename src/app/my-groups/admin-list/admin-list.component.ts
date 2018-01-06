@@ -13,6 +13,7 @@ export class AdminListComponent implements OnInit {
   private groups = [];
   private first_name;
   private last_name;
+  public name;
   constructor(private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
       header: "",
@@ -27,8 +28,9 @@ export class AdminListComponent implements OnInit {
     };
    }
 
-  clickButton(){
+  clickButton(name){
     this.popup.show();
+    this.name = name;
   }
 
   ngOnInit() {
@@ -40,8 +42,8 @@ export class AdminListComponent implements OnInit {
 
   }
 
-  removeItem(name) {
-    this.groupsService.removeGroup(name, this.first_name,this.last_name).subscribe(success => this.loadGroups())
+  removeItem() {
+    this.groupsService.removeGroup(this.name, this.first_name,this.last_name).subscribe(success => this.loadGroups())
   }
 
   loadGroups() {

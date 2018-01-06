@@ -30,6 +30,9 @@ export class AdminComponent implements OnInit {
   public text;
   private first_name;
   private last_name;
+  private id_u;
+  private first_name_u;
+  private last_name_u;
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -41,8 +44,11 @@ export class AdminComponent implements OnInit {
 
   }
 
-  clickButton(){
+  clickButton(id, first_name, last_name){
     this.popup.show();
+    this.id_u = id;
+    this.first_name_u = first_name;
+    this.last_name_u = last_name
   }
 
   saveNote(data) {
@@ -54,8 +60,8 @@ export class AdminComponent implements OnInit {
     this.groupsService.getGroupsInfo(this.id).subscribe((data) => this.groupData = data[0].users)
   }
 
-  removeUser(id, first_name, last_name) {
-    this.groupsService.removeUser(this.id, this.first_name, this.last_name, id, first_name, last_name).
+  removeUser() {
+    this.groupsService.removeUser(this.id, this.first_name, this.last_name, this.id_u , this.first_name_u, this.last_name_u).
       subscribe(succes => this.getGroupsInfo())
   }
 

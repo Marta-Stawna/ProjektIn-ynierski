@@ -18,8 +18,8 @@
         <td>{{res.sala}}</td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="clickButton()">Usuń rezerwację</button>
-            <popup (confirmClick)="removeReservation(res)">
+            <button class="btn btn-danger btn-xs" (click)="clickButton(res)">Usuń rezerwację</button>
+            <popup (confirmClick)="removeReservation()">
                 <h3>Czy jesteś pewny, że chcesz usunąć rezerwacje ?</h3>
             </popup>
           </div>

@@ -15,6 +15,8 @@ export class MyReservationGroupComponent implements OnInit {
   private reservationDataCreator;
   private first_name;
   private last_name;
+  private res1;
+  private res2;
   @ViewChild('popup1') popup1: Popup;
   @ViewChild('popup2') popup2: Popup;
 
@@ -32,13 +34,13 @@ export class MyReservationGroupComponent implements OnInit {
     };
   }
 
-  removeReservationUser(reservation){
-    this.service.removeReservationDataGroupUser(reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
+  removeReservationUser(){
+    this.service.removeReservationDataGroupUser(this.res1, sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(succes => this.getReservationUser());
   }
 
-  removeReservationCreator(reservation) {
-      this.service.removeReservationDataGroupCreator(reservation, sessionStorage.getItem('userId'), this.first_name, this.last_name)
+  removeReservationCreator() {
+      this.service.removeReservationDataGroupCreator(this.res2, sessionStorage.getItem('userId'), this.first_name, this.last_name)
       .subscribe(succes => {
         this.getReservationCreator();
       });
@@ -65,11 +67,13 @@ export class MyReservationGroupComponent implements OnInit {
     });
   }
 
-  clickButtonPop1(){
+  clickButtonPop1(res){
     this.popup1.show();
+    this.res1 = res;
   }
 
-  clickButtonPop2(){
+  clickButtonPop2(res){
     this.popup2.show();
+    this.res2 = res;
   }
 }

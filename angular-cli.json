@@ -60,7 +60,7 @@
       "class": false,
       "component": true,
       "directive": true,
-      "module": false,
+      "module": true,
       "pipe": true,
       "service": true
     }

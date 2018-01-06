@@ -11,7 +11,7 @@ import { Popup } from 'ng2-opd-popup';
 })
 export class BoxMessagesComponent implements OnInit {
 
-  constructor(private messageService: MessagesService, private groupsService: GroupsService, private userService: LoginService, private popup:Popup) {
+  constructor(private messageService: MessagesService, private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
       header: "",
       color: "purple",
@@ -29,6 +29,8 @@ export class BoxMessagesComponent implements OnInit {
   private last_name;
   messages;
   myMessages;
+  private id_mess_1;
+  private id_mess_2;
   @ViewChild('popup1') popup1: Popup;
   @ViewChild('popup2') popup2: Popup;
 
@@ -49,22 +51,24 @@ export class BoxMessagesComponent implements OnInit {
     this.messageService.allMessagesWriter(this.first_name, this.last_name).subscribe(data => this.myMessages = data)
   }
 
-  removeMyMessage(id) {
-    this.messageService.removeMyMessage(id).subscribe(data => this.getAllMyMessages())
+  removeMyMessage() {
+    this.messageService.removeMyMessage(this.id_mess_2).subscribe(data => this.getAllMyMessages())
   }
 
-  removeMessage(id) {
-    this.messageService.removeMessage(id, this.first_name, this.last_name).subscribe(data => {
+  removeMessage() {
+    this.messageService.removeMessage(this.id_mess_1, this.first_name, this.last_name).subscribe(data => {
       this.getAllMessages();
       this.getAllMyMessages();
     })
   }
 
-  clickButtonPop1(){
+  clickButtonPop1(id){
     this.popup1.show();
+    this.id_mess_1 = id;
   }
 
-  clickButtonPop2(){
+  clickButtonPop2(id){
     this.popup2.show();
+    this.id_mess_2 = id;
   }
 }
