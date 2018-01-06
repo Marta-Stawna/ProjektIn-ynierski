@@ -28,10 +28,6 @@ describe('EditComponent', () => {
   });
 
   it('should create', () => {
-    // let div = element.querySelector('div');
-    // //set up subscriber
-    // element.changes.subscribe(x => {
-    //   expect(x).toBe(1);
-    // });
+    expect(component).toBeTruthy();
   });
 });
