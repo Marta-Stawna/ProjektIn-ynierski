@@ -23,7 +23,7 @@ export class MyReservationGroupComponent implements OnInit {
   constructor(private service: CommunicationService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
       header: "",
-      color: "purple",
+      color: "#034F84",
       widthProsentage: 40,
       showButtons: true,
       confirmBtnContent: "Tak",
@@ -35,12 +35,12 @@ export class MyReservationGroupComponent implements OnInit {
   }
 
   removeReservationUser(){
-    this.service.removeReservationDataGroupUser(this.res1, sessionStorage.getItem('userId'), this.first_name, this.last_name)
+    this.service.removeReservationDataGroupUser(this.res2, sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(succes => this.getReservationUser());
   }
 
   removeReservationCreator() {
-      this.service.removeReservationDataGroupCreator(this.res2, sessionStorage.getItem('userId'), this.first_name, this.last_name)
+      this.service.removeReservationDataGroupCreator(this.res1, sessionStorage.getItem('userId'), this.first_name, this.last_name)
       .subscribe(succes => {
         this.getReservationCreator();
       });
@@ -70,6 +70,7 @@ export class MyReservationGroupComponent implements OnInit {
   clickButtonPop1(res){
     this.popup1.show();
     this.res1 = res;
+    console.log(this.res1,'res1')
   }
 
   clickButtonPop2(res){

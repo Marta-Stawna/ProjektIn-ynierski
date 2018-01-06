@@ -22,7 +22,7 @@ export class MessagesComponent implements OnInit {
   constructor(private messageService: MessagesService, private groupsService: GroupsService, private userService: LoginService, private popup:Popup) {
     this.popup.options = {
       header: "Moj header",
-      color: "purple",
+      color: "#034F84",
       widthProsentage: 50,
       showButtons: true,
       confirmBtnContent: "OK",

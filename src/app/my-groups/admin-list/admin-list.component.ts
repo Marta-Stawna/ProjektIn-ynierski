@@ -17,7 +17,7 @@ export class AdminListComponent implements OnInit {
   constructor(private groupsService: GroupsService, private userService: LoginService, private popup: Popup) {
     this.popup.options = {
       header: "",
-      color: "purple",
+      color: "#034F84",
       widthProsentage: 40,
       showButtons: true,
       confirmBtnContent: "Tak",

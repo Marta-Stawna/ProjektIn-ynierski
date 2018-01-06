@@ -117,6 +117,7 @@ export class CommunicationService {
   }
 
   removeReservationDataGroupCreator(reservation, userId , first_name, last_name) {
+    console.log(reservation, 'aaaa')
     let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{"creator": { "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"sala":"' + reservation.sala + '","data":"' + reservation.data + '","godzina":"' + reservation.godzina.substring(0,5) + '","type":"group"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
@@ -124,6 +125,7 @@ export class CommunicationService {
   }
 
   removeReservationDataGroupUser(reservation, userId , first_name, last_name) {
+    console.log(reservation, 'aaaa', userId , first_name, last_name)
     let removeReservation = 'dane={"collection":"rezerwacje", "mode":"remove", "dane":{"users": { "id_u":"' + userId + '","imie":"'+ first_name +'","nazwisko":"'+ last_name +'"},"sala":"' + reservation.sala + '","data":"' + reservation.data + '","godzina":"' + reservation.godzina.substring(0,5) + '","type":"group"}}';
 
     return this.http.get('http://213.184.22.45/querydb.php?' + removeReservation, this.headers)
