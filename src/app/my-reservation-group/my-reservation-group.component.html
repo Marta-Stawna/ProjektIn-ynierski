@@ -60,10 +60,10 @@
         <td>{{resUser.name}}</td>
         <td>
           <div>
-            <button class="btn btn-danger btn-xs" (click)="removeReservationUser(resUser)">Nie bierz udziału</button>
-            <!-- <popup #popup2 (confirmClick)="removeReservationUser()">
+            <button class="btn btn-danger btn-xs" (click)="clickButtonPop2(resUser)">Nie bierz udziału</button>
+            <popup #popup2 (confirmClick)="removeReservationUser()">
                 <h3>Czy jesteś pewny, że chcesz wypisać się z rezerwacji ?</h3>
-            </popup> -->
+            </popup>
           </div>
         </td>
       </tr>

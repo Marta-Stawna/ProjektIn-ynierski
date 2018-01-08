@@ -35,6 +35,7 @@ export class MyReservationGroupComponent implements OnInit {
   }
 
   removeReservationUser(){
+    console.log(this.res2)
     this.service.removeReservationDataGroupUser(this.res2, sessionStorage.getItem('userId'), this.first_name, this.last_name)
     .subscribe(succes => this.getReservationUser());
   }
@@ -76,5 +77,6 @@ export class MyReservationGroupComponent implements OnInit {
   clickButtonPop2(res){
     this.popup2.show();
     this.res2 = res;
+    console.log(this.res2,'res1')
   }
 }
